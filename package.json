@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd client && yarn start",
-    "install": "cd client && yarn start",
+    "update": "npm install && cd client && yarn install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
