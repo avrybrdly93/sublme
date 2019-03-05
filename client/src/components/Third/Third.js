@@ -1,6 +1,5 @@
 // Import React, BrowserRouter, Link, NavLink, Redirect, Prompt
 import React, { Component } from "react";
-import "./App.css";
 import {
   BrowserRouter as Router,
   Link,
@@ -10,14 +9,14 @@ import {
   Switch
 } from "react-router-dom";
 import Route from "react-router-dom/Route";
-
-//when logged in , shows the users name
+import Second from "./components/Second";
+import App from "./App.js";
 
 const User = params => {
   return <h1> Welcome User {params.username} </h1>;
 };
 
-class App extends Component {
+class Third extends Component {
   state = {
     loggedIn: false
   };
@@ -43,15 +42,19 @@ class App extends Component {
               Third Page
             </NavLink>
 
-            <NavLink to="/user/login" exact activeStyle={{ color: "green" }}>
-              User login
+            <NavLink to="/user/john" exact activeStyle={{ color: "green" }}>
+              User John
             </NavLink>
 
-            <NavLink to="/user/logout" exact activeStyle={{ color: "green" }}>
-              User Logout
+            <NavLink to="/user/peter" exact activeStyle={{ color: "green" }}>
+              User Peter
             </NavLink>
           </nav>
-
+          <Switch>
+            <Route path="/" render={App} />
+            <Route path="/third" component={Third} />
+            <Route path="/second" component={Second} />
+          </Switch>
           <Prompt
             when={!this.state.loggedIn}
             message={location => {
@@ -59,6 +62,12 @@ class App extends Component {
                 ? "Are you sure?"
                 : true;
             }}
+          />
+
+          <input
+            type="button"
+            value={this.state.loggedIn ? "log out" : "log in"}
+            onClick={this.loginHandle.bind(this)}
           />
 
           <Route
@@ -95,4 +104,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Third;
