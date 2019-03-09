@@ -1,54 +1,49 @@
 import React from "react";
 import MediaControlCard from "../MediaControlCard/MediaControlCard";
+import "uikit/dist/css/uikit.min.css";
+import "uikit/dist/js/uikit.min.js";
+import "uikit/dist/js/uikit-icons.min.js";
 
 const GridList = () => {
   return (
-    <div
-      class="uk-position-relative uk-visible-toggle uk-light"
-      tabindex="-1"
-      uk-slider>
-      <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
-        <li>
-          <div class="uk-panel">
-            <MediaControlCard />
+    <div className="col-12">
+      <div data-uk-slider>
+        <div class="uk-position-relative">
+          <div class="uk-slider-container uk-light">
+            <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
+              <li>
+                <MediaControlCard />
+              </li>
+              <li>
+                <MediaControlCard />
+              </li>
+              <li>
+                <MediaControlCard />
+              </li>
+              <li>
+                <MediaControlCard />
+              </li>
+              <li>
+                <MediaControlCard />
+              </li>
+            </ul>
+            <a
+              className="uk-position-center-left uk-position-small uk-hidden-hover"
+              href="/"
+              data-uk-slidenav-previous
+              data-uk-slider-item="previous">
+              <i class="fas fa-arrow-left" />
+            </a>
+            <a
+              className="uk-position-center-right uk-position-small uk-hidden-hover"
+              href="/"
+              data-uk-slidenav-next
+              data-uk-slider-item="next">
+              <i class="fas fa-arrow-right" />
+            </a>
           </div>
-        </li>
-        <li>
-          <div class="uk-panel">
-            <MediaControlCard />
-          </div>
-        </li>
-        <li>
-          <div class="uk-panel">
-            <MediaControlCard />
-          </div>
-        </li>
-        <li>
-          <div class="uk-panel">
-            <MediaControlCard />
-          </div>
-        </li>
-        <li>
-          <div class="uk-panel">
-            <MediaControlCard />
-          </div>
-        </li>
-      </ul>
-
-      <a
-        class="uk-position-center-left uk-position-small uk-hidden-hover"
-        href="/"
-        uk-slidenav-previous
-        uk-slider-item="previous">
-        test
-      </a>
-      <a
-        class="uk-position-center-right uk-position-small uk-hidden-hover"
-        href="/"
-        uk-slidenav-next
-        uk-slider-item="next">
-        >
-      </a>
+        </div>
+      </div>
     </div>
   );
 };

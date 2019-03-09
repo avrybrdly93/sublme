@@ -8,7 +8,8 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-scripts": "^2.1.8",
-    "uikit": "^3.0.3"
+    "uikit": "^3.0.3",
+    "uikit-react": "^3.0.20"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -20,11 +20,10 @@ const styles = theme => ({
     flexDirection: "column"
   },
   content: {
-    flex: "1 0 auto",
-    color: "black"
+    flex: "1 0 auto"
   },
   cover: {
-    width: 500
+    width: 151
   },
   controls: {
     display: "flex",
@@ -44,9 +43,7 @@ function MediaControlCard(props) {
   return (
     <Card className={classes.card}>
       <div className={classes.details}>
-        <CardContent
-          className={classes.content}
-          style={{ background: "transparent" }}>
+        <CardContent className={classes.content}>
           <Typography component="h5" variant="h5" style={{ color: "black" }}>
             Temptation
           </Typography>

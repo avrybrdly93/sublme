@@ -99,7 +99,8 @@ const styles = theme => ({
 class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    query: ""
   };
 
   handleProfileMenuOpen = event => {
@@ -194,6 +195,14 @@ class PrimarySearchAppBar extends React.Component {
               Sublme
             </Typography>
             <div className={classes.grow} />
+            <Typography
+              className={classes.title}
+              variant="subheading"
+              color="inherit"
+              style={{ textAlign: "center" }}
+              noWrap>
+              Explore
+            </Typography>
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
