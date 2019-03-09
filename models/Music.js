@@ -8,6 +8,11 @@ var MusicSchema = new Schema({
         type: String,
         trim: true,
     },
+    Genre: {
+        type: String,
+        trim: true,
+        default: "Other"
+    },
     //Owners of a Song,Album
     owners: [
         {

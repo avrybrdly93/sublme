@@ -40,14 +40,6 @@ var UserSchema = new Schema({
         type: String,
         trim: true
     },
-    email: {
-        type: String,
-        required: true,
-        match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
-        index: {
-            unique: true
-        }
-    },
     backgroundImage: {
         type: String,
         trim: true
@@ -55,6 +47,14 @@ var UserSchema = new Schema({
     profileImage: {
         type: String,
         trim: true
+    },
+    email: {
+        type: String,
+        required: true,
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
+        index: {
+            unique: true
+        }
     },
     username: {
         type: String,
