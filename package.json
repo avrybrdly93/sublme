@@ -28,7 +28,7 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "uikit": "^3.0.3",
+    "babel-preset-react-app": "^7.0.2",
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
@@ -39,6 +39,7 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.4.17",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "uikit": "^3.0.3"
   }
 }
