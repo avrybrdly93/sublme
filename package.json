@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/avrybrdly93/soundr/issues"
   },
-  "homepage": "https://github.com/avrybrdly93/soundr#readme"
+  "homepage": "https://github.com/avrybrdly93/soundr#readme",
+  "dependencies": {
+    "uikit": "^3.0.3"
+  }
 }
