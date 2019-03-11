@@ -1,0 +1,37 @@
+[
+  {
+    "name": "NcckoBby",
+    "location": "Eastvale, CA",
+    "title": "Artist",
+    "image": "assets/images/azchike.png",
+    "id": 0
+  },
+  {
+    "name": "KingH",
+    "location": "Corona, CA",
+    "title": "Artist",
+    "image": "assets/images/roddy-ricch.png",
+    "id": 1
+  },
+  {
+    "name": "OG Riqueo",
+    "location": "Riverside, CA",
+    "title": "Artist",
+    "image": "assets/images/lil-keed.png",
+    "id": 2
+  },
+  {
+    "name": "Ben Frank",
+    "location": "Eastvale, CA",
+    "title": "Producer",
+    "image": "assets/images/spiffyglobal.png",
+    "id": 3
+  },
+  {
+    "name": "TrillCharlie",
+    "location": "Eastvale, CA",
+    "title": "Producer",
+    "image": "assets/images/chasethemoney.png",
+    "id": 4
+  }
+]

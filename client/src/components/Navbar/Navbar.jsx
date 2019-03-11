@@ -30,8 +30,11 @@ const styles = theme => ({
     width: 30,
     height: 30
   },
-  grow: {
-    flexGrow: 1
+  grow1: {
+    flexGrow: 0.4
+  },
+  grow2: {
+    flexGrow: 0.6
   },
   menuButton: {
     marginLeft: -12,
@@ -186,6 +189,7 @@ class PrimarySearchAppBar extends React.Component {
                 }}
               />
             </div>
+            <div className={classes.grow1} />
             <Typography
               className={classes.title}
               variant="h6"
@@ -194,15 +198,7 @@ class PrimarySearchAppBar extends React.Component {
               noWrap>
               Sublme
             </Typography>
-            <div className={classes.grow} />
-            <Typography
-              className={classes.title}
-              variant="subheading"
-              color="inherit"
-              style={{ textAlign: "center" }}
-              noWrap>
-              Explore
-            </Typography>
+            <div className={classes.grow2} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
