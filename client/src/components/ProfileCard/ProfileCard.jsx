@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import Typography from "@material-ui/core/Typography";
+import upcomingUsers from "../../upcomingUsers.json";
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
-import Typography from "@material-ui/core/Typography";
-import upcomingUsers from "../../upcomingUsers.json";
 
 class ProfileCard extends Component {
   state = {
@@ -12,7 +12,7 @@ class ProfileCard extends Component {
   render() {
     let users = this.state.users;
     const profiles = users.map(users => (
-      <li>
+      <li key={users.id} style={{ justifyItems: "center" }}>
         <img
           className="uk-border-circle"
           width="80"
@@ -20,7 +20,7 @@ class ProfileCard extends Component {
           key={users.name}
           src={users.image}
           alt={users.name}
-          style={{ margin: "auto" }}
+          style={{ margin: "0 auto" }}
         />
         <Typography
           component="h2"

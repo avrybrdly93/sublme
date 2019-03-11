@@ -33,5 +33,47 @@
     "title": "Producer",
     "image": "assets/images/chasethemoney.png",
     "id": 4
+  },
+  {
+    "name": "SG Kid Hazel",
+    "location": "Atlanta, GA",
+    "title": "Producer",
+    "image": "assets/images/sgkidhazel.png",
+    "id": 5
+  },
+  {
+    "name": "NLE Choppa",
+    "location": "Memphis, TN",
+    "title": "Artist",
+    "image": "assets/images/nlechoppa.png",
+    "id": 6
+  },
+  {
+    "name": "Yella Beezy",
+    "location": "Houston, TX",
+    "title": "Artist",
+    "image": "assets/images/yellabeezy.png",
+    "id": 7
+  },
+  {
+    "name": "Blueface",
+    "location": "Los Angeles, CA",
+    "title": "Artist",
+    "image": "assets/images/blueface.png",
+    "id": 8
+  },
+  {
+    "name": "YK Osiris",
+    "location": "Jacksonville, FL",
+    "title": "Artist",
+    "image": "assets/images/ykosiris.png",
+    "id": 9
+  },
+  {
+    "name": "Buddy",
+    "location": "South Central, CA",
+    "title": "Artist",
+    "image": "assets/images/buddy.png",
+    "id": 10
   }
 ]
