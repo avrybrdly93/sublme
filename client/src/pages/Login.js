@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../components/Form.js";
 import dbAPI from "../utils/dbAPI";
+import { Redirect } from 'react-router-dom'
+import Cookies from "js-cookie";
 
 class Login extends Component {
-    state={
+    state = {
         loggedIn: false,
         username: "",
         password: "",
+    }
+
+    componentDidMount() {
+        if(Cookies.get("username")===undefined){
+            this.setState({loggedIn: false});
+        }
+        else{
+            this.setState({loggedIn: true});
+        }
     }
 
     handleInputChange = event => {
@@ -21,14 +32,24 @@ class Login extends Component {
         dbAPI.loginUser({
             username: this.state.username,
             password: this.state.password
-        }).then(response=> {   
-            console.log(response);
-        }).catch(err=>console.log(err));
+        }).then(response => {
+            //console.log(response);
+            if (response.status === 200) {
+                this.setState({loggedIn: true});
+            }
+        }).catch(err => console.log(err));
     };
 
-    render(){
+    renderRedirect = () => {
+        if (this.state.loggedIn) {
+            return <Redirect to='/dashboard' />
+        }
+    }
+
+    render() {
         return (
             <div>
+                {this.renderRedirect()}
                 <Input
                     value={this.state.username}
                     onChange={this.handleInputChange}
@@ -43,7 +64,7 @@ class Login extends Component {
                     type="password"
                 />
                 <FormBtn onClick={this.handleFormSubmit}>
-                    Submit Book
+                    Log In!
                 </FormBtn>
             </div>
         );
