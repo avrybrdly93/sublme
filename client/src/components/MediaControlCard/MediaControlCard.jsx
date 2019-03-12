@@ -43,40 +43,44 @@ class MediaControlCard extends Component {
     super(props);
     // const { classes, theme } = props;
 
-    this.state = {
-      likes: 0,
-      comments: null
-    };
+    //   this.state = {
+    //     likes: 0,
+    //     comments: null
+    //   };
   }
 
-  componentDidMount() {
-    axios
-      .get("/api/likes")
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            likes: 2
-          });
-          console.log(result);
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get("/api/likes")
+  //     .then(res => res.json())
+  //     .then(
+  //       result => {
+  //         this.setState({
+  //           likes: 2
+  //         });
+  //         console.log(result);
+  //       },
+  //       error => {
+  //         this.setState({
+  //           isLoaded: true,
+  //           error
+  //         });
+  //       }
+  //     );
+  // }
+
+  // likeSong() {
+  //   console.log("liked")
+  // }
 
   render() {
     return (
       <Card className={this.props.classes.card}>
         <div className={this.props.classes.details}>
-          <div>
-            <button>Like - {this.state.likes}</button>
+          {/* <div>
+            <button onClick={likeSong}>Like - {this.state.likes}</button>
             <button>Comment</button>
-          </div>
+          </div> */}
           <CardContent className={this.props.classes.content}>
             <Typography component="h5" variant="h5" style={{ color: "black" }}>
               Temptation

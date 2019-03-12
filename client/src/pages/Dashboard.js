@@ -3,10 +3,12 @@ import Typography from "@material-ui/core/Typography";
 import MediaGridList from "../components/MediaGridList/MediaGridList";
 import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
+import NavBar from "../components/Navbar/Navbar";
 
 const Dashboard = () => {
   return (
     <React.Fragment>
+      <NavBar />
       <Typography
         component="h2"
         style={{

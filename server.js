@@ -45,7 +45,11 @@ app.use(routes);
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("/", (req, res) => {
-  res.send("This is the API URL");
+  res.send("This is the back-end");
+});
+
+app.get("/api/likes", (req, res) => {
+  res.send("This is the likes route");
 });
 
 // Connect to the Mongo DB
