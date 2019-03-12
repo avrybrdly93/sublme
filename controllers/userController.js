@@ -20,7 +20,7 @@ module.exports={
                     return next(loginErr);
                 }
                 console.log('redirecting....');
-                res.cookie('first_name', usr.firstName);
+                res.cookie('username', usr.username);
                 res.cookie('user_id', usr._id);
                 res.status(200);
                 res.send("Go Ahead");
@@ -45,7 +45,7 @@ module.exports={
             }
       
             console.log('redirecting....');
-            res.cookie('first_name', usr.firstName);
+            res.cookie('username', usr.username);
             res.cookie('user_id', usr._id);
       
             res.status(200);
