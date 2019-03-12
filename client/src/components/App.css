@@ -1,0 +1,92 @@
+.App {
+  text-align: center;
+  background-color: aquamarine;
+}
+input[type="text"] {
+  width: 100%;
+  background-color: #ccc;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: px solid #555;
+  border-radius: 4px;
+  text-align: center;
+}
+input[type="text"]:focus {
+  width: 100%;
+  border: 3px solid #555;
+  font-family: sans-serif;
+  font-weight: bolder;
+}
+/* .search-form .form-group {
+  float: left !important; */
+/* transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: red;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid red; */
+/* } */
+/* .search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display: block; */
+/* } */
+/* .search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+/* display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+/* display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 100%;
+  border-radius: 4px 25px 25px 4px;
+} */
+/* .search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px; */
+/* } */
+.lead {
+  font-size: 55px;
+  color: darkblue;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+li {
+  list-style: none;
+}
+img {
+  width: 600px;
+  height: 400px;
+  border: 3px solid #fff;
+  object-fit: cover;
+}
+.imagealbum {
+  /* width: 100px;
+  height: 70px; */
+  display: none;
+  /* margin-right: 4%; */
+}
