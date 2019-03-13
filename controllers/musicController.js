@@ -35,7 +35,12 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     findOwnMusic: function (req, res) {
-        db.Music.find({owners:{ $in: [req.session.passport.user._id] }})
+        db.Music.find({ owners: { $in: [req.session.passport.user._id] } })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    findByGenre: function (req, res) {
+        db.Music.find({ genre: req.params.genre })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
