@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
+import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
 import Dashboard from "./pages/dashboard";
-// import Songs from "./Songs.json";
 
 class App extends Component {
   render() {
-    // console.log(Songs);
     return (
       <React.Fragment>
-        <Navbar />
+        <LoggedInNavbar />
         <Dashboard />
       </React.Fragment>
     );

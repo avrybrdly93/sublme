@@ -10,13 +10,16 @@ class ProfileCard extends Component {
   };
   render() {
     let users = this.state.users;
-    const profiles = users.forEach(users => (
-      <img
-        key={users.id}
-        src={users.image}
-        className="img-fluid"
-        alt={users.name}
-      />
+    const profiles = users.map(users => (
+      <li key={users.id}>
+        <img
+          className="uk-border-circle"
+          width="80"
+          height="80"
+          src={users.image}
+          alt={users.name}
+        />
+      </li>
     ));
     return <React.Fragment>{profiles}</React.Fragment>;
   }
