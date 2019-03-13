@@ -16,6 +16,9 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import SearchBar from "../SearchBar";
+import AutoComplete from '../AutoComplete';
+import music from './music.json';
 
 const styles = theme => ({
   root: {
@@ -177,18 +180,9 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
-            </div>
+            <AutoComplete
+              suggestions={music}
+            />
             <div className={classes.grow1} />
             <Typography
               className={classes.title}
