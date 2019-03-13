@@ -2,16 +2,15 @@
 so just the background has that effect & the form stays put */
 
 body {
-  background: linear-gradient(
-    to left,
-    rgb(241, 113, 32),
-    rgb(233, 64, 87),
-    rgb(138, 35, 135)
-  );
-  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s; /* Firefox < 16 */
-  -ms-animation: fadein 4s; /* Internet Explorer */
-  -o-animation: fadein 4s; /* Opera < 12.1 */
+  background: linear-gradient( to left, rgb(241, 113, 32), rgb(233, 64, 87), rgb(138, 35, 135));
+  -webkit-animation: fadein 4s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s;
+  /* Firefox < 16 */
+  -ms-animation: fadein 4s;
+  /* Internet Explorer */
+  -o-animation: fadein 4s;
+  /* Opera < 12.1 */
   animation: fadein 4s;
   display: block;
   margin: 25px auto;
@@ -27,6 +26,7 @@ body {
 }
 
 /* Firefox < 16 */
+
 @-moz-keyframes fadein {
   from {
     opacity: 0;
@@ -37,6 +37,7 @@ body {
 }
 
 /* Safari, Chrome and Opera > 12.1 */
+
 @-webkit-keyframes fadein {
   from {
     opacity: 0;
@@ -47,6 +48,7 @@ body {
 }
 
 /* Internet Explorer */
+
 @-ms-keyframes fadein {
   from {
     opacity: 0;
@@ -57,6 +59,7 @@ body {
 }
 
 /* Opera < 12.1 */
+
 @-o-keyframes fadein {
   from {
     opacity: 0;
@@ -66,15 +69,33 @@ body {
   }
 }
 
+.input {
+  width: 30%;
+}
+
 form {
   opacity: 0.7;
-  width: 60;
+  /* width: 60; */
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 30%;
-  /* border: 0px; */
+  margin-top: 10%;
   border-radius: 10px;
+  color: whitesmoke;
 }
+
+.confirm {
+  width: 102%;
+}
+
+.genbir {
+  width: 102%;
+}
+
+/* .form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+} */
 
 #date {
   opacity: 0.7;
@@ -95,9 +116,10 @@ form {
   background-color: #e95325;
   color: rgb(134, 42, 42);
   padding: 10px;
-  /* margin: auto; */
-  -webkit-column-width: 100px; /* Chrome, Safari, Opera */
-  -moz-column-width: 100px; /* Firefox */
+  -webkit-column-width: 100px;
+  /* Chrome, Safari, Opera */
+  -moz-column-width: 100px;
+  /* Firefox */
   column-width: 100px;
 }
 
@@ -142,22 +164,21 @@ form {
   right: 0;
 }
 
-.purpose {
-  margin: 0 auto;
+.purpos:inputState {
+  width: 102%;
 }
 
 /* Change styles for cancel button and signup button on extra small screens  */
+
 @media screen and (max-width: 300px) {
-  .button,
-  .button:hover {
+  .button, .button:hover {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .left,
-  .main,
-  .right {
-    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  .left, .main, .right {
+    width: 100%;
+    /* The width is 100%, when the viewport is 800px or smaller */
   }
 }
