@@ -8,7 +8,7 @@ class MediaPlayer extends Component {
       playlist: [],
       playlistIsPlaying: false,
       currentSongIndex: 0,
-      theme: "soundcloud"
+      theme: "spotify"
     };
   }
   render() {
@@ -21,6 +21,7 @@ class MediaPlayer extends Component {
           playlistIsPlaying={this.state.playlistIsPlaying}
           theme={this.state.theme}
           currentSongIndex={this.state.currentSongIndex}
+          style={{ opacity: 0.5 }}
         />
       </React.Fragment>
     );

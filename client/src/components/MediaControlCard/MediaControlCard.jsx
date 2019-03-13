@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,11 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
+import Songs from "../../Songs.json";
 
 const styles = theme => ({
   card: {
-    display: "flex",
-    width: 300
+    display: "flex"
   },
   details: {
     display: "flex",
@@ -37,22 +36,29 @@ const styles = theme => ({
   }
 });
 
-function MediaControlCard(props) {
-  const { classes, theme } = props;
+class MediaControlCard extends Component {
+  state = {
+    songs: Songs
+  };
 
-  return (
-    <Card className={classes.card}>
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5" style={{ color: "black" }}>
-            Temptation
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            color="textSecondary"
-            style={{ color: "black" }}>
-            Future
-          </Typography>
+  render() {
+    const { classes, theme } = this.props;
+
+    let songs = this.state.songs;
+    const cards = songs.map(songs => (
+      <Card className={classes.card}>
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <Typography component="h5" variant="h5" style={{ color: "black" }}>
+              {songs.title}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="textSecondary"
+              style={{ color: "black" }}>
+              {songs.artist}
+            </Typography>
+          </CardContent>
           <div className={classes.controls}>
             <IconButton aria-label="Previous">
               {theme.direction === "rtl" ? (
@@ -72,20 +78,16 @@ function MediaControlCard(props) {
               )}
             </IconButton>
           </div>
-          <CardMedia
-            className={classes.cover}
-            image="https://thefader-res.cloudinary.com/private_images/w_640,c_limit,f_auto,q_auto:eco/future-the-wizrd-cover-680x680_uamq6x/future-new-album-documentary-the-wizrd-cover-art.jpg"
-            title="The Wizrd cover"
-          />
-        </CardContent>
-      </div>
-    </Card>
-  );
+        </div>
+        <CardMedia
+          className={classes.cover}
+          image="http://thesource.com/wp-content/uploads/2019/01/47585266_276718233233001_4070769534835750577_n.jpg"
+          title="kk"
+        />
+      </Card>
+    ));
+    return <React.Fragment>{cards}</React.Fragment>;
+  }
 }
-
-MediaControlCard.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
-};
 
 export default withStyles(styles, { withTheme: true })(MediaControlCard);

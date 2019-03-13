@@ -8,28 +8,40 @@ const ProfileGridList = () => {
   return (
     <React.Fragment>
       <div className="col-12">
-        <div data-uk-slider>
-          <div className="uk-position-relative">
-            <div className="uk-slider-container uk-light">
-              <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
-                <ProfileCard />
-              </ul>
-              <a
-                className="uk-position-center-left uk-position-small uk-hidden-hover"
-                href="/"
-                data-uk-slidenav-previous
-                data-uk-slider-item="previous">
-                <i className="fas fa-arrow-left" />
-              </a>
-              <a
-                className="uk-position-center-right uk-position-small uk-hidden-hover"
-                href="/"
-                data-uk-slidenav-next
-                data-uk-slider-item="next">
-                <i className="fas fa-arrow-right" />
-              </a>
+        <div
+          id="carouselExampleIndicators"
+          className="carousel slide"
+          data-ride="carousel">
+          <ol className="carousel-indicators">
+            <li
+              data-target="#carouselExampleIndicators"
+              data-slide-to="0"
+              class="active"
+            />
+            <li data-target="#carouselExampleIndicators" data-slide-to="1" />
+            <li data-target="#carouselExampleIndicators" data-slide-to="2" />
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <ProfileCard />
             </div>
           </div>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+            <span className="sr-only">Next</span>
+          </a>
         </div>
       </div>
     </React.Fragment>
