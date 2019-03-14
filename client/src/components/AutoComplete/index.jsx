@@ -82,6 +82,12 @@ class Autocomplete extends Component {
     }
   };
 
+  handleKeyPress = (event) => {
+    if(event.key == 'Enter'){
+      console.log('enter press here! ')
+    }
+  }
+
   render() {
     const {
       onChange,
@@ -111,7 +117,7 @@ class Autocomplete extends Component {
               }
 
               return (
-                <li className={className} key={suggestion} onClick={onClick} onKeyPress={this.onKeyPress}>
+                <li className={className} key={suggestion} onClick={onClick} onKeyPress={this.handleKeyPress}>
                   {suggestion.url_image} {suggestion.title} - {suggestion.artist}
                 </li>
               );
