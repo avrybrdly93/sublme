@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import "./style.css"
+import "./style.css";
 
 class Autocomplete extends Component {
   static propTypes = {
@@ -61,7 +61,11 @@ class Autocomplete extends Component {
       this.setState({
         activeSuggestion: 0,
         showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion]
+        // userInput: filteredSuggestions[activeSuggestion]
+        userInput:
+          filteredSuggestions[activeSuggestion].title +
+          " - " +
+          filteredSuggestions[activeSuggestion].artist
       });
     }
     // User pressed the up arrow
@@ -82,11 +86,11 @@ class Autocomplete extends Component {
     }
   };
 
-  handleKeyPress = (event) => {
-    if(event.key == 'Enter'){
-      console.log('enter press here! ')
+  handleKeyPress = event => {
+    if (event.key == "Enter") {
+      console.log("enter press here! ");
     }
-  }
+  };
 
   render() {
     const {
@@ -117,8 +121,14 @@ class Autocomplete extends Component {
               }
 
               return (
-                <li className={className} key={suggestion} onClick={onClick} onKeyPress={handleKeyPress}>
-                  {suggestion.url_image} {suggestion.title} - {suggestion.artist}
+                <li
+                  className={className}
+                  key={suggestion}
+                  onClick={onClick}
+                  onKeyPress={handleKeyPress}
+                >
+                  {suggestion.url_image} {suggestion.title} -{" "}
+                  {suggestion.artist}
                 </li>
               );
             })}
