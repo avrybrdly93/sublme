@@ -3,7 +3,8 @@ body {
   }
   
   input {
-    border: 1px solid #999;
+    border: 1px solid white;
+    opacity: 50%;
     padding: 0.5rem;
     width: 300px;
   }
@@ -22,10 +23,12 @@ body {
     overflow-y: auto;
     padding-left: 0;
     width: calc(300px + 1rem);
+    z-index: 1000;
   }
   
   .suggestions li {
     padding: 0.5rem;
+    z-index: 1000;
   }
   
   .suggestion-active,
@@ -34,9 +37,11 @@ body {
     color: #fae042;
     cursor: pointer;
     font-weight: 700;
+    z-index: 1000;
   }
   
   .suggestions li:not(:last-of-type) {
     border-bottom: 1px solid #999;
+    z-index: 1000;
   }
   

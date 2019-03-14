@@ -87,6 +87,7 @@ class Autocomplete extends Component {
       onChange,
       onClick,
       onKeyDown,
+      onKeyPress,
       state: {
         activeSuggestion,
         filteredSuggestions,
@@ -110,8 +111,8 @@ class Autocomplete extends Component {
               }
 
               return (
-                <li className={className} key={suggestion} onClick={onClick}>
-                  {suggestion.title}
+                <li className={className} key={suggestion} onClick={onClick} onKeyPress={this.onKeyPress}>
+                  {suggestion.url_image} {suggestion.title} - {suggestion.artist}
                 </li>
               );
             })}
@@ -132,6 +133,7 @@ class Autocomplete extends Component {
           type="text"
           onChange={onChange}
           onKeyDown={onKeyDown}
+          onKeyPress={onKeyPress}
           value={userInput}
         />
         {suggestionsListComponent}
