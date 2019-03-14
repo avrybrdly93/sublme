@@ -3,12 +3,13 @@ import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 import MusicCard from "../MusicCard/MusicCard";
+import "./style.css";
 
 const GridList = () => {
   return (
     <div className="container">
       <div data-uk-slider>
-        <ul className="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-small">
+        <ul className="uk-slider-items uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-grid">
           <MusicCard />
           <MusicCard />
           <MusicCard />

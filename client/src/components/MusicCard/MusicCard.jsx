@@ -4,17 +4,14 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
 import Songs from "../../Songs.json";
+import "./style.css";
 
 const styles = theme => ({
   card: {
     display: "flex",
     height: 250,
-    width: 250
+    width: 350
   },
   details: {
     display: "flex",
@@ -24,15 +21,8 @@ const styles = theme => ({
     flex: "1 0 auto"
   },
   cover: {
-    width: 250,
-    height: 250
-  },
-  controls: {
-    color: "white",
-    textAlign: "center",
-    alignItems: "center",
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
+    width: 500,
+    height: 350
   },
   playIcon: {
     height: 38,
@@ -41,14 +31,8 @@ const styles = theme => ({
   roundedCircle: {
     height: 50,
     width: 50,
-    borderRadius: 100
-  },
-  trackInfo: {
-    color: "white"
-  },
-  producer: {
-    color: "white",
-    mixBlendMode: "difference"
+    borderRadius: 100,
+    marginBottom: 80
   }
 });
 
@@ -57,7 +41,7 @@ class MusicCard extends Component {
     songs: Songs
   };
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     let songs = this.state.songs;
     const renderCards = songs.map(songs => (
@@ -74,41 +58,39 @@ class MusicCard extends Component {
                   alt={songs.artist}
                   className={classes.roundedCircle}
                 />
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  className={classes.trackInfo}>
-                  {songs.title}
+                <Typography variant="body1" className="producer">
+                  Produced by {songs.producer}
                 </Typography>
                 <Typography
-                  variant="subtitle1"
+                  variant="body1"
                   color="textSecondary"
-                  className={classes.trackInfo}>
+                  className="track-info artist">
                   {songs.artist}
                 </Typography>
-                <Typography variant="caption" className={classes.producer}>
-                  Produced by {songs.producer}
+                <Typography variant="h5" className="track-info">
+                  {songs.title}
                 </Typography>
               </CardContent>
             </div>
-            <div className={classes.controls}>
-              <IconButton aria-label="Previous">
-                {theme.direction === "rtl" ? (
-                  <SkipNextIcon />
-                ) : (
-                  <SkipPreviousIcon />
-                )}
-              </IconButton>
-              <IconButton aria-label="Play/pause">
-                <PlayArrowIcon className={classes.playIcon} />
-              </IconButton>
-              <IconButton aria-label="Next">
-                {theme.direction === "rtl" ? (
-                  <SkipPreviousIcon />
-                ) : (
-                  <SkipNextIcon />
-                )}
-              </IconButton>
+            <div className="controls">
+              <a href="/" className="backward-btn">
+                <i className="fas fa-step-backward fa-2x" />
+              </a>
+              <a href="/" className="play-btn">
+                <i className="far fa-play-circle fa-3x" />
+              </a>
+              <a href="/" className="forward-btn">
+                <i className="fas fa-step-forward fa-2x" />
+              </a>
+            </div>
+            <div className="social-icons">
+              <a href="/">
+                <i className="far fa-heart fa-sm" />
+              </a>
+              <div className="space-1" />
+              <a href="/">
+                <i className="far fa-comment fa-sm" />
+              </a>
             </div>
           </CardMedia>
         </Card>
