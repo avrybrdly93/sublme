@@ -5,6 +5,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import "./style.css";
+import axios from "axios";
 
 const styles = theme => ({
   card: {
@@ -38,6 +39,12 @@ const styles = theme => ({
 function MusicCard(props) {
   const { classes } = props;
 
+  function likeSong() {
+    axios.put("/api/music").then(() => {
+      console.log("updated");
+    });
+  }
+
   return (
     <React.Fragment>
       <li key={props.id}>
@@ -45,7 +52,8 @@ function MusicCard(props) {
           <CardMedia
             className={classes.cover}
             image={props.cover}
-            title={props.coverTitle}>
+            title={props.coverTitle}
+          >
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <img
@@ -59,7 +67,8 @@ function MusicCard(props) {
                 <Typography
                   variant="body1"
                   color="textSecondary"
-                  className="track-info artist">
+                  className="track-info artist"
+                >
                   {props.artist}
                 </Typography>
                 <Typography variant="h5" className="track-info">
@@ -79,9 +88,10 @@ function MusicCard(props) {
               </a>
             </div>
             <div className="social-icons">
-              <a href="/">
+              <div onClick={likeSong}>
                 <i className="far fa-heart fa-sm" />
-              </a>
+              </div>
+
               <div className="space-1" />
               <a href="/">
                 <i className="far fa-comment fa-sm" />

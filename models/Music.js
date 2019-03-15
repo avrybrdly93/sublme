@@ -100,13 +100,13 @@ let profilePics = [
 ];
 
 for (let i = 0; i < titles.length; i++) {
-  //   createSong(
-  //     titles[i],
-  //     producers[i],
-  //     artists[i],
-  //     coverLinks[i],
-  //     profilePics[i]
-  //   );
+  // createSong(
+  //   titles[i],
+  //   producers[i],
+  //   artists[i],
+  //   coverLinks[i],
+  //   profilePics[i]
+  // );
 }
 
 // Export the User model

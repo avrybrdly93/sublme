@@ -31,6 +31,7 @@ class MediaGridList extends Component {
         producer={songs.producer}
         artist={songs.artist}
         title={songs.title}
+        likes={songs.likes}
       />
     ));
     return (
