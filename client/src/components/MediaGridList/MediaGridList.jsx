@@ -15,12 +15,13 @@ class MediaGridList extends Component {
   componentDidMount() {
     axios.get("/api/music").then(results => {
       console.log(results);
-      this.setState({ songs: results });
+      this.setState({ songs: results.data });
     });
   }
 
   render() {
     let songs = this.state.songs;
+    console.log(songs);
     var renderCards = songs.map(songs => (
       <MusicCard
         id={songs.id}

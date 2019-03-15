@@ -14,7 +14,7 @@ var MusicSchema = new Schema({
     default: "Other"
   },
   artist: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: "User"
   },
   producer: {
@@ -32,18 +32,22 @@ var MusicSchema = new Schema({
   },
   cover: {
     type: String
+  },
+  profilePic: {
+    type: String
   }
 });
 
 // This creates our model from the above schema, using mongoose's model method
 var Music = mongoose.model("Music", MusicSchema);
 
-async function createSong(title, producer, artist, cover) {
+async function createSong(title, producer, artist, cover, profilePic) {
   let newSong = new Music({
     title: title,
     producer: producer,
     artist: artist,
-    coverLink: cover
+    cover: cover,
+    profilePic: profilePic
   });
   const result = await newSong.save();
   console.log(result);
@@ -85,9 +89,24 @@ let coverLinks = [
   "/assets/images/covers/offset-red-room.jpg",
   "/assets/images/covers/lil-baby-street-gossip.png"
 ];
+let profilePics = [
+  "/assets/images/profiles/future.jpg",
+  "/assets/images/profiles/21-savage.jpg",
+  "/assets/images/profiles/asap-rocky.jpg",
+  "/assets/images/profiles/roddy-ricch.jpg",
+  "/assets/images/profiles/gunna.png",
+  "/assets/images/profiles/offset.jpg",
+  "/assets/images/profiles/lil-baby.jpg"
+];
 
 for (let i = 0; i < titles.length; i++) {
-  //createSong(titles[i], producers[i], artists[i], coverLinks[i]);
+  //   createSong(
+  //     titles[i],
+  //     producers[i],
+  //     artists[i],
+  //     coverLinks[i],
+  //     profilePics[i]
+  //   );
 }
 
 // Export the User model
