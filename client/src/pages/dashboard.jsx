@@ -2,8 +2,8 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import MediaGridList from "../components/MediaGridList/MediaGridList";
 import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
-import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
-import VideoGridList from "../components/VideosGridList/VideoGridList";
+// import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
+import VideosList from "../components/VideosList/VideosList";
 
 const Dashboard = () => {
   return (
@@ -48,11 +48,11 @@ const Dashboard = () => {
           Upcoming Artists & Producers
         </Typography>
         <ProfileGridList />
-        <br />
-        <br />
-        <VideoGridList />
+        <br /> <br />
+        <VideosList />
+        <br /> <br />
       </div>
-      <MediaPlayer />
+      {/* <MediaPlayer style={{ position: "sticky !important", bottom: 0 }} /> */}
     </React.Fragment>
   );
 };
