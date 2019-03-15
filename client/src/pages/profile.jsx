@@ -57,11 +57,17 @@ function Profile(props) {
           variant="outlined"
           className={classes.button}
           onClick={props.EditProfile}
+          href="/EditProfile"
         >
           Edit
         </Button>
 
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={props.EditProfile}
+          href="/dashboard"
+        >
           Log out
         </Button>
         <AppBar position="static">
