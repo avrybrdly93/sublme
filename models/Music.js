@@ -4,24 +4,23 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var MusicSchema = new Schema({
-    musicName: {
+    title: {
         type: String,
         trim: true,
     },
-    Genre: {
+    genre: {
         type: String,
         trim: true,
         default: "Other"
     },
-    //Owners of a Song,Album
-    owners: [
-        {
-            // Store ObjectIds in the array
-            type: Schema.Types.ObjectId,
-            // The ObjectIds will refer to the ids in the User model
-            ref: "User"
-        }
-    ],
+    artist: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
+    producer: {
+        type: String
+    },
+    subArtists: [],
     comments:[],
     likes: {
         type: Number,
@@ -31,7 +30,7 @@ var MusicSchema = new Schema({
         type: Date,
         default: Date.now
     }, 
-    bgImg: {
+    cover: {
         type: String
     }
     
