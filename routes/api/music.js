@@ -16,5 +16,9 @@ router.route("/:id").get(musicController.findByArtistId);
 // => /api/music/
 router.route("/").post(musicController.create);
 
+<<<<<<< HEAD
 module.exports=router;
  
+=======
+module.exports=router;
+>>>>>>> javier-branch
