@@ -5,11 +5,20 @@ import "uikit/dist/js/uikit-icons.min.js";
 import MusicCard from "../MusicCard/MusicCard";
 import Songs from "../../Songs.json";
 import "./style.css";
+import axios from "axios";
 
 class MediaGridList extends Component {
   state = {
-    songs: Songs
+    songs: []
   };
+
+  componentDidMount() {
+    axios.get("/api/music").then(results => {
+      console.log(results);
+      this.setState({ songs: results });
+    });
+  }
+
   render() {
     let songs = this.state.songs;
     var renderCards = songs.map(songs => (
@@ -33,14 +42,16 @@ class MediaGridList extends Component {
             className="uk-position-center-left uk-position-small uk-hidden-hover"
             href="/"
             data-uk-slidenav-previous
-            data-uk-slider-item="previous">
+            data-uk-slider-item="previous"
+          >
             <i className="fas fa-arrow-left" />
           </a>
           <a
             className="uk-position-center-right uk-position-small uk-hidden-hover"
             href="/"
             data-uk-slidenav-next
-            data-uk-slider-item="next">
+            data-uk-slider-item="next"
+          >
             <i className="fas fa-arrow-right" />
           </a>
         </div>
