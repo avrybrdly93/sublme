@@ -105,13 +105,63 @@ form {
   border-radius: 10px;
 }
 
+.round {
+  position: relative;
+  font-size: 75%;
+  border-left-width: 9px;
+  padding-left: inherit;
+  margin-left: 20%;
+}
+
+.round label {
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 30%;
+  cursor: pointer;
+  height: 18px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 21px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 2px;
+  opacity: 0;
+  position: absolute;
+  top: 2px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked+label {
+  background-color: #88239c;
+  border-color: #88239c;
+}
+
+.round input[type="checkbox"]:checked+label:after {
+  opacity: 1;
+}
+
+body {
+  background-color: #f1f2f3;
+}
+
 .button {
   display: inline-block;
+  text-align: center;
   border-radius: 12px;
-  /* border: none;  */
-  width: 22%;
-  font-size: 10px;
-  margin-left: 25%;
+  font-size: 13px;
+  margin-left: 40%;
   margin-right: 20%;
   background-color: #e95325;
   color: rgb(134, 42, 42);
@@ -130,7 +180,7 @@ form {
   text-align: center;
   font-size: 14px;
   width: 22%;
-  margin-left: 25%;
+  margin-left: 40%;
   margin-right: 20%;
   color: slateblue;
   transition: none;
@@ -164,9 +214,9 @@ form {
   right: 0;
 }
 
-.purpos:inputState {
-  width: 102%;
-}
+/* .purpose {
+  width: 110%;
+} */
 
 /* Change styles for cancel button and signup button on extra small screens  */
 
