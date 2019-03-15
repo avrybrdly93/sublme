@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-//import Navbar from "./components/Navbar/Navbar";
-import Dashboard from "./pages/Dashboard";
+import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
+import Dashboard from "./pages/dashboard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
@@ -10,10 +10,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <div>
-          <Navbar />
-          <Dashboard />
-        </div> */}
+        <div>
+          <LoggedInNavbar />
+        </div>
         <Router>
           <Switch>
             <Route exact path="/" component={Dashboard} />

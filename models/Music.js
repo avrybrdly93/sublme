@@ -8,29 +8,19 @@ var MusicSchema = new Schema({
     type: String,
     trim: true
   },
-  artist: {
-    type: String,
-    trim: true
-  },
-  producer: {
-    type: String,
-    trim: true
-  },
-  Genre: {
+  genre: {
     type: String,
     trim: true,
     default: "Other"
   },
-  //Owners of a Song,Album
-  subartists: [
-    {
-      // Store ObjectIds in the array
-      type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the User model
-      ref: "User"
-    }
-  ],
-  coverLink: String,
+  artist: {
+    type: String,
+    ref: "User"
+  },
+  producer: {
+    type: String
+  },
+  subArtists: [],
   comments: [],
   likes: {
     type: Number,
@@ -39,18 +29,25 @@ var MusicSchema = new Schema({
   dateCreated: {
     type: Date,
     default: Date.now
+  },
+  cover: {
+    type: String
+  },
+  profilePic: {
+    type: String
   }
 });
 
 // This creates our model from the above schema, using mongoose's model method
 var Music = mongoose.model("Music", MusicSchema);
 
-async function createSong(title, producer, artist, cover) {
+async function createSong(title, producer, artist, cover, profilePic) {
   let newSong = new Music({
     title: title,
     producer: producer,
     artist: artist,
-    coverLink: cover
+    cover: cover,
+    profilePic: profilePic
   });
   const result = await newSong.save();
   console.log(result);
@@ -92,9 +89,25 @@ let coverLinks = [
   "/assets/images/covers/offset-red-room.jpg",
   "/assets/images/covers/lil-baby-street-gossip.png"
 ];
+let profilePics = [
+  "/assets/images/profiles/future.jpg",
+  "/assets/images/profiles/21-savage.jpg",
+  "/assets/images/profiles/asap-rocky.jpg",
+  "/assets/images/profiles/roddy-ricch.jpg",
+  "/assets/images/profiles/gunna.png",
+  "/assets/images/profiles/offset.jpg",
+  "/assets/images/profiles/lil-baby.jpg"
+];
 
 for (let i = 0; i < titles.length; i++) {
-  createSong(titles[i], producers[i], artists[i], coverLinks[i]);
+  //   createSong(
+  //     titles[i],
+  //     producers[i],
+  //     artists[i],
+  //     coverLinks[i],
+  //     profilePics[i]
+  //   );
 }
 
+// Export the User model
 module.exports = Music;

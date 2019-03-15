@@ -16,10 +16,20 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+<<<<<<< HEAD:client/src/components/Navbar/Navbar.jsx
 import SearchBar from "../SearchBar";
 import AutoComplete from '../AutoComplete';
 import music from './music.json';
 import Axios from "axios";
+=======
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import Drawer from "@material-ui/core/Drawer";
+>>>>>>> Avery-branch:client/src/components/LoggedInNavbar/LoggedInNavbar.jsx
 
 const styles = theme => ({
   root: {
@@ -100,6 +110,9 @@ const styles = theme => ({
     [theme.breakpoints.up("md")]: {
       display: "none"
     }
+  },
+  list: {
+    width: 250
   }
 });
 
@@ -107,7 +120,8 @@ class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
-    query: ""
+    query: "",
+    right: false
   };
 
   handleProfileMenuOpen = event => {
@@ -127,11 +141,19 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+<<<<<<< HEAD:client/src/components/Navbar/Navbar.jsx
   componentDidMount = () => {
     Axios.get("/api/music").then(response => {
       console.log(response);
     })
   }
+=======
+  toggleDrawer = (side, open) => () => {
+    this.setState({
+      [side]: open
+    });
+  };
+>>>>>>> Avery-branch:client/src/components/LoggedInNavbar/LoggedInNavbar.jsx
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -139,16 +161,30 @@ class PrimarySearchAppBar extends React.Component {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}>
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Logout</MenuItem>
-      </Menu>
+    const sideList = (
+      <div className={classes.list}>
+        <List>
+          {["Upload", "Profile"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 3 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {["Settings", "Logout"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <InboxIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+      </div>
     );
 
     const renderMobileMenu = (
@@ -201,7 +237,11 @@ class PrimarySearchAppBar extends React.Component {
             </Typography>
             <div className={classes.grow2} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
+              {/*
+
+                USE THIS CODE FOR FINAL PROJECT
+
+               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
                 </Badge>
@@ -210,12 +250,12 @@ class PrimarySearchAppBar extends React.Component {
                 <Badge badgeContent={17} color="secondary">
                   <NotificationsIcon />
                 </Badge>
-              </IconButton>
+              </IconButton> */}
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit">
+                color="inherit"
+                onClick={this.toggleDrawer("right", true)}>
                 <Avatar
                   alt="Kekashi Sensai"
                   src="https://vignette.wikia.nocookie.net/naruto/images/2/27/Kakashi_Hatake.png/revision/latest?cb=20170628120149"
@@ -233,7 +273,18 @@ class PrimarySearchAppBar extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
+        <Drawer
+          anchor="right"
+          open={this.state.right}
+          onClose={this.toggleDrawer("right", false)}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer("right", false)}
+            onKeyDown={this.toggleDrawer("right", false)}>
+            {sideList}
+          </div>
+        </Drawer>
         {renderMobileMenu}
       </div>
     );
