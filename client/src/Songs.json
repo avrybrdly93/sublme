@@ -3,6 +3,7 @@
     "id": 0,
     "title": "Temptation",
     "artist": "Future",
+    "subArtist": "",
     "cover": "/assets/images/covers/future-the-wizrd-cover.jpeg",
     "profilePic": "/assets/images/profiles/future.jpg",
     "producer": "Tay Keith"
@@ -11,6 +12,7 @@
     "id": 1,
     "title": "Ball w/o you",
     "artist": "21 Savage",
+    "subArtist": "",
     "cover": "/assets/images/covers/21-savage-i-am-i-was.jpg",
     "profilePic": "/assets/images/profiles/21-savage.jpg",
     "producer": "Tay Keith"
@@ -19,6 +21,7 @@
     "id": 2,
     "title": "Praise The Lord",
     "artist": "A$AP Rocky",
+    "subArtist": "Skepta",
     "cover": "/assets/images/covers/ASAP-Rocky-praise-the-lord.jpg",
     "profilePic": "/assets/images/profiles/asap-rocky.jpg",
     "producer": "Tay Keith"
@@ -27,6 +30,7 @@
     "id": 3,
     "title": "Die Young",
     "artist": "Roddy Ricch",
+    "subArtist": "",
     "cover": "/assets/images/covers/roddy-ricch-feed-tha-streets-2.jpg",
     "profilePic": "/assets/images/profiles/roddy-ricch.jpg",
     "producer": "Tay Keith"
@@ -35,6 +39,7 @@
     "id": 4,
     "title": "Outstanding",
     "artist": "Gunna",
+    "subArtist": "",
     "cover": "/assets/images/covers/gunna-drip-or-drown-2.jpg",
     "profilePic": "/assets/images/profiles/gunna.png",
     "producer": "Tay Keith"
@@ -43,6 +48,7 @@
     "id": 5,
     "title": "Red Room",
     "artist": "Offset",
+    "subArtist": "",
     "cover": "/assets/images/covers/offset-red-room.jpg",
     "profilePic": "/assets/images/profiles/offset.jpg",
     "producer": "Tay Keith"
@@ -51,6 +57,7 @@
     "id": 6,
     "title": "Pure Cocaine",
     "artist": "Lil Baby",
+    "subArtist": "",
     "cover": "/assets/images/covers/lil-baby-street-gossip.png",
     "profilePic": "/assets/images/profiles/lil-baby.jpg",
     "producer": "Tay Keith"
@@ -59,6 +66,7 @@
     "id": 7,
     "title": "Maze",
     "artist": "Juice Wrld",
+    "subArtist": "",
     "cover": "/assets/images/covers/juice-wrld-death-race-for-love.jpg",
     "profilePic": "/assets/images/profiles/juice-wrld.jpg",
     "producer": "Tay Keith"
@@ -67,6 +75,7 @@
     "id": 8,
     "title": "Blue Laces 2",
     "artist": "Nipsey Hussle",
+    "subArtist": "",
     "cover": "/assets/images/covers/nipsey-hussle-victory-lap.jpg",
     "profilePic": "/assets/images/profiles/nipsey-hussle.jpg",
     "producer": "Tay Keith"
@@ -75,6 +84,7 @@
     "id": 9,
     "title": "Licked Up",
     "artist": "AzChike",
+    "subArtist": "AlmightySuspect",
     "cover": "/assets/images/covers/azchike-my-world.jpg",
     "profilePic": "/assets/images/profiles/azchike.jpg",
     "producer": "Tay Keith"
@@ -83,6 +93,7 @@
     "id": 10,
     "title": "I Came Thru",
     "artist": "NBA YoungBoy",
+    "subArtist": "",
     "cover": "/assets/images/covers/NBA-YoungBoy-Realer.jpg",
     "profilePic": "/assets/images/profiles/nba-youngboy.png",
     "producer": "Tay Keith"

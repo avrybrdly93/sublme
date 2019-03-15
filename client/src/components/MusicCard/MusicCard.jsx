@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Songs from "../../Songs.json";
 import "./style.css";
 
 const styles = theme => ({
@@ -36,39 +35,35 @@ const styles = theme => ({
   }
 });
 
-class MusicCard extends Component {
-  state = {
-    songs: Songs
-  };
-  render() {
-    const { classes } = this.props;
+function MusicCard(props) {
+  const { classes } = props;
 
-    let songs = this.state.songs;
-    const renderCards = songs.map(songs => (
-      <li key={songs.id}>
+  return (
+    <React.Fragment>
+      <li key={props.id}>
         <Card className={classes.card}>
           <CardMedia
             className={classes.cover}
-            image={songs.cover}
-            title={songs.artist}>
+            image={props.cover}
+            title={props.coverTitle}>
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <img
-                  src={songs.profilePic}
-                  alt={songs.artist}
+                  src={props.profilePic}
+                  alt={props.alt}
                   className={classes.roundedCircle}
                 />
                 <Typography variant="body1" className="producer">
-                  Produced by {songs.producer}
+                  Produced by {props.producer}
                 </Typography>
                 <Typography
                   variant="body1"
                   color="textSecondary"
                   className="track-info artist">
-                  {songs.artist}
+                  {props.artist}
                 </Typography>
                 <Typography variant="h5" className="track-info">
-                  {songs.title}
+                  {props.title}
                 </Typography>
               </CardContent>
             </div>
@@ -95,10 +90,8 @@ class MusicCard extends Component {
           </CardMedia>
         </Card>
       </li>
-    ));
-
-    return <React.Fragment>{renderCards}</React.Fragment>;
-  }
+    </React.Fragment>
+  );
 }
 
 export default withStyles(styles, { withTheme: true })(MusicCard);
