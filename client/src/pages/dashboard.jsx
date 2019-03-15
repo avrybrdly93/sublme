@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import MediaGridList from "../components/MediaGridList/MediaGridList";
 import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
+import VideoGridList from "../components/VideosGridList/VideoGridList";
 
 const Dashboard = () => {
   return (
@@ -49,6 +50,7 @@ const Dashboard = () => {
         <ProfileGridList />
         <br />
         <br />
+        <VideoGridList />
       </div>
       <MediaPlayer />
     </React.Fragment>

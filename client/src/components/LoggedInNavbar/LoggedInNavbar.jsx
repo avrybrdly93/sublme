@@ -149,7 +149,7 @@ class PrimarySearchAppBar extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {["Upload", "Explore", "Profile"].map((text, index) => (
+          {["Upload", "Profile"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 3 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -160,10 +160,10 @@ class PrimarySearchAppBar extends React.Component {
         </List>
         <Divider />
         <List>
-          {["Messages", "Settings"].map((text, index) => (
+          {["Settings", "Logout"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <InboxIcon /> : <InboxIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -231,7 +231,11 @@ class PrimarySearchAppBar extends React.Component {
             </Typography>
             <div className={classes.grow2} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
+              {/*
+
+                USE THIS CODE FOR FINAL PROJECT
+
+               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
                 </Badge>
@@ -240,7 +244,7 @@ class PrimarySearchAppBar extends React.Component {
                 <Badge badgeContent={17} color="secondary">
                   <NotificationsIcon />
                 </Badge>
-              </IconButton>
+              </IconButton> */}
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
