@@ -1,4 +1,4 @@
-/DO NOT TOUCH THIS PAGE!!!!!!
+//DO NOT TOUCH THIS PAGE!!!!!!
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");

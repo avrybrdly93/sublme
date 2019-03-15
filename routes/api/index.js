@@ -4,6 +4,7 @@ const userRoutes = require("./users");
 const musicRoutes = require("./music");
 const bullhornRoutes = require("./bullhorns");
 const messageRoutes = require("./messages");
+const userSearch = require("./userSearch");
 
 //Routes, these follow after /api
 router.use("/users", userRoutes);

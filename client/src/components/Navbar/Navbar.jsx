@@ -128,8 +128,8 @@ class PrimarySearchAppBar extends React.Component {
   };
 
   componentDidMount = () => {
-    Axios.get("/api/music").then({
-      
+    Axios.get("/api/music").then(response => {
+      console.log(response);
     })
   }
 
