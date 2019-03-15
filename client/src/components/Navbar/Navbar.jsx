@@ -19,6 +19,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import SearchBar from "../SearchBar";
 import AutoComplete from '../AutoComplete';
 import music from './music.json';
+import Axios from "axios";
 
 const styles = theme => ({
   root: {
@@ -125,6 +126,12 @@ class PrimarySearchAppBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
+
+  componentDidMount = () => {
+    Axios.get("/api/music").then({
+      
+    })
+  }
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;

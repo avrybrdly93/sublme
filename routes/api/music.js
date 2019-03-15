@@ -1,8 +1,20 @@
 const router = require("express").Router();
-const music = require("../../models/Music");
+const musicController=require("../../controllers/musicController");
 
-router.get("/api/likes", (req, res) => {
-  console.log(music.likes);
-  console.log("HELLOOO");
-  res.send("HELLOO");
-});
+// => /api/music/
+router.route("/").get(musicController.findAll);
+
+// => /api/music/own
+router.route("/own").get(musicController.findOwnMusic);
+
+// => /api/music/genre/:genre
+router.route("/genre/:genre").get(musicController.findByGenre);
+
+// => /api/music/:id
+router.route("/:id").get(musicController.findByArtistId);
+
+// => /api/music/
+router.route("/").post(musicController.create);
+
+module.exports=router;
+ 
