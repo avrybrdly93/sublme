@@ -30,6 +30,9 @@ var MusicSchema = new Schema({
     dateCreated: {
         type: Date,
         default: Date.now
+    }, 
+    bgImg: {
+        type: String
     }
     
 });
