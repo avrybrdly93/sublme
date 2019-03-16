@@ -23,15 +23,16 @@ class MediaGridList extends Component {
     let songs = this.state.songs;
     console.log(songs);
     var renderCards = songs.map(songs => (
-      <li key={songs.id}>
+      <li key={songs._id}>
         <MusicCard
-          id={songs.id}
+          songID={songs._id}
           cover={songs.cover}
           coverTitle={songs.artist}
           profilePic={songs.profilePic}
           producer={songs.producer}
           artist={songs.artist}
           title={songs.title}
+          likes={songs.likes}
         />
       </li>
     ));

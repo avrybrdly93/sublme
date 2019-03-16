@@ -6,6 +6,14 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import "./style.css";
 import axios from "axios";
+import CommentModal from "../CommentModal";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const styles = theme => ({
   card: {
@@ -41,15 +49,39 @@ function play(song) {}
 function MusicCard(props) {
   const { classes } = props;
 
+  const [open, setOpen] = React.useState(false);
+
+  function openComments() {
+    console.log("opened");
+    setOpen(true);
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
+
+  let songLikes = {
+    likes: 0
+  };
+  axios.get("/api/music/" + props.songID).then(response => {
+    console.log(response.data);
+    songLikes.likes = response.data.likes;
+  });
+  // axios.get("/api/music/" + props.songID).then(response => {
+  //   console.log(response.data);
+  //   songLikes.likes = response.data.likes + 1;
+  // });
   function likeSong() {
-    axios.put("/api/music").then(() => {
+    songLikes.likes++;
+    axios.put("/api/music/" + props.songID, songLikes).then(response => {
       console.log("updated");
+      //console.log(response);
     });
   }
 
   return (
     <React.Fragment>
-      <Card className={classes.card}>
+      <Card className={classes.card} songID={props.songID}>
         <CardMedia
           className={classes.cover}
           image={props.cover}
@@ -73,7 +105,7 @@ function MusicCard(props) {
                 {props.artist}
               </Typography>
               <Typography variant="h5" className="track-info">
-                {props.title}
+                {props.title} {props.likes}
               </Typography>
             </CardContent>
           </div>
@@ -89,13 +121,41 @@ function MusicCard(props) {
             </a>
           </div>
           <div className="social-icons">
-            <a href="/">
+            <span onClick={likeSong}>
               <i className="far fa-heart fa-sm" />
-            </a>
+            </span>
             <div className="space-1" />
-            <a href="/">
+            <span onClick={openComments}>
               <i className="far fa-comment fa-sm" />
-            </a>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="form-dialog-title"
+              >
+                <DialogTitle id="form-dialog-title">Comments</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    Please add a comment about this track.
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Insert Comment"
+                    type="email"
+                    fullWidth
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color="danger">
+                    Cancel
+                  </Button>
+                  <Button onClick={handleClose} color="primary">
+                    Submit
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </span>
           </div>
         </CardMedia>
       </Card>
