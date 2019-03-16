@@ -16,12 +16,19 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+<<<<<<< HEAD
 <<<<<<< HEAD:client/src/components/Navbar/Navbar.jsx
 import SearchBar from "../SearchBar";
 import AutoComplete from '../AutoComplete';
 import music from './music.json';
 import Axios from "axios";
 =======
+=======
+import SearchBar from "../SearchBar";
+import AutoComplete from "../AutoComplete";
+import music from "./music.json";
+import axios from "axios";
+>>>>>>> 72ec3543225158b98c45d5bb8b2d42f2f723a304
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -29,7 +36,10 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import Drawer from "@material-ui/core/Drawer";
+<<<<<<< HEAD
 >>>>>>> Avery-branch:client/src/components/LoggedInNavbar/LoggedInNavbar.jsx
+=======
+>>>>>>> 72ec3543225158b98c45d5bb8b2d42f2f723a304
 
 const styles = theme => ({
   root: {
@@ -141,6 +151,7 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD:client/src/components/Navbar/Navbar.jsx
   componentDidMount = () => {
     Axios.get("/api/music").then(response => {
@@ -148,12 +159,20 @@ class PrimarySearchAppBar extends React.Component {
     })
   }
 =======
+=======
+  componentDidMount = () => {
+    axios.get("/api/music").then({});
+  };
+>>>>>>> 72ec3543225158b98c45d5bb8b2d42f2f723a304
   toggleDrawer = (side, open) => () => {
     this.setState({
       [side]: open
     });
   };
+<<<<<<< HEAD
 >>>>>>> Avery-branch:client/src/components/LoggedInNavbar/LoggedInNavbar.jsx
+=======
+>>>>>>> 72ec3543225158b98c45d5bb8b2d42f2f723a304
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -193,7 +212,8 @@ class PrimarySearchAppBar extends React.Component {
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}>
+        onClose={this.handleMenuClose}
+      >
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -223,16 +243,15 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
-            <AutoComplete
-              suggestions={music}
-            />
+            <AutoComplete suggestions={music} />
             <div className={classes.grow1} />
             <Typography
               className={classes.title}
               variant="h6"
               color="inherit"
               style={{ textAlign: "center" }}
-              noWrap>
+              noWrap
+            >
               Sublme
             </Typography>
             <div className={classes.grow2} />
@@ -255,7 +274,8 @@ class PrimarySearchAppBar extends React.Component {
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
                 color="inherit"
-                onClick={this.toggleDrawer("right", true)}>
+                onClick={this.toggleDrawer("right", true)}
+              >
                 <Avatar
                   alt="Kekashi Sensai"
                   src="https://vignette.wikia.nocookie.net/naruto/images/2/27/Kakashi_Hatake.png/revision/latest?cb=20170628120149"
@@ -267,7 +287,8 @@ class PrimarySearchAppBar extends React.Component {
               <IconButton
                 aria-haspopup="true"
                 onClick={this.handleMobileMenuOpen}
-                color="inherit">
+                color="inherit"
+              >
                 <MoreIcon />
               </IconButton>
             </div>
@@ -276,12 +297,14 @@ class PrimarySearchAppBar extends React.Component {
         <Drawer
           anchor="right"
           open={this.state.right}
-          onClose={this.toggleDrawer("right", false)}>
+          onClose={this.toggleDrawer("right", false)}
+        >
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer("right", false)}
-            onKeyDown={this.toggleDrawer("right", false)}>
+            onKeyDown={this.toggleDrawer("right", false)}
+          >
             {sideList}
           </div>
         </Drawer>
