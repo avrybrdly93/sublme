@@ -23,33 +23,29 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.use(
-  session({
-    key: "key",
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      expires: 600000
-    }
-  })
-);
+// app.use(
+//   session({
+//     key: "key",
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       expires: 600000
+//     }
+//   })
+// );
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
 
 // Add routes, both API and view
 app.use(routes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("/", (req, res) => {
-  res.send("This is the back-end");
-});
-
-app.get("/api/likes", (req, res) => {
-  res.send("This is the likes route");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 // Connect to the Mongo DB

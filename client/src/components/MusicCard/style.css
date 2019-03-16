@@ -1,0 +1,47 @@
+.producer {
+  color: white !important;
+  margin-left: 180px !important;
+  margin-top: -125px !important;
+  margin-bottom: 30px !important;
+}
+.track-info {
+  color: white !important;
+}
+.artist {
+  margin-left: 60px !important;
+  margin-top: -50px !important;
+  margin-bottom: 30px !important;
+}
+.controls {
+  color: white;
+  opacity: 0.9;
+  text-align: center;
+  align-items: center;
+  padding-left: 5px;
+  margin-top: 20px !important;
+  padding-bottom: 20px;
+}
+.social-icons {
+  color: white !important;
+  padding-left: 20px;
+  width: 350px;
+}
+.space-1 {
+  width: 85%;
+  display: inline-block;
+}
+a {
+  color: white;
+}
+a:hover {
+  color: lightgrey;
+}
+.backward-btn {
+  margin-top: -10px;
+}
+.forward-btn {
+  margin-top: 120px;
+}
+.play-btn {
+  padding: 10px;
+}
