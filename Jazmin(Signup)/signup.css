@@ -2,7 +2,7 @@
 so just the background has that effect & the form stays put */
 
 body {
-  background: linear-gradient( to left, rgb(241, 113, 32), rgb(233, 64, 87), rgb(138, 35, 135));
+  background: fixed linear-gradient( to left, rgb(241, 113, 32), rgb(233, 64, 87), rgb(138, 35, 135));
   -webkit-animation: fadein 4s;
   /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 4s;
@@ -13,7 +13,7 @@ body {
   /* Opera < 12.1 */
   animation: fadein 4s;
   display: block;
-  margin: 25px auto;
+  text-size-adjust: auto;
 }
 
 @keyframes fadein {
@@ -78,9 +78,14 @@ form {
   /* width: 60; */
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 10%;
+  margin-top: 20%;
   border-radius: 10px;
   color: whitesmoke;
+  text-size-adjust: auto;
+}
+
+.form-control:focus {
+  border-color: none;
 }
 
 .confirm {
@@ -160,12 +165,13 @@ body {
   display: inline-block;
   text-align: center;
   border-radius: 12px;
+  width: 40%;
   font-size: 13px;
-  margin-left: 40%;
+  margin-left: 20%;
   margin-right: 20%;
   background-color: #e95325;
   color: rgb(134, 42, 42);
-  padding: 10px;
+  padding: 8px;
   -webkit-column-width: 100px;
   /* Chrome, Safari, Opera */
   -moz-column-width: 100px;
@@ -178,9 +184,9 @@ body {
 .button:hover {
   border-radius: 12px;
   text-align: center;
-  font-size: 14px;
-  width: 22%;
-  margin-left: 40%;
+  font-size: 13px;
+  /* width: 22%; */
+  margin-left: 20%;
   margin-right: 20%;
   color: slateblue;
   transition: none;
@@ -212,6 +218,75 @@ body {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+
+.popup .popuptext {
+  visibility: hidden;
+  width: 300px;
+  height: 200px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.popup header {
+  margin-left: 92%;
+}
+
+/* Popup arrow */
+
+.popup .popuptext::after {
+  content: "";
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* .purpose {
