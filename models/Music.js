@@ -8,6 +8,15 @@ var MusicSchema = new Schema({
         type: String,
         trim: true,
     },
+    artistName: {
+        type: String,
+        trim: true
+    },
+    fileLink: {
+        type: String,
+        trim: true,
+        required: true,
+    },
     genre: {
         type: String,
         trim: true,

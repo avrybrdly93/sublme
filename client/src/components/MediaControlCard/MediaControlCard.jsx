@@ -6,10 +6,10 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+//import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import axios from "axios";
+//import SkipNextIcon from "@material-ui/icons/SkipNext";
+//import axios from "axios";
 
 const styles = theme => ({
   card: {
@@ -39,15 +39,7 @@ const styles = theme => ({
 });
 
 class MediaControlCard extends Component {
-  constructor(props) {
-    super(props);
-    // const { classes, theme } = props;
-
-    //   this.state = {
-    //     likes: 0,
-    //     comments: null
-    //   };
-  }
+ 
 
   // componentDidMount() {
   //   axios
