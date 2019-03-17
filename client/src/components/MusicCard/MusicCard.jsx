@@ -6,7 +6,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import "./style.css";
 import axios from "axios";
-import CommentModal from "../CommentModal";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -50,23 +49,28 @@ class MusicCard extends Component {
     likes: 0,
     open: false,
     comments: [],
-    newComment: ""
+    newComment: "",
+    alreadyLiked: false,
+    buttonHovered: false
   };
+
+  componentDidMount() {
+    axios.get("/api/music/" + this.props.songid).then(response => {
+      this.setState({ likes: response.data.likes });
+    });
+  }
+
   play = song => {};
+
   openComments = () => {
-    console.log("opened");
     this.setState({ open: true });
-    axios.get("/api/music/comments/" + this.props.songID).then(response => {
-      //console.log(response.data);
-      response.data.map(comment => {
-        console.log(comment);
-      });
+    axios.get("/api/music/comments/" + this.props.songid).then(response => {
+      response.data.map(() => {});
       this.setState({ comments: response.data });
     });
   };
 
   handleClose = () => {
-    console.log("closed");
     this.setState({ open: false });
   };
 
@@ -78,50 +82,52 @@ class MusicCard extends Component {
   };
 
   submitComment = event => {
-    //let newComment = this.refs.usercomment.props;
-    //console.log(newComment);
-    //this.setState({ newComment: "asdf" });
-    console.log(this.state.newComment);
     axios
-      .put("/api/music/comments/" + this.props.songID, {
+      .put("/api/music/comments/" + this.props.songid, {
         comments: this.state.newComment
       })
       .then(response => {
-        console.log(response.data);
-        axios.get("/api/music/comments/" + this.props.songID).then(response => {
-          //console.log(response.data);
-          response.data.map(comment => {
-            console.log(comment);
-          });
+        axios.get("/api/music/comments/" + this.props.songid).then(response => {
+          response.data.map(comment => {});
           this.setState({ comments: response.data, newComment: "" });
         });
       });
   };
 
-  componentDidMount() {
-    axios.get("/api/music/" + this.props.songID).then(response => {
-      console.log(response.data);
-      this.setState({ likes: response.data.likes });
-    });
-  }
-
   likeSong = () => {
-    this.setState({ likes: this.state.likes + 1 });
+    if (this.state.alreadyLiked) {
+      this.setState({ likes: this.state.likes - 1, alreadyLiked: false });
+    } else {
+      this.setState({ likes: this.state.likes + 1, alreadyLiked: true });
+    }
+
     axios
-      .put("/api/music/" + this.props.songID, this.state.likes)
+      .put("/api/music/" + this.props.songid, {
+        likes: this.state.likes
+      })
       .then(response => {
-        console.log(response.data.likes);
+        console.log(response.data.likes, this.state.likes, this.props.songid);
       });
   };
 
   render() {
     const { classes } = this.props;
     let renderComments = this.state.comments.map(comment => (
-      <Comment songID={this.props.songID} comment={comment} />
+      <Comment
+        songid={this.props.songid}
+        comment={comment}
+        key={this.props._id}
+      />
     ));
+    let likeHeart = null;
+    if (this.state.alreadyLiked) {
+      likeHeart = "fa fa-heart fa-sm";
+    } else {
+      likeHeart = "far fa-heart fa-sm";
+    }
     return (
       <React.Fragment>
-        <Card className={classes.card} songID={this.props.songID}>
+        <Card className={classes.card} songid={this.props.songid}>
           <CardMedia
             className={classes.cover}
             image={this.props.cover}
@@ -162,12 +168,20 @@ class MusicCard extends Component {
             </div>
             <div className="social-icons">
               <span onClick={this.likeSong}>
-                <i className="far fa-heart fa-sm" />
+                <i className={likeHeart} />
               </span>
               {this.state.likes}
               <div className="space-1" />
               <span onClick={this.openComments}>
-                <i className="far fa-comment fa-sm" />
+                <i
+                  onMouseEnter={() => this.setState({ buttonHovered: true })}
+                  onMouseLeave={() => this.setState({ buttonHovered: false })}
+                  className={
+                    this.state.buttonHovered
+                      ? "fa fa-comment fa-sm"
+                      : "far fa-comment fa-sm"
+                  }
+                />
               </span>
               <Dialog
                 open={this.state.open}
@@ -225,13 +239,13 @@ class MusicCard extends Component {
 //   let songLikes = {
 //     likes: 0
 //   };
-//   axios.get("/api/music/" + props.songID).then(response => {
+//   axios.get("/api/music/" + props.songid).then(response => {
 //     console.log(response.data);
 //     songLikes.likes = response.data.likes;
 //   });
 //   function likeSong() {
 //     songLikes.likes++;
-//     axios.put("/api/music/" + props.songID, songLikes).then(response => {
+//     axios.put("/api/music/" + props.songid, songLikes).then(response => {
 //       console.log("updated");
 //       //console.log(response);
 //     });
@@ -239,7 +253,7 @@ class MusicCard extends Component {
 
 //   return (
 //     <React.Fragment>
-//       <Card className={classes.card} songID={props.songID}>
+//       <Card className={classes.card} songid={props.songid}>
 //         <CardMedia
 //           className={classes.cover}
 //           image={props.cover}

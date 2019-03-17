@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
 import TextField from "@material-ui/core/TextField";
-import profile from "../../pages/profile";
+//import profile from "../../pages/profile";
 
 const styles = theme => ({
   container: {

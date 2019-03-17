@@ -45,3 +45,6 @@ a:hover {
 .play-btn {
   padding: 10px;
 }
+#comment-icon:hover {
+  background-color: white;
+}
