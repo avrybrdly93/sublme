@@ -4,36 +4,7 @@ import "./style.css";
 class Signup extends Component {
   render() {
     return (
-      <div>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <title>Sublme</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-          href="signup.css"
-          rel="stylesheet"
-          type="text/css"
-          media="screen"
-        />
-        <link href="signup.js" rel="stylesheet" type="text/js media=" screen />
-        <link
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-          rel="stylesheet"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="css/uikit.min.css" rel="stylesheet" />
-        <link
-          href="https://www.w3schools.com/w3css/4/w3.css"
-          rel="stylesheet"
-        />
-        {/* form inputs, need to create a dif div for the section after username  */}
-        {/* <div class="col-xl-10"> */}
+      <React.Fragment>
         <form>
           <div className="col-input">
             <label htmlFor="inputEmail4">Email</label>
@@ -170,9 +141,39 @@ class Signup extends Component {
             </div>
           </div>
         </form>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
 export default Signup;
+
+// {/* <meta charSet="utf-8" />
+// <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+// <title>Sublme</title>
+// <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+// <link
+//   href="signup.css"
+//   rel="stylesheet"
+//   type="text/css"
+//   media="screen"
+// />
+// <link href="signup.js" rel="stylesheet" type="text/js media=" screen />
+// <link
+//   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+//   rel="stylesheet"
+//   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+//   crossOrigin="anonymous"
+// />
+// <link
+//   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+//   rel="stylesheet"
+// />
+// <meta name="viewport" content="width=device-width, initial-scale=1" />
+// <link href="css/uikit.min.css" rel="stylesheet" />
+// <link
+//   href="https://www.w3schools.com/w3css/4/w3.css"
+//   rel="stylesheet"
+// /> */}
+// {/* form inputs, need to create a dif div for the section after username  */}
+// {/* <div class="col-xl-10"> */}
