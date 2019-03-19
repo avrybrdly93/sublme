@@ -14,7 +14,7 @@ class VideosList extends Component {
     let videos = this.state.videos;
     var renderVideos = videos.map(videos => (
       <li key={videos.id}>
-        <Videos video={videos.video} title={videos.title} />
+        <Videos video={videos.video} title={videos.title} data-uk-cover />
       </li>
     ));
     return (

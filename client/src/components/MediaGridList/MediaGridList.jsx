@@ -8,7 +8,8 @@ import "./style.css";
 
 class MediaGridList extends Component {
   state = {
-    songs: Songs
+    songs: Songs,
+    currentlyPlaying: []
   };
   render() {
     let songs = this.state.songs;

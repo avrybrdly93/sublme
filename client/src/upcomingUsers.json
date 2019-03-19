@@ -3,7 +3,7 @@
     "name": "Future",
     "location": "Atlanta, GA",
     "title": "Artist",
-    "image": "assets/images/profiles/azchike.jpg",
+    "image": "assets/images/profiles/future.jpg",
     "id": 0
   },
   {
@@ -14,10 +14,24 @@
     "id": 1
   },
   {
-    "name": "Roddy Ricch",
-    "location": "Compton, CA",
+    "name": "Drake",
+    "location": "Ontario, Canada",
     "title": "Artist",
-    "image": "assets/images/profiles/roddy-ricch.jpg",
+    "image": "assets/images/profiles/drake.jpg",
     "id": 2
+  },
+  {
+    "name": "Lil Baby",
+    "location": "Ontario, Canada",
+    "title": "Artist",
+    "image": "assets/images/profiles/lil-baby.jpg",
+    "id": 3
+  },
+  {
+    "name": "G Herbo",
+    "location": "Chicago, IL",
+    "title": "Artist",
+    "image": "assets/images/profiles/g-herbo.jpg",
+    "id": 4
   }
 ]
