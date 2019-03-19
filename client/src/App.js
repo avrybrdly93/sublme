@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
 import Upload from "./pages/Upload";
+import LoggedOutNavbar from "./components/LoggedOutNavbar/LoggedOutNavbar";
 
 class App extends Component {
   state = {
@@ -33,12 +34,7 @@ class App extends Component {
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
-<<<<<<< HEAD
             <Route exact path="/upload" component={Upload} />
-=======
-            <Route exact path="/Profile" component={Profile} />
-            <Route exact path="/EditProfile" component={EditProfile} />
->>>>>>> origin
             <Route component={NoMatch} />
           </Switch>
         </Router>

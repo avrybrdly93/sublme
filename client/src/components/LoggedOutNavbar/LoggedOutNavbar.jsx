@@ -99,7 +99,7 @@ function SecondarySearchAppBar(props) {
               Sublme
             </Typography>
             <div className={classes.grow2} />
-         <Button color="inherit">Login</Button>
+         <a href="/login"><Button color="inherit">Login</Button></a>
          <Button color="inherit">Signup</Button>
          
        </Toolbar>

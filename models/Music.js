@@ -30,7 +30,14 @@ var MusicSchema = new Schema({
         type: String
     },
     subArtists: [],
-    comments:[],
+    comments:[
+        {
+            // Store ObjectIds in the array
+            type: Schema.Types.ObjectId,
+            // The ObjectIds will refer to the ids in the User model
+            ref: "Comment"
+        }
+    ],
     likes: {
         type: Number,
         default: 0

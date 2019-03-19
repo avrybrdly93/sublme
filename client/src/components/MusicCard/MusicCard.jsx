@@ -5,7 +5,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import "./style.css";
-import axios from "axios";
+//import axios from "axios";
 
 const styles = theme => ({
   card: {
@@ -41,11 +41,11 @@ function play(song) {}
 function MusicCard(props) {
   const { classes } = props;
 
-  function likeSong() {
-    axios.put("/api/music").then(() => {
-      console.log("updated");
-    });
-  }
+  // function likeSong() {
+  //   axios.put("/api/music").then(() => {
+  //     console.log("updated");
+  //   });
+  // }
 
   return (
     <React.Fragment>
