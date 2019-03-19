@@ -24,7 +24,7 @@ module.exports = {
         const s3 = new AWS.S3();
         const musicName = req.session.passport.user.username + Date.now().toString() + "-music";
         const musicType = req.body.musicType;
-        const imgName = req.session.passport.user.username + Date.now().toString() + "-img";
+        const imgName = req.session.passport.user.username + Date.now().toString() + "-cover";
         const imgType = req.body.imgType;
 
         // console.log("MUSIC EXTENSION: " + musicType);
@@ -50,14 +50,14 @@ module.exports = {
 
                 s3.getSignedUrl('putObject', s3ParamsOne, (errOne, dataOne) => {
                     if (errOne) {
-                        console.log(err);
-                        res.json({ success: false, error: err });
+                        console.log("SIGNED URL ERROR MUSIC FILE: "+errOne);
+                        res.json({ success: false, errMsg: "Could Not Upload Music File. Try Again" });
                     }
 
                     s3.getSignedUrl('putObject', s3ParamsTwo, (errTwo, dataTwo) => {
                         if (errTwo) {
-                            console.log(err);
-                            res.json({ success: false, error: err });
+                            console.log("SIGNED URL ERRO MUSIC PIC: "+errTwo);
+                            res.json({ success: false, errMsg: "Could Not Upload Music Art. Try Again" });
                         }
 
                         const returnData = {

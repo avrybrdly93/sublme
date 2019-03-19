@@ -82,16 +82,15 @@ class App extends Component {
                   this.setState({ success: true });
                 })
                 .catch(error => {
-                  alert("ERROR Type 2" + JSON.stringify(error));
+                  alert("ERROR File 2: " + JSON.stringify(error));
                 });
 
 
             })
             .catch(error => {
-              alert("ERROR Type 1" + JSON.stringify(error));
-            })
+              alert("ERROR File 1: " + JSON.stringify(error));
+            });
         }
-
       })
       .catch(error => {
         alert(JSON.stringify(error));

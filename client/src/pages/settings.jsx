@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
+//import Avatar from "@material-ui/core/Avatar";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+//import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
 import EditProfile from "../components/Profile/EditProfile";
@@ -29,18 +29,18 @@ const styles = theme => ({
   }
 });
 
-function Profile(props) {
+function Settings(props) {
   const { classes } = props;
 
   return (
     <div className="col-12">
-      <Grid container justify="center" alignItems="center">
+      {/* <Grid container justify="center" alignItems="center">
         <Avatar
           alt="Picture"
           src="https://upload.wikimedia.org/wikipedia/commons/e/e8/CandymyloveYasu.png"
           className={classes.bigAvatar}
         />
-      </Grid>
+      </Grid> */}
 
       <CardContent container justify="center" alignItems="center">
         <Typography gutterBottom variant="h5" component="h2">
@@ -84,14 +84,15 @@ function Profile(props) {
           </Tabs> */}
         </AppBar>
       </CardContent>
+      <EditProfile/>
     </div>
   );
 }
 
-Profile.propTypes = {
+Settings.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Profile);
+export default withStyles(styles)(Settings);
 
 // export default Profile;

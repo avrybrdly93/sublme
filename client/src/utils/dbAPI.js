@@ -6,10 +6,10 @@ export default {
   loginUser: function(tryUser) {
     return axios.post("/api/users/login",tryUser);
   },
-  createMusic: function(newMusic){
-    return axios.post("/api/music/new",newMusic, {headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  });
+  findUser: function(userID){
+    return axios.get("/api/users/"+userID);
+  },
+  createUser: function(newUser){
+    return axios.post("/api/users/signup",newUser);
   }
 };
