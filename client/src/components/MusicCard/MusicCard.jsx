@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 // import Slider from "../Slider/Slider";
 import "./style.css";
+import axios from "axios";
 
 const styles = theme => ({
   details: {
@@ -41,6 +42,7 @@ class MusicCard extends Component {
     this.setState({ active: !currentState });
   };
 
+<<<<<<< HEAD
   render() {
     const { classes, ...other } = this.props;
     return (
@@ -73,6 +75,46 @@ class MusicCard extends Component {
               </CardContent>
             </div>
             <div className="controls">
+=======
+  function likeSong() {
+    axios.put("/api/music").then(() => {
+      console.log("updated");
+    });
+  }
+
+  return (
+    <React.Fragment>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.cover}
+          image={props.cover}
+          title={props.coverTitle}
+        >
+          <div className={classes.details}>
+            <CardContent className={classes.content}>
+              <img
+                src={props.profilePic}
+                alt={props.alt}
+                className={classes.roundedCircle}
+              />
+              <Typography variant="body1" className="producer">
+                Produced by {props.producer}
+              </Typography>
+              <Typography
+                variant="body1"
+                color="textSecondary"
+                className="track-info artist"
+              >
+                {props.artist}
+              </Typography>
+              <Typography variant="h5" className="track-info">
+                {props.title}
+              </Typography>
+            </CardContent>
+          </div>
+          <div className="controls">
+            <a href="/" className="backward-btn">
+>>>>>>> signup-login-front
               <i className="fas fa-step-backward fa-2x" />
               <i
                 onClick={() => {

@@ -40,7 +40,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     findByGenre: function (req, res) {
-        db.Music.find({ Genre: req.params.genre })
+        db.Music.find({ genre: req.params.genre })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }

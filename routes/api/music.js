@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const musicController=require("../../controllers/musicController");
+const musicController = require("../../controllers/musicController");
 
 // => /api/music/
 router.route("/").get(musicController.findAll);
@@ -16,4 +16,6 @@ router.route("/:id").get(musicController.findByArtistId);
 // => /api/music/
 router.route("/").post(musicController.create);
 
-module.exports=router;
+router.route("/api/music").put(musicController.update);
+
+module.exports = router;

@@ -92,12 +92,17 @@ function SecondarySearchAppBar(props) {
             variant="h6"
             color="inherit"
             style={{ textAlign: "center" }}
-            noWrap>
+            noWrap
+          >
             Sublme
           </Typography>
           <div className={classes.grow2} />
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Signup</Button>
+          <Button href="/login" color="inherit">
+            Login
+          </Button>
+          <Button href="/signup" color="inherit">
+            Signup
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

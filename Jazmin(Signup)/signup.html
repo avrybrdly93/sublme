@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sublme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" media="screen" href="signup.css">
+  <link rel="stylesheet" type="text/js media="screen href="signup.js">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://unpkg.com/@material-ui/core/umd/material-ui.production.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/uikit.min.css" />
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script>
+  <script src="signup.js"></script> 
+  <script src="js/jquery/jquery-3.1.0.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+</head>
+<!-- form inputs, need to create a dif div for the section after username  -->
+<body> 
+  
+  <!-- <div class="col-xl-10"> -->
+    <form>
+
+      <div class="col-input">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control"  id="inputEmail4" placeholder="email@icloud.com">
+      <!-- </div> -->
+      <!-- <div class="col"> -->
+        <label for="inputPassword4">Username</label>
+        <input type="text" class="form-control" id="inputPassword4" placeholder="johnnyappleseed">
+      </div>
+
+<!-- create a dif div so I can have them look the same -->
+
+  <div class="form-row confirm">
+    <div class="col">
+      <label for="inputEmail4">Password</label>
+      <input type="password" class="form-control" placeholder="******">
+    </div>
+    <!-- <div class="form-row"> -->
+      <div class="col"> 
+      <label for="inputEmail4">Confirm Password</label>
+      <input type="password" class="form-control" placeholder="******">
+      </div>
+      
+  </div>
+  
+</div>
+
+  <div class="form-row genbir">
+    <div class="col">
+      <label for="inputState">Gender</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose..</option>
+        <option>Female</option>
+        <option>Male</option>
+        <option>Other</option>
+      </select>
+    </div>
+        <div class="col">
+      <label for="start">Birthday</label>
+      <input type="date" id="start" name="birthday"  class="form-control">
+    </div>
+    </div>
+    </div>
+  </div> 
+  <label for="inputState">Profile Picture</label>
+  <div class="custom-file">
+      <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+      <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+      <div class="invalid-feedback">Example invalid custom file feedback</div>
+    </div>
+    <br>
+   
+      <div class="form-group col-md-12">
+        <label for="inputState">Who are you?</label>
+        <select id="inputState" class="form-control">
+          <option select>Who are you</option>
+          <option>Fan</option>
+          <option>Artist</option>
+          <option>Producer</option>
+        </select>
+      </div>
+  </div>
+  <br>
+
+  <!-- style and add link to terms & service  -->
+  <div class="container">
+    <div class="round"> 
+      <input type="checkbox" id="checkbox" />
+      <label for="checkbox"></label> You agree to our
+      <div class="popup" onclick="openTerms()"><a href="/">Terms of Service</a>
+          <span class="popuptext" id="termsPopup"><header>X</header>TERMS OF SERVICE:<br><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque nec nam aliquam sem et. 
+            Phasellus aliquam cursus tincidunt. Mauris auctor, dui in feugiat pulvinar, velit purus porttitor turpis, ut lacinia tellus turpis porttitor augue. Cras vitae elementum dui, et ultricies eros. </span>
+        </div> and <div class="popup" onclick="openPrivacy()"><a href="/">Privacy Policy</a>
+          <span class="popuptext" id="privacyPopup"><header>X</header>Privacy Policy:<br><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque nec nam aliquam sem et. 
+            Phasellus aliquam cursus tincidunt. Mauris auctor, dui in feugiat pulvinar, velit purus porttitor turpis, ut lacinia tellus turpis porttitor augue. Cras vitae elementum dui, et ultricies eros. </span>
+        </div> 
+
+      <br>
+  <br> 
+  <button class="button" style="text-align:center"><span>Submit </span></button>
+  </form>
+  </div>
+  
+  <script>
+      // When the user clicks on <div>, open the popup
+      function openTerms() {
+        var termsPopup = document.getElementById("termsPopup");
+        termsPopup.classList.toggle("show");
+      }
+      // When the user clicks on <div>, open the popup
+      function openPrivacy() {
+        var privacyPopup = document.getElementById("privacyPopup");
+        privacyPopup.classList.toggle("show");
+      }
+      </script>
+</body>
+
+</html>
+<!-- 
+Add form for password & gender so i can set opacity ect-->
