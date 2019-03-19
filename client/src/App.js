@@ -9,6 +9,7 @@ import LoggedOutNavbar from "./components/LoggedOutNavbar/LoggedOutNavbar";
 // import Cookies from "js-cookie";
 import Profile from "./components/ProfileCard/ProfileCard";
 import EditProfile from "./components/Profile/EditProfile";
+import Signup from "./components/Signup";
 
 class App extends Component {
   state = {
@@ -38,6 +39,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/Profile" component={Profile} />
             <Route exact path="/EditProfile" component={EditProfile} />
+            <Route exact path="/signup" component={Signup} />
             <Route component={NoMatch} />
           </Switch>
         </Router>
