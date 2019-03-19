@@ -14,6 +14,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Comment from "../Comment";
+import dbAPI from "../../utils/dbAPI";
 
 const styles = theme => ({
   card: {
@@ -55,7 +56,7 @@ class MusicCard extends Component {
   };
 
   componentDidMount() {
-    axios.get("/api/music/" + this.props.songid).then(response => {
+    dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
     });
   }
@@ -64,7 +65,7 @@ class MusicCard extends Component {
 
   openComments = () => {
     this.setState({ open: true });
-    axios.get("/api/music/comments/" + this.props.songid).then(response => {
+    dbAPI.getComments(this.props.songid, response => {
       response.data.map(() => {});
       this.setState({ comments: response.data });
     });
@@ -82,6 +83,18 @@ class MusicCard extends Component {
   };
 
   submitComment = event => {
+    event.preventDefault();
+    // dbAPI.sendComment(
+    //   this.props.songid,
+    //   this.state.newComment,
+    //   dbAPI.getComments(this.props.songid, response => {
+    //     response.data.map(comment => {
+    //       console.log(comment);
+    //     });
+    //     this.setState({ comments: response.data, newComment: "" });
+    //   })
+    // );
+
     axios
       .put("/api/music/comments/" + this.props.songid, {
         comments: this.state.newComment
@@ -95,25 +108,24 @@ class MusicCard extends Component {
   };
 
   likeSong = () => {
-    if (this.state.alreadyLiked) {
-      this.setState({ likes: this.state.likes - 1, alreadyLiked: false });
-    } else {
-      this.setState({ likes: this.state.likes + 1, alreadyLiked: true });
-    }
+    let newLike = this.state.likes + 1;
+    let unlike = this.state.likes - 1;
+    let { songid } = this.props;
 
-    axios
-      .put("/api/music/" + this.props.songid, {
-        likes: this.state.likes
-      })
-      .then(response => {
-        console.log(response.data.likes, this.state.likes, this.props.songid);
-      });
+    if (this.state.alreadyLiked) {
+      this.setState({ likes: unlike, alreadyLiked: false });
+      dbAPI.sendLike(unlike, songid, null);
+    } else {
+      this.setState({ likes: newLike, alreadyLiked: true });
+      dbAPI.sendLike(newLike, songid, null);
+    }
   };
 
   render() {
     const { classes } = this.props;
-    let renderComments = this.state.comments.map(comment => (
+    let renderComments = this.state.comments.map((comment, index) => (
       <Comment
+        //userid={this.props.userid[index]}
         songid={this.props.songid}
         comment={comment}
         key={this.props._id}
