@@ -22,7 +22,7 @@ var MusicSchema = new Schema({
         trim: true,
         default: "Other"
     },
-    artist: {
+    artistID: {
         type: Schema.Types.ObjectId,
         ref: "User"
     },

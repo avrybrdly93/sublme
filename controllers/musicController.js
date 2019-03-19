@@ -72,7 +72,7 @@ module.exports = {
                                 title: req.body.musicTitle, 
                                 fileLink: returnData.urlOne, 
                                 genre: req.body.genre,
-                                artist: req.session.passport.user._id, 
+                                artistID: req.session.passport.user._id, 
                                 cover: returnData.urlTwo, 
                                 artistName: req.session.passport.user.username
                             })
