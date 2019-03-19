@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
-import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
-import Dashboard from "./pages/dashboard";
+import LoggedInNavbar from "./LoggedInNavbar/LoggedInNavbar";
+import Dashboard from "../pages/dashboard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NoMatch from "./pages/NoMatch";
-import Login from "./components/Login";
-import LoggedOutNavbar from "./components/LoggedOutNavbar/LoggedOutNavbar";
+import NoMatch from "../pages/NoMatch";
+import Login from "./Login";
+import LoggedOutNavbar from "./LoggedOutNavbar/LoggedOutNavbar";
 // import Cookies from "js-cookie";
-import Profile from "./components/ProfileCard/ProfileCard";
-import EditProfile from "./components/Profile/EditProfile";
-import Signup from "./components/Signup";
+import Profile from "./ProfileCard/ProfileCard";
+import EditProfile from "./Profile/EditProfile";
+import Signup from "./Signup";
 
 class App extends Component {
   state = {

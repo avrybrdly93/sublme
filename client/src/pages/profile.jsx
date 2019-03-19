@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
-import EditProfile from "../components/Profile/EditProfile";
+// import EditProfile from "../components/Profile/EditProfile";
 
 const styles = theme => ({
   bigAvatar: {
@@ -57,8 +57,7 @@ function Profile(props) {
           variant="outlined"
           className={classes.button}
           onClick={props.EditProfile}
-          href="/EditProfile"
-        >
+          href="/EditProfile">
           Edit
         </Button>
 
@@ -66,8 +65,7 @@ function Profile(props) {
           variant="outlined"
           className={classes.button}
           onClick={props.EditProfile}
-          href="/dashboard"
-        >
+          href="/dashboard">
           Log out
         </Button>
         <AppBar position="static">
@@ -93,5 +91,3 @@ Profile.propTypes = {
 };
 
 export default withStyles(styles)(Profile);
-
-// export default Profile;
