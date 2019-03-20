@@ -162,7 +162,8 @@ class MusicCard extends Component {
           <CardMedia
             className={classes.cover}
             image={this.props.cover}
-            title={this.props.coverTitle}>
+            title={this.props.coverTitle}
+          >
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <img
@@ -176,7 +177,8 @@ class MusicCard extends Component {
                 <Typography
                   variant="body1"
                   color="textSecondary"
-                  className="track-info artist">
+                  className="track-info artist"
+                >
                   {this.props.artist}
                 </Typography>
                 <Typography variant="h5" className="track-info">
@@ -198,7 +200,6 @@ class MusicCard extends Component {
               />
               <i className="fas fa-step-forward fa-2x" />
             </div>
-            /////////////////////////////////
             <div className="social-icons">
               <span onClick={this.likeSong}>
                 <i className={likeHeart} />
@@ -219,7 +220,8 @@ class MusicCard extends Component {
               <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
-                aria-labelledby="form-dialog-title">
+                aria-labelledby="form-dialog-title"
+              >
                 <DialogTitle id="form-dialog-title">Comments</DialogTitle>
                 <DialogContent>
                   <DialogContentText>

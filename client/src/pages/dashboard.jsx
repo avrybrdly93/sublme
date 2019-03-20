@@ -4,19 +4,26 @@ import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import VideosList from "../components/VideosList/VideosList";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
-import Songs from "../Songs.json";
+// import Songs from "../Songs.json";
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 import "./dashboard.css";
+import axios from "axios";
 
 class Dashboard extends Component {
   state = {
-    songs: Songs,
+    songs: [],
     currentSong: {},
     playlist: [],
     active: false
   };
+
+  componentDidMount() {
+    axios.get("/api/music").then(results => {
+      this.setState({ songs: results.data });
+    });
+  }
 
   handleCardClick = (e, song) => {
     e.preventDefault();
@@ -30,7 +37,7 @@ class Dashboard extends Component {
     var renderCards = songs.map(song => (
       <li key={song.id}>
         <MusicCard
-          id={song.id}
+          songid={song._id}
           cover={song.cover}
           covername={song.artist}
           profile={song.profilePic}
@@ -52,7 +59,8 @@ class Dashboard extends Component {
                 color: "white",
                 fontSize: "250%",
                 fontWeight: 100
-              }}>
+              }}
+            >
               More of what you want...
             </Typography>
             <Typography
@@ -65,7 +73,8 @@ class Dashboard extends Component {
                 fontWeight: 100,
                 paddingBottom: 10
               }}
-              gutterBottom>
+              gutterBottom
+            >
               Swipe thru the most popular tracks out now!
             </Typography>
           </div>
@@ -81,14 +90,16 @@ class Dashboard extends Component {
                 className="uk-position-center-left-out uk-position-small uk-hidden-hover"
                 href="/"
                 data-uk-slidenav-previous
-                data-uk-slider-item="previous">
+                data-uk-slider-item="previous"
+              >
                 <i class="material-icons md-48">keyboard_arrow_left</i>
               </a>
               <a
                 className="uk-position-center-right-out uk-position-small uk-hidden-hover"
                 href="/"
                 data-uk-slidenav-next
-                data-uk-slider-item="next">
+                data-uk-slider-item="next"
+              >
                 <i class="material-icons md-48">keyboard_arrow_right</i>
               </a>
             </div>
@@ -107,7 +118,8 @@ class Dashboard extends Component {
                 fontWeight: 100,
                 paddingBottom: 10
               }}
-              gutterBottom>
+              gutterBottom
+            >
               Upcoming Artists & Producers
             </Typography>
           </div>
