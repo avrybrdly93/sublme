@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import Profile from "./pages/profile";
 import Upload from "./pages/Upload";
 import Settings from "./pages/settings";
+import EditProfile from "./components/Profile/EditProfile";
 import NoMatch from "./pages/NoMatch";
 import "./App.css";
 
@@ -40,6 +41,7 @@ class App extends Component {
             <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/upload" component={Upload} />
             <Route exact path="/settings" component={Settings} />
+            <Route exact path="/editProfile" component={EditProfile} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

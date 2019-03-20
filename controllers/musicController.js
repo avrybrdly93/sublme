@@ -70,6 +70,7 @@ module.exports = {
                         db.Music
                             .create({
                                 title: req.body.musicTitle, 
+                                titleLower: req.body.musicTitle.toLowerCase(),
                                 fileLink: returnData.urlOne, 
                                 genre: req.body.genre,
                                 artistID: req.session.passport.user._id, 
@@ -118,5 +119,10 @@ module.exports = {
         db.Music.find({ genre: req.params.genre })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    findBySearch: function(req,res){
+        var expression=new RegExp("^"+req.params.term);
+        db.Music.find({titleLower: expression}).then(dbModel=>res.json(dbModel))
+        .catch(err=>res.status(422).json(err));
     }
 };

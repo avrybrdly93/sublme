@@ -16,6 +16,7 @@ router.route("/:id").get(musicController.findByArtistId);
 // => /api/music/new 
 router.route("/new").post(musicController.create);
 
-router.route("/api/music").put(musicController.update);
+// => /api/music/search/:term
+router.route("/search/:term").get(musicController.findBySearch);
 
 module.exports = router;
