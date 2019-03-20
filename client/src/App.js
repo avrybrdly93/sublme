@@ -4,31 +4,13 @@ import Dashboard from "../pages/dashboard";
 import NoMatch from "../pages/NoMatch";
 import Login from "./Login";
 import LoggedOutNavbar from "./LoggedOutNavbar/LoggedOutNavbar";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 import Profile from "../pages/profile";
 import Settings from "../pages/settings";
 import Signup from "./Signup";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Cookies from "js-cookie";
-<<<<<<< HEAD:client/src/App.js
-import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
-import LoggedOutNavbar from "./components/LoggedOutNavbar/LoggedOutNavbar";
-import Dashboard from "./pages/dashboard";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Profile from "./pages/profile";
 import Upload from "./pages/Upload";
-import Settings from "./pages/settings";
 import EditProfile from "./components/Profile/EditProfile";
-import NoMatch from "./pages/NoMatch";
-=======
-// import Login from "./components/Login";
-// import Signup from "./components/Signup";
-// import Profile from "./pages/profile";
-import Upload from "../pages/Upload";
-// import Settings from "./pages/settings";
-// import NoMatch from "./pages/NoMatch";
->>>>>>> origin/Avery-merge:client/src/components/App.js
 import "./App.css";
 
 class App extends Component {
