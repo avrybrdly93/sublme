@@ -2,7 +2,7 @@
 so just the background has that effect & the form stays put */
 
 body {
-    background: fixed linear-gradient( to left, rgb(241, 113, 32), rgb(233, 64, 87), rgb(138, 35, 135));
+    background: fixed linear-gradient( to left, rgb(241, 113, 32), rgb(233, 64, 87), rgb(138, 35, 135)) !important;
     -webkit-animation: fadein 4s;
     /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 4s;
@@ -15,6 +15,7 @@ body {
     display: block;
     text-size-adjust: auto !important;
     -webkit-text-size-adjust: auto !important;
+    height: 100%;
 }
 
 @keyframes fadein {

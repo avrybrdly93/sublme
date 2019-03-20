@@ -11,7 +11,7 @@ const ProfileGridList = () => {
         <div
           className="uk-position-relative uk-visible-toggle uk-light"
           tabIndex="-1"
-          data-uk-slider>
+          data-uk-slider="sets: true">
           <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small">
             <ProfileCard />
           </ul>
