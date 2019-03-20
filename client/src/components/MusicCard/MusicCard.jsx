@@ -65,7 +65,7 @@ class MusicCard extends Component {
     dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
     });
-  }
+  };
 
   // render() {
   //   const { classes, ...other } = this.props;

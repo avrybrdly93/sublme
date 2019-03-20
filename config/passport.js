@@ -1,5 +1,8 @@
+require("dotenv").config();
 var localStrategy = require("passport-local").Strategy;
 var db = require("../models");
+
+const S3_BUCKET = process.env.S3_BUCKET;
 
 module.exports = function (passport) {
     passport.serializeUser(function(user, done) {
@@ -16,7 +19,7 @@ module.exports = function (passport) {
         usernameField: 'username',
         passwordField: 'password',
         passReqToCallback: true
-    }, function (req, username, password, done) {
+    }, function (req, username, password, done,urlOne,urlTwo) {
         process.nextTick(function () {
 
             db.User.findOne({ 
@@ -27,16 +30,19 @@ module.exports = function (passport) {
                     return done(err);
                 }
                 if (user) {
-                    console.log('signupMessage', 'That email is already taken.');
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                    console.log('signupMessage', 'That username is already taken.');
+                    return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
                 }
                 else {
                     db.User.create({
                         "firstName": req.body.firstName,
                         "lastName": req.body.lastName,
+                        "bioStatement": req.body.bioStatement,
                         "gender": req.body.gender,
                         "birthday": req.body.birthday,
                         "userType": req.body.userType,
+                        "profileImage": `https://${S3_BUCKET}.s3.amazonaws.com/${req.body.imageOneName}`,
+                        "backgroundImage": `https://${S3_BUCKET}.s3.amazonaws.com/${req.body.imageTwoName}`,
                         "email": req.body.email,
                         "username": req.body.username,
                         "password": db.User.schema.methods.generateHash(password)

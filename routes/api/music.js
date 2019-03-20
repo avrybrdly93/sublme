@@ -19,6 +19,9 @@ router.route("/comments/:id").get(musicController.findComments);
 // => /api/music/
 router.route("/").post(musicController.create);
 
+// => /api/music/new 
+router.route("/new").post(musicController.create);
+
 // => /api/music/:id
 router.route("/:id").put(musicController.update);
 

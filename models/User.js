@@ -28,6 +28,16 @@ var UserSchema = new Schema({
             "Last Name should be longer."
         ]
     },
+    bioStatement: {
+        type: String,
+        trim: true,
+        validate: [
+            function(input){
+                return input.length >=1 && input.length <=200
+            },
+            "Bio Statement should be longer."
+        ]
+    },
     gender: {
         type: String,
         trim: true
