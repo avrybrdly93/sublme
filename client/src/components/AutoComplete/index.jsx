@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import SearchIcon from "@material-ui/icons/Search";
 import "./style.css";
 
 //Using this to pull from last.fm api
 // const { API_KEY } = process.env
 // const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
-			 
+
 class Autocomplete extends Component {
   static propTypes = {
     suggestions: PropTypes.instanceOf(Array)
@@ -42,17 +43,17 @@ class Autocomplete extends Component {
 
   onChange = e => {
     e.preventDefault();
-    const {name, value} = e.target;
-    this.setState({[name] : value });
-    axios.get("/api/music/search/"+this.state.userInput.toLowerCase())
-    .then(response => {
-      console.log(response.data);
-      this.setState({
-        activeSuggestion: response.data.length,
-        filteredSuggestions: response.data,
-        showSuggestions: true
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+    axios.get("/api/music/search/" + this.state.userInput.toLowerCase())
+      .then(response => {
+        console.log(response.data);
+        this.setState({
+          activeSuggestion: response.data.length,
+          filteredSuggestions: response.data,
+          showSuggestions: true
+        });
       });
-    }); 
 
 
 
@@ -124,9 +125,7 @@ class Autocomplete extends Component {
 
   render() {
     const {
-      onChange,
       onClick,
-      onKeyDown,
       handleKeyPress,
       state: {
         activeSuggestion,
@@ -157,11 +156,11 @@ class Autocomplete extends Component {
                   onClick={onClick}
                   onKeyPress={handleKeyPress}
                 >
-                {/* coverlinks currently pulling up undefined */}
-                <div><img alt="cover" src= { suggestion.cover}></img>{suggestion.title} -{" "}
-                  {suggestion.artistName}</div>
+                  {/* coverlinks currently pulling up undefined */}
+                  <div><img alt="cover" src={suggestion.cover} width="25" height="25"></img>{suggestion.title} -{" "}
+                    {suggestion.artistName}</div>
                   {/* {suggestion.cover} */}
-                   
+
                 </li>
               );
             })}
@@ -179,16 +178,17 @@ class Autocomplete extends Component {
     return (
       <Fragment>
         <div className="contain-search">
-        <input
-          type="text"
-          onChange={this.onChange}
-          // onKeyDown={this.onKeyDown}
-          // onKeyPress={this.handleKeyPress}
-          value={this.state.userInput}
-          name = "userInput"
-          placeholder="Search"
-        />
-        {suggestionsListComponent}
+          <SearchIcon />
+          <input
+            type="text"
+            onChange={this.onChange}
+            // onKeyDown={this.onKeyDown}
+            // onKeyPress={this.handleKeyPress}
+            value={this.state.userInput}
+            name="userInput"
+            placeholder="Search"
+          />
+          {suggestionsListComponent}
         </div>
       </Fragment>
     );

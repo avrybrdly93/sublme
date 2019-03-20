@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import AutoComplete from "../AutoComplete";
 //import axios from "axios";
-import React, {Component} from "react";
+import React from "react";
 // import music from "../Music.js";
 
 const styles = theme => ({
