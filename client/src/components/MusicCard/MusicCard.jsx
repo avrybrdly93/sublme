@@ -62,11 +62,7 @@ class MusicCard extends Component {
 
   //   }
   componentDidMount() {
-<<<<<<< HEAD
-    axios.get("/api/music"+this.props.songid, response => {
-=======
     dbAPI.getMusic(this.props.songid, response => {
->>>>>>> origin/Avery-merge
       this.setState({ likes: response.data.likes });
     });
   }
