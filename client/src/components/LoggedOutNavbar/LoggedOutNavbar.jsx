@@ -72,7 +72,7 @@ const styles = theme => ({
 
 
 function SecondarySearchAppBar(props) {
- const { classes, theme } = props;
+ const { classes } = props;
  return (
    <div className={classes.root}>
      <AppBar position="static" className={classes.appBar}>
@@ -90,6 +90,7 @@ function SecondarySearchAppBar(props) {
              />
            </div>
            <div className={classes.grow1} />
+           <a className="no-underline" href="/">
             <Typography
               className={classes.title}
               variant="h6"
@@ -98,9 +99,10 @@ function SecondarySearchAppBar(props) {
               noWrap>
               Sublme
             </Typography>
+            </a>
             <div className={classes.grow2} />
-         <Button color="inherit">Login</Button>
-         <Button color="inherit">Signup</Button>
+         <a href="/login"><Button color="inherit">Login</Button></a>
+         <a href="/signup"><Button color="inherit">Signup</Button></a>
          
        </Toolbar>
      </AppBar>

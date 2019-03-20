@@ -1,31 +1,57 @@
 import React, { Component } from "react";
+import dbAPI from "../../utils/dbAPI";
+import { Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./style.css";
 
-var LoginField = React.createClass({
-  render: function() {
+class Login extends Component {
+  state = {
+    loggedIn: false,
+    username: "",
+    password: ""
+  };
+
+  componentDidMount() {
+    if (Cookies.get("username") === undefined) {
+      this.setState({ loggedIn: false });
+    } else {
+      this.setState({ loggedIn: true });
+    }
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    dbAPI
+      .loginUser({
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(response => {
+        //console.log(response);
+        if (response.status === 200) {
+          this.setState({ loggedIn: true });
+        }
+      })
+      .catch(err => console.log(err));
+  };
+
+  renderRedirect = () => {
+    if (this.state.loggedIn) {
+      return <Redirect to="/dashboard" />;
+    }
+  };
+
+  render() {
     return (
       <div>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <title>Sublme</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-          rel="stylesheet"
-          type="css"
-          media="screen"
-          href="login.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossOrigin="anonymous"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="stylesheet"
-          href="https://www.w3schools.com/w3css/4/w3.css"
-        />
+        {this.renderRedirect()}
         <form>
           <div className="col-input">
             <label htmlFor="inputEmail4">Username</label>
@@ -34,6 +60,9 @@ var LoginField = React.createClass({
               className="form-control"
               id="inputEmail4"
               placeholder="johnnyappleseed"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInputChange}
             />
             <label htmlFor="inputPassword4">Password</label>
             <input
@@ -41,17 +70,24 @@ var LoginField = React.createClass({
               className="form-control"
               id="inputPassword4"
               placeholder="*****"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
             />
           </div>
           <br />
           <br />
-          <button className="button" style={{ textAlign: "center" }}>
+          <button
+            className="button"
+            style={{ textAlign: "center" }}
+            onClick={this.handleFormSubmit}
+          >
             <span>Submit </span>
           </button>
         </form>
       </div>
     );
   }
-});
+}
 
-export default LoginField;
+export default Login;

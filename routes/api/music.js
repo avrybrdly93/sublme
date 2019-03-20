@@ -13,8 +13,8 @@ router.route("/genre/:genre").get(musicController.findByGenre);
 // => /api/music/:id
 router.route("/:id").get(musicController.findByArtistId);
 
-// => /api/music/
-router.route("/").post(musicController.create);
+// => /api/music/new 
+router.route("/new").post(musicController.create);
 
 router.route("/api/music").put(musicController.update);
 

@@ -1,30 +1,29 @@
 import React, { Component } from "react";
-import "./App.css";
-import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
-import Dashboard from "./pages/dashboard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NoMatch from "./pages/NoMatch";
-import Login from "./pages/Login";
+import Cookies from "js-cookie";
+import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
 import LoggedOutNavbar from "./components/LoggedOutNavbar/LoggedOutNavbar";
-// import Cookies from "js-cookie";
-import Profile from "./components/ProfileCard/ProfileCard";
-import EditProfile from "./components/Profile/EditProfile";
+import Dashboard from "./pages/dashboard";
+import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Profile from "./pages/profile";
+import Upload from "./pages/Upload";
+import Settings from "./pages/settings";
+import NoMatch from "./pages/NoMatch";
+import "./App.css";
 
 class App extends Component {
   state = {
-    loggedIn: false,
-    username: "",
-    password: ""
+    loggedIn: false
   };
 
-  // componentDidMount() {
-  //   if (Cookies.get("username") === undefined) {
-  //     this.setState({ loggedIn: false });
-  //   } else {
-  //     this.setState({ loggedIn: true });
-  //   }
-  // };
+  componentDidMount() {
+    if (Cookies.get("username") === undefined) {
+      this.setState({ loggedIn: false });
+    } else {
+      this.setState({ loggedIn: true });
+    }
+  }
 
   render() {
     return (
@@ -37,9 +36,10 @@ class App extends Component {
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/Profile" component={Profile} />
-            <Route exact path="/EditProfile" component={EditProfile} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/profile/:id" component={Profile} />
+            <Route exact path="/upload" component={Upload} />
+            <Route exact path="/settings" component={Settings} />
             <Route component={NoMatch} />
           </Switch>
         </Router>
