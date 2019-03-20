@@ -3,7 +3,6 @@ import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 import MusicCard from "../MusicCard/MusicCard";
-import Songs from "../../Songs.json";
 import "./style.css";
 import axios from "axios";
 
@@ -15,24 +14,23 @@ class MediaGridList extends Component {
 
   componentDidMount() {
     axios.get("/api/music").then(results => {
-      console.log(results);
       this.setState({ songs: results.data });
     });
   }
 
   render() {
     let songs = this.state.songs;
-    console.log(songs);
     var renderCards = songs.map(songs => (
-      <li key={songs.id}>
+      <li key={songs._id}>
         <MusicCard
-          id={songs.id}
+          songid={songs._id}
           cover={songs.cover}
           coverTitle={songs.artist}
           profilePic={songs.profilePic}
           producer={songs.producer}
           artist={songs.artist}
           title={songs.title}
+          // likes={songs.likes}
         />
       </li>
     ));

@@ -58,6 +58,9 @@ a:hover {
 .play-pause-btn {
   padding: 10px;
 }
+#comment-icon:hover {
+  background-color: white;
+}
 
 /* ------- MEDIA QUERIES ------- */
 
