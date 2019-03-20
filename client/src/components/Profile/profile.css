@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+html {
+  background-image: url("/../assets/images/memphis-colorful.png");
+}
+
 body {
   background: #8a2387; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -16,13 +20,70 @@ body {
     #8a2387
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.youtube {
-  border: 3px #8a2387 dashed;
-  margin-top: 20px;
+.container {
+  background: -webkit-linear-gradient(
+    to right,
+    #f27121,
+    #e94057,
+    #8a2387
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+  width: 500%;
+  float: left;
+  /* display: inline-block; */
+  margin: 40px;
+  margin-left: 100px;
+  border: 5px solid purple;
+  box-shadow: 0 5px 5px purple;
+  padding: 50px;
 }
+.youtube {
+  border: 3px solid #8a2387;
+  box-shadow: 5px 5px #8a2387;
+  margin-top: 20px;
+  width: 565px;
+}
+.CardContent {
+  align-items: center;
+  justify-content: center;
+}
+
 button {
-  margin: 10px;
+  margin: 20px;
   padding: 10px 20px;
   font-size: 20px;
   background-color: purple;
+  box-shadow: 0px 5px 10px;
+  transition: all.3s;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right;
+}
+
+.search-bar {
+  margin: 20px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 75%;
+}
+
+.video-item img {
+  max-width: 64px;
+}
+
+.video-detail .details {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #eee;
 }

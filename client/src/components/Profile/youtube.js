@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./profile.css";
 
 const API = "AIzaSyCqycLi0IMkNUxM22JkPwdLTmHsbT7-nRI";
-const channelID = "UC-yXuc1__OzjwpsJPlxYUCQ";
+const channelID = "UChNB35QmqX81vSbDXDR3i4w";
 const result = 5;
 
 class Youtube extends Component {
@@ -38,26 +38,32 @@ class Youtube extends Component {
   render() {
     console.log(this.state.resultyt);
     return (
-      <div>
-        <button onClick={this.clicked}>Get youtube videos</button>
-        {this.state.resultyt.map((link, i) => {
-          console.log(link);
-          var frame = (
-            <div key={i} className="youtube">
-              <iframe
-                title="video"
-                width="560"
-                height="315"
-                src={link}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          );
+      <div class="container">
+        <div>
+          <button onClick={this.clicked}>Get youtube videos</button>
+        </div>
+        <div id="layout-content" className="layout-content-wrapper">
+          <div className="panel-list">
+            {this.state.resultyt.map((link, i) => {
+              console.log(link);
+              var frame = (
+                <div key={i} className="youtube">
+                  <iframe
+                    title="video"
+                    width="560"
+                    height="315"
+                    src={link}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              );
 
-          return frame;
-        })}
+              return frame;
+            })}
+          </div>
+        </div>
         {this.frame}
       </div>
     );

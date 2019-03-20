@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import "./profile.css";
 
 // import profile from "../../pages/profile";
 
@@ -20,12 +21,12 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit
   },
-  button: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    display: "center",
-    flexWrap: "wrap"
-  },
+  // button: {
+  //   marginLeft: theme.spacing.unit,
+  //   marginRight: theme.spacing.unit,
+  //   display: "center",
+  //   flexWrap: "wrap"
+  // },
   dense: {
     marginTop: 16
   },
@@ -56,23 +57,39 @@ const professions = [
     label: "Producer"
   }
 ];
+function simulateNetworkRequest() {
+  return new Promise(resolve => setTimeout(resolve, 2000));
+}
 
 class EditProfile extends React.Component {
-  state = {
-    name: "Edit the Profile",
-    age: "",
-    multiline: "Controlled",
-    currency: "EUR"
-  };
+  constructor(props, context) {
+    super(props, context);
+    this.handleClick = this.handleClick.bind(this);
+
+    this.state = {
+      isLoading: false
+    };
+  }
+  // state = {
+  //   name: "Edit the Profile"
+  // };
 
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value
     });
   };
+  handleClick() {
+    this.setState({ isLoading: true }, () => {
+      simulateNetworkRequest().then(() => {
+        this.setState({ isLoading: false });
+      });
+    });
+  }
 
-  render() {
+  render(props) {
     const { classes } = this.props;
+    const { isLoading } = this.state;
 
     return (
       <div className="col-12">
@@ -86,16 +103,20 @@ class EditProfile extends React.Component {
 
         <form classUsername={classes.container} noValidate autoComplete="off">
           <CardContent container justify="center" alignItems="center">
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" component="h2" align="center">
               Profile
             </Typography>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" component="h2" align="center">
               @HelloWorld2019
             </Typography>
-            <Typography component="p">
+            <Typography component="p" align="center">
               Some description that will come after ajax call
             </Typography>
-            <Typography component="p">Edit your information here</Typography>
+            <Typography component="p" align="center">
+              Edit your information here
+            </Typography>
+
+            <br />
 
             <TextField
               id="outlined-username"
@@ -183,17 +204,38 @@ class EditProfile extends React.Component {
                 </MenuItem>
               ))}
             </TextField>
+            <Button
+              variant="outline-dark"
+              size="large"
+              className={classes.margin}
+              disabled={isLoading}
+              onClick={!isLoading ? this.handleClick : null}
+            >
+              {isLoading ? "Loading…" : "Submit"}
+            </Button>
           </CardContent>
         </form>
         <Grid container justify="center" alignItems="center">
-          <Button
-            variant="outlined"
-            size="large"
-            color="black"
-            className={classes.margin}
-          >
-            Submit
-          </Button>
+          <CardContent container justify="center" alignItems="center">
+            <Button
+              variant="outlined"
+              size="large"
+              color="black"
+              className={classes.margin}
+              href="/profile"
+            >
+              Go back
+            </Button>
+
+            {/* <Button
+              variant="outline-dark"
+              size="large"
+              color="black"
+              className={classes.margin}
+            >
+              Submit
+            </Button> */}
+          </CardContent>
         </Grid>
       </div>
     );

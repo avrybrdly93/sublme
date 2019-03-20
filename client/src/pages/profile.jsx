@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
@@ -9,21 +9,24 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
 import "../App.css";
+import "../components/Profile/profile.css";
 import Youtube from "../components/Profile/youtube.js";
-// import Card from "@material-ui/core/Card";
-// import CardMedia from "@material-ui/core/CardMedia";
+import "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
+// import GridList from "@material-ui/core/GridList";
+// import GridListTile from "@material-ui/core/GridListTile";
+// import GridListTileBar from "@material-ui/core/GridListTileBar";
 // import IconButton from "@material-ui/core/IconButton";
-// import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-// import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-// import SkipNextIcon from "@material-ui/icons/SkipNext";
+// import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 const Styles = theme => ({
   card: {
-    display: "flex"
-  },
-  details: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper
   },
   content: {
     flex: "1 0 auto"
@@ -44,18 +47,30 @@ const Styles = theme => ({
   bigAvatar: {
     margin: 10,
     width: 200,
-    height: 200,
+    height: 200
+  },
 
-    button: {
-      margin: theme.spacing.unit
-    },
-    root: {
-      flexGrow: 1
-    },
+  button: {
+    margin: theme.spacing.unit
+  },
+  root: {
+    flexGrow: 1
+  },
 
-    input: {
-      display: "center"
-    }
+  input: {
+    display: "center"
+  },
+  gridList: {
+    flexWrap: "nowrap",
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: "translateZ(0)"
+  },
+  title: {
+    color: theme.palette.primary.light
+  },
+  titleBar: {
+    background:
+      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
   }
 });
 
@@ -64,6 +79,8 @@ function Profile(props) {
 
   return (
     <div className="col-12">
+      <Navbar />
+
       <Grid container justify="center" alignItems="center">
         <Avatar
           alt="Picture"
@@ -71,88 +88,42 @@ function Profile(props) {
           className={classes.bigAvatar}
         />
       </Grid>
-      <CardContent container justify="center" alignItems="center">
-        <Typography gutterBottom variant="h5" component="h2">
-          Profile
-        </Typography>
-        <Typography gutterBottom variant="h5" component="h2">
-          @HelloWorld2019
-        </Typography>
-        <Typography component="p">
-          Some description that will come after ajax call
-        </Typography>
+      <div className="col-12">
+        <CardContent container justify="center" alignItems="center">
+          <Typography gutterBottom variant="h5" component="h2" align="center">
+            Profile
+          </Typography>
+          <Typography gutterBottom variant="h5" component="h2" align="center">
+            @HelloWorld2019
+          </Typography>
+          <Typography component="p" align="center">
+            Some description that will come after ajax call
+          </Typography>
 
-        <Button
-          variant="outlined"
-          className={classes.button}
-          onClick={props.EditProfile}
-          href="/EditProfile"
-        >
-          Edit
-        </Button>
-
-        <Button
-          variant="outlined"
-          className={classes.button}
-          onClick={props.EditProfile}
-          href="/dashboard"
-        >
-          Log out
-        </Button>
-        <AppBar position="static">
-          {/* <Tabs
-            // value={this.state.value}
-            // onChange={this.handleChange}
-            indicatorColor="default"
-            textColor="default"
-            centered
+          <Button
+            variant="outlined"
+            className={classes.button}
+            onClick={props.EditProfile}
+            href="/EditProfile"
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
-          </Tabs> */}
-        </AppBar>
-      </CardContent>
-      {/* <Card className={classes.card}>
-        <div className={classes.details}>
-          <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5">
-              Live From Space
-            </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              Mac Miller
-            </Typography>
-          </CardContent>
-          <div className={classes.controls}>
-            <IconButton aria-label="Previous">
-              {Youtube.direction === "rtl" ? (
-                <SkipNextIcon />
-              ) : (
-                <SkipPreviousIcon />
-              )}
-            </IconButton>
-            <IconButton aria-label="Play/pause">
-              <PlayArrowIcon
-                className={classes.playIcon}
-                onClick={props.Youtube}
-              />
-            </IconButton> */}
-      <Youtube />
-      {/* <IconButton aria-label="Next">
-              {Youtube.direction === "rtl" ? (
-                <SkipPreviousIcon />
-              ) : (
-                <SkipNextIcon />
-              )}
-            </IconButton>
-          </div>
-        </div>
-        <CardMedia
-          className={classes.cover}
-          image="/static/images/cards/live-from-space.jpg"
-          title="Live from space album cover"
-        />
-      </Card> */}
+            Edit
+          </Button>
+
+          <Button
+            variant="outlined"
+            align="center"
+            className={classes.button}
+            onClick={props.EditProfile}
+            href="/dashboard"
+          >
+            Log out
+          </Button>
+          <AppBar position="static" />
+        </CardContent>
+      </div>
+      <div class="col-4">
+        <Youtube />
+      </div>
     </div>
   );
 }
