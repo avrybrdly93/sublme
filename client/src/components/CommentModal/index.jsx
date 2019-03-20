@@ -53,4 +53,8 @@ function FormDialog() {
   );
 }
 
+<<<<<<< HEAD
 export default FormDialog;
+=======
+export default FormDialog;
+>>>>>>> origin/Avery-merge

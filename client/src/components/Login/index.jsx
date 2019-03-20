@@ -6,18 +6,17 @@ import "./style.css";
 
 class Login extends Component {
   state = {
-      loggedIn: false,
-      username: "",
-      password: ""
+    loggedIn: false,
+    username: "",
+    password: ""
   };
 
-  componentDidMount(){
-      if(Cookies.get("username")===undefined){
-        this.setState({loggedIn: false});
-      }
-      else{
-        this.setState({loggedIn: true});
-      }
+  componentDidMount() {
+    if (Cookies.get("username") === undefined) {
+      this.setState({ loggedIn: false });
+    } else {
+      this.setState({ loggedIn: true });
+    }
   }
 
   handleInputChange = event => {
@@ -78,7 +77,11 @@ class Login extends Component {
           </div>
           <br />
           <br />
-          <button className="button" style={{ textAlign: "center" }} onClick={this.handleFormSubmit} >
+          <button
+            className="button"
+            style={{ textAlign: "center" }}
+            onClick={this.handleFormSubmit}
+          >
             <span>Submit </span>
           </button>
         </form>

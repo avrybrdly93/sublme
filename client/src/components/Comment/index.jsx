@@ -14,4 +14,8 @@ class Comment extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default Comment;
+=======
+export default Comment;
+>>>>>>> origin/Avery-merge

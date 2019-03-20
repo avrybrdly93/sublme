@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
 import dbAPI from "../../utils/dbAPI";
 import axios from "axios";
-import "./style.css";
+//import "./style.css";
 
 class Signup extends Component {
   state = {
@@ -25,8 +25,7 @@ class Signup extends Component {
   componentDidMount() {
     if (Cookies.get("username") === undefined) {
       this.setState({ loggedIn: false });
-    }
-    else {
+    } else {
       this.setState({ loggedIn: true });
     }
   }
@@ -35,12 +34,11 @@ class Signup extends Component {
     if (this.state.loggedIn) {
       return <Redirect to="/dashboard" />;
     }
-  }
+  };
 
-  handleChange = (ev) => {
+  handleChange = ev => {
     this.setState({ success: false, url: "" });
-
-  }
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -49,89 +47,100 @@ class Signup extends Component {
     });
   };
 
-  handleUpload = (ev) => {
-    ev.preventDefault()
+  handleUpload = ev => {
+    ev.preventDefault();
     if (this.state.password === this.state.passwordTwo) {
       let fileOne = this.uploadInputOne.files[0];
       let fileTwo = this.uploadInputTwo.files[0];
 
-      let fileOneParts = this.uploadInputOne.files[0].name.split('.');
-      let fileTwoParts = this.uploadInputTwo.files[0].name.split('.');
+      let fileOneParts = this.uploadInputOne.files[0].name.split(".");
+      let fileTwoParts = this.uploadInputTwo.files[0].name.split(".");
 
       let fileOneType = fileOneParts[1];
       let fileTwoType = fileTwoParts[1];
 
-      let fileOneName=this.state.username+Date.now().toString()+"-img";
-      let fileTwoName =this.state.username+Date.now().toString()+"-bg";
-      
-      dbAPI.createUser({
-        imageOneName: fileOneName,
-        imageOneType: fileOneType,
-        imageTwoName: fileTwoName,
-        imageTwoType: fileTwoType,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        bioStatement: this.state.bioStatement,
-        gender: this.state.gender,
-        birthday: this.state.birthday,
-        userType: this.state.userType,
-        email: this.state.email,
-        username: this.state.username,
-        password: this.state.password
-      }).then(response => {
-        if (response.data.success === false) {
-          this.setState({ errCreatingUser: true, signupErrMsg: response.data.errMsg });
-        }
-        else {
-          var returnData = response.data.data.returnData;
-          var signedRequestOne = returnData.signedRequestOne;
-          var urlOne = returnData.urlOne;
-          var signedRequestTwo = returnData.signedRequestTwo;
-          var urlTwo = returnData.urlTwo;
-          console.log("URL File One: " + urlOne);
-          console.log("URL File Two: " + urlTwo);
+      let fileOneName = this.state.username + Date.now().toString() + "-img";
+      let fileTwoName = this.state.username + Date.now().toString() + "-bg";
 
-          var optionsOne = {
-            headers: {
-              'Content-Type': fileOneType
-            }
-          };
-
-          var optionsTwo = {
-            headers: {
-              'Content-Type': fileTwoType
-            }
-          };
-
-          axios.put(signedRequestOne, fileOne, optionsOne).then(resultOne => {
-            axios.put(signedRequestTwo, fileTwo, optionsTwo).then(resultTwo => {
-              this.setState({ loggedIn: true });
-            }).catch(error => {
-              console.log("ERROR File 2: " + JSON.stringify(error));
+      dbAPI
+        .createUser({
+          imageOneName: fileOneName,
+          imageOneType: fileOneType,
+          imageTwoName: fileTwoName,
+          imageTwoType: fileTwoType,
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          bioStatement: this.state.bioStatement,
+          gender: this.state.gender,
+          birthday: this.state.birthday,
+          userType: this.state.userType,
+          email: this.state.email,
+          username: this.state.username,
+          password: this.state.password
+        })
+        .then(response => {
+          if (response.data.success === false) {
+            this.setState({
+              errCreatingUser: true,
+              signupErrMsg: response.data.errMsg
             });
-          }).catch(error => {
-            console.log("ERROR File 1: " + JSON.stringify(error));
-          });
+          } else {
+            var returnData = response.data.data.returnData;
+            var signedRequestOne = returnData.signedRequestOne;
+            var urlOne = returnData.urlOne;
+            var signedRequestTwo = returnData.signedRequestTwo;
+            var urlTwo = returnData.urlTwo;
+            console.log("URL File One: " + urlOne);
+            console.log("URL File Two: " + urlTwo);
 
-        }
+            var optionsOne = {
+              headers: {
+                "Content-Type": fileOneType
+              }
+            };
 
-      }).catch(error => {
-        //alert(JSON.stringify(error));
-        console.log(error);
+            var optionsTwo = {
+              headers: {
+                "Content-Type": fileTwoType
+              }
+            };
+
+            axios
+              .put(signedRequestOne, fileOne, optionsOne)
+              .then(resultOne => {
+                axios
+                  .put(signedRequestTwo, fileTwo, optionsTwo)
+                  .then(resultTwo => {
+                    this.setState({ loggedIn: true });
+                  })
+                  .catch(error => {
+                    console.log("ERROR File 2: " + JSON.stringify(error));
+                  });
+              })
+              .catch(error => {
+                console.log("ERROR File 1: " + JSON.stringify(error));
+              });
+          }
+        })
+        .catch(error => {
+          //alert(JSON.stringify(error));
+          console.log(error);
+        });
+    } else {
+      this.setState({
+        errCreatingUser: true,
+        signupErrMsg: "Passwords Must Match"
       });
     }
-    else {
-      this.setState({ errCreatingUser: true, signupErrMsg: "Passwords Must Match" });
-    }
-  }
+  };
 
   render() {
     const ErrorMessage = () => (
       <div style={{ padding: 50 }}>
-        <h3 style={{ color: 'white' }}>{this.state.signupErrMsg}</h3>
+        <h3 style={{ color: "white" }}>{this.state.signupErrMsg}</h3>
         <br />
       </div>
-    )
+    );
 
     return (
       <React.Fragment>
@@ -223,7 +232,13 @@ class Signup extends Component {
           <div className="form-row genbir">
             <div className="col">
               <label htmlFor="inputGender">Gender</label>
-              <select className="form-control" id="inputGender" onChange={this.handleInputChange} name="gender" value={this.state.gender}>
+              <select
+                className="form-control"
+                id="inputGender"
+                onChange={this.handleInputChange}
+                name="gender"
+                value={this.state.gender}
+              >
                 <option defaultValue>Choose..</option>
                 <option>Female</option>
                 <option>Male</option>
@@ -251,7 +266,9 @@ class Signup extends Component {
               id="profile-img"
               required
               onChange={this.handleChange}
-              ref={(ref) => { this.uploadInputOne = ref }}
+              ref={ref => {
+                this.uploadInputOne = ref;
+              }}
               type="file"
             />
             <label className="custom-file-label" htmlFor="validatedCustomFile">
@@ -270,7 +287,9 @@ class Signup extends Component {
               id="bg-img"
               required
               onChange={this.handleChange}
-              ref={(ref) => { this.uploadInputTwo = ref }}
+              ref={ref => {
+                this.uploadInputTwo = ref;
+              }}
               type="file"
             />
             <label className="custom-file-label" htmlFor="validatedCustomFile">
@@ -298,7 +317,13 @@ class Signup extends Component {
 
           <div className="form-group col-md-12">
             <label htmlFor="inputState">Who are you?</label>
-            <select className="form-control" id="inputState" onChange={this.handleInputChange} name="userType" value={this.state.userType}>
+            <select
+              className="form-control"
+              id="inputState"
+              onChange={this.handleInputChange}
+              name="userType"
+              value={this.state.userType}
+            >
               <option defaultValue>Who are you</option>
               <option>Fan</option>
               <option>Artist</option>
@@ -343,13 +368,17 @@ class Signup extends Component {
               </div>
               <br />
               <br />
-              <button className="button" style={{ textAlign: "center" }} onClick={this.handleUpload}>
+              <button
+                className="button"
+                style={{ textAlign: "center" }}
+                onClick={this.handleUpload}
+              >
                 <span>Submit </span>
               </button>
             </div>
           </div>
         </form>
-        {this.state.errCreatingUser? <ErrorMessage/>: null}
+        {this.state.errCreatingUser ? <ErrorMessage /> : null}
       </React.Fragment>
     );
   }

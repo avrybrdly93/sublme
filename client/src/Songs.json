@@ -7,7 +7,7 @@
     "cover": "/assets/images/covers/future-the-wizrd-cover.jpeg",
     "profilePic": "/assets/images/profiles/future.jpg",
     "producer": "Tay Keith",
-    "mp3": "/assets/music/future-temptaion.mp3"
+    "mp3": "https://zavibes.org/wp-content/uploads/2019/04%20Temptation.m4a"
   },
   {
     "id": 1,
@@ -16,7 +16,8 @@
     "subArtist": "",
     "cover": "/assets/images/covers/21-savage-i-am-i-was.jpg",
     "profilePic": "/assets/images/profiles/21-savage.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "http://nocrawl.baseshare.com/uploads/songs/11242017/Lil%20Baby%20-%20Trending%20(Freestyle).mp3"
   },
   {
     "id": 2,

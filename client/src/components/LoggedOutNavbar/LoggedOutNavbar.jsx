@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 // import React from "react";
 //import PropTypes from "prop-types";
+=======
+import React from "react";
+import PropTypes from "prop-types";
+>>>>>>> origin/Avery-merge
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+<<<<<<< HEAD
 //import SearchIcon from "@material-ui/icons/Search";
 //import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
@@ -12,6 +18,11 @@ import AutoComplete from "../AutoComplete";
 //import axios from "axios";
 import React from "react";
 // import music from "../Music.js";
+=======
+import SearchIcon from "@material-ui/icons/Search";
+import InputBase from "@material-ui/core/InputBase";
+import { fade } from "@material-ui/core/styles/colorManipulator";
+>>>>>>> origin/Avery-merge
 
 const styles = theme => ({
   root: {
@@ -72,6 +83,7 @@ const styles = theme => ({
   }
 });
 
+<<<<<<< HEAD
 // class SecondarySearchAppBar extends Component {
 //   state = {
 //     music: null
@@ -224,3 +236,51 @@ export default withStyles(styles)(SecondarySearchAppBar);
 // };
 
 // export default withStyles(styles)(SecondarySearchAppBar);
+=======
+function SecondarySearchAppBar(props) {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" className={classes.appBar}>
+        <Toolbar>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+            />
+          </div>
+          <div className={classes.grow1} />
+          <Typography
+            className={classes.title}
+            variant="h6"
+            color="inherit"
+            style={{ textAlign: "center" }}
+            noWrap
+          >
+            Sublme
+          </Typography>
+          <div className={classes.grow2} />
+          <Button href="/login" color="inherit">
+            Login
+          </Button>
+          <Button href="/signup" color="inherit">
+            Signup
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
+
+SecondarySearchAppBar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(SecondarySearchAppBar);
+>>>>>>> origin/Avery-merge
