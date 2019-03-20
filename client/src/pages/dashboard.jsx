@@ -4,7 +4,7 @@ import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import VideosList from "../components/VideosList/VideosList";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
-import Songs from "../Songs.json";
+import axios from "axios";
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
@@ -12,15 +12,22 @@ import "./dashboard.css";
 
 class Dashboard extends Component {
   state = {
-    songs: Songs,
+    songs: [],
     currentSong: {},
     playlist: [],
     active: false
   };
 
+  componentDidMount() {
+    axios.get("/api/music").then(results => {
+      this.setState({ songs: results.data });
+    });
+  }
+
   handleCardClick = (e, song) => {
     e.preventDefault();
     this.setState({ currentSong: song });
+    console.log(song);
   };
 
   render() {
@@ -28,9 +35,9 @@ class Dashboard extends Component {
     let currentSong = this.state.currentSong;
 
     var renderCards = songs.map(song => (
-      <li key={song.id}>
+      <li key={song._id}>
         <MusicCard
-          id={song.id}
+          songid={song._id}
           cover={song.cover}
           covername={song.artist}
           profile={song.profilePic}
@@ -82,14 +89,14 @@ class Dashboard extends Component {
                 href="/"
                 data-uk-slidenav-previous
                 data-uk-slider-item="previous">
-                <i class="material-icons md-48">keyboard_arrow_left</i>
+                <i className="material-icons md-48">keyboard_arrow_left</i>
               </a>
               <a
                 className="uk-position-center-right-out uk-position-small uk-hidden-hover"
                 href="/"
                 data-uk-slidenav-next
                 data-uk-slider-item="next">
-                <i class="material-icons md-48">keyboard_arrow_right</i>
+                <i className="material-icons md-48">keyboard_arrow_right</i>
               </a>
             </div>
           </div>

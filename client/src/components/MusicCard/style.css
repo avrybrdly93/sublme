@@ -1,7 +1,7 @@
 .card {
   display: "flex";
   height: 250px;
-  width: 300px;
+  width: 325px;
   border: none !important;
   margin: 5px !important;
   border-radius: 0px !important;
@@ -31,16 +31,15 @@
   align-items: center;
   padding: 5px;
   margin-top: 0px !important;
-  margin-left: -200px !important;
   padding-bottom: 20px;
 }
 .social-icons {
   color: white !important;
   padding-left: 24px;
-  width: 300px;
+  width: 320px;
 }
 .space-1 {
-  width: 225px;
+  width: 245px;
   display: inline-block;
 }
 a {

@@ -21,14 +21,14 @@ const ProfileGridList = () => {
             href="/"
             data-uk-slidenav-previous
             data-uk-slider-item="previous">
-            <i class="material-icons md-48">keyboard_arrow_left</i>
+            <i className="material-icons md-48">keyboard_arrow_left</i>
           </a>
           <a
             className="uk-position-center-right uk-position-small"
             href="/"
             data-uk-slidenav-next
             data-uk-slider-item="next">
-            <i class="material-icons md-48">keyboard_arrow_right</i>
+            <i className="material-icons md-48">keyboard_arrow_right</i>
           </a>
         </div>
       </div>

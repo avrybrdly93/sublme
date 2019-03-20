@@ -6,8 +6,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import ProfileNav from "../components/ProfileNav/ProfileNav";
+// import ProfileNav from "../components/ProfileNav/ProfileNav";
 import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
+import ProfileTabs from "../components/ProfileTabs/ProfileTabs";
 import "./profile.css";
 
 const styles = theme => ({
@@ -61,48 +62,38 @@ function Profile(props) {
                 color: "white",
                 fontWeight: 500
               }}>
-              @kakashi
-              <ProfileMenu style={{ marginLeft: 30 }} />
+              <div className="row">
+                <div className="col-5" />
+                <div className="col-1">@kakashi</div>
+                <div className="col-1">
+                  <ProfileMenu />
+                </div>
+                <div className="col-5" />
+              </div>
+              <div className="row">
+                <div className="col-5" />
+                <div className="col-2">
+                  <Button
+                    variant="outlined"
+                    className={classes.button}
+                    onClick={props.Settings}
+                    style={{
+                      margin: "0 auto",
+                      fontWeight: 50,
+                      borderColor: "white",
+                      color: "white"
+                    }}
+                    href="/settings">
+                    Follow
+                  </Button>
+                </div>
+                <div className="col-5" />
+              </div>
             </Typography>
-          </div>
-          <div className="content">
-            <Typography
-              gutterBottom
-              variant="caption"
-              component="h2"
-              style={{ textAlign: "center", color: "white", fontWeight: 500 }}>
-              City, State
-            </Typography>
-            <Typography
-              component="p"
-              style={{
-                margin: "0 auto",
-                textAlign: "center",
-                color: "white",
-                fontWeight: 50,
-                width: 500
-              }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-              pretium mattis urna, at porta massa ultrices nec.
-            </Typography>
-
-            <Button
-              variant="outlined"
-              className={classes.button}
-              onClick={props.Settings}
-              style={{
-                margin: "0 auto",
-                borderColor: "white",
-                color: "white",
-                fontWeight: 50
-              }}
-              href="/settings">
-              Follow
-            </Button>
           </div>
         </CardContent>
       </div>
-      <ProfileNav />
+      <ProfileTabs />
     </React.Fragment>
   );
 }

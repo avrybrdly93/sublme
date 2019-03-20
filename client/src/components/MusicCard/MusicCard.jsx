@@ -80,7 +80,6 @@ class MusicCard extends Component {
   //             <CardContent className={classes.content}>
   //               <img
   //                 src={this.props.profile}
-  play = song => {};
 
   openComments = () => {
     this.setState({ open: true });
@@ -141,7 +140,7 @@ class MusicCard extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, ...other } = this.props;
     let renderComments = this.state.comments.map((comment, index) => (
       <Comment
         //userid={this.props.userid[index]}
@@ -158,7 +157,10 @@ class MusicCard extends Component {
     }
     return (
       <React.Fragment>
-        <Card className={classes.card} songid={this.props.songid}>
+        <Card
+          className={classes.card}
+          key={this.props.id}
+          songid={this.props.songid}>
           <CardMedia
             className={classes.cover}
             image={this.props.cover}
@@ -184,7 +186,7 @@ class MusicCard extends Component {
                 </Typography>
               </CardContent>
             </div>
-            <div className="controls">
+            <div className="controls" {...other}>
               <i className="fas fa-step-backward fa-2x" />
               <i
                 onClick={() => {
@@ -198,7 +200,7 @@ class MusicCard extends Component {
               />
               <i className="fas fa-step-forward fa-2x" />
             </div>
-            /////////////////////////////////
+
             <div className="social-icons">
               <span onClick={this.likeSong}>
                 <i className={likeHeart} />

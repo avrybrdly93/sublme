@@ -2,7 +2,6 @@ import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import "./style.css";
 
 const options = ["Update header", "Settings"];
@@ -35,7 +34,7 @@ class ProfileMenu extends React.Component {
           aria-owns={open ? "long-menu" : undefined}
           aria-haspopup="true"
           onClick={this.handleClick}>
-          <MoreVertIcon />
+          <i className="material-icons">keyboard_arrow_down</i>
         </IconButton>
         <Menu
           id="long-menu"
