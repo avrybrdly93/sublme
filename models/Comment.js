@@ -18,6 +18,14 @@ var CommentSchema = new Schema({
     writerPic: {
         type: String
     },
+    replies:[
+        {
+            // Store ObjectIds in the array
+            type: Schema.Types.ObjectId,
+            // The ObjectIds will refer to the ids in the User model
+            ref: "Comment"
+        }
+    ],
     dateCreated: {
         type: Date,
         default: Date.now

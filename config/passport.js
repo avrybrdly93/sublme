@@ -37,6 +37,7 @@ module.exports = function (passport) {
                     db.User.create({
                         "firstName": req.body.firstName,
                         "lastName": req.body.lastName,
+                        "bioStatement": req.body.bioStatement,
                         "gender": req.body.gender,
                         "birthday": req.body.birthday,
                         "userType": req.body.userType,

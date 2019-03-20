@@ -14,6 +14,7 @@ class Signup extends Component {
     lastName: "",
     password: "",
     passwordTwo: "",
+    bioStatement: "",
     gender: "",
     birthday: "",
     userType: "",
@@ -70,6 +71,7 @@ class Signup extends Component {
         imageTwoType: fileTwoType,
         firstName: this.state.firstName,
         lastName: this.state.lastName,
+        bioStatement: this.state.bioStatement,
         gender: this.state.gender,
         birthday: this.state.birthday,
         userType: this.state.userType,
@@ -136,7 +138,6 @@ class Signup extends Component {
         {this.renderRedirect()}
         <form>
           <div className="col-input">
-
             <label htmlFor="inputEmail4">Email</label>
             <input
               className="form-control"
@@ -282,6 +283,20 @@ class Signup extends Component {
           <br />
 
           <div className="form-group col-md-12">
+            <label htmlFor="inputBio">Enter A Quick Bio Statement</label>
+            <input
+              className="form-control"
+              id="inputBio"
+              type="textarea"
+              placeholder="Bio Statement"
+              onChange={this.handleInputChange}
+              name="bioStatement"
+              value={this.state.bioStatement}
+            />
+          </div>
+          <br />
+
+          <div className="form-group col-md-12">
             <label htmlFor="inputState">Who are you?</label>
             <select className="form-control" id="inputState" onChange={this.handleInputChange} name="userType" value={this.state.userType}>
               <option defaultValue>Who are you</option>
@@ -291,6 +306,7 @@ class Signup extends Component {
             </select>
           </div>
           <br />
+
           {/* style and add link to terms & service  */}
           <div className="container">
             <div className="round">

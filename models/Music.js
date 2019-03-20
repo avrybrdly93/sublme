@@ -34,7 +34,7 @@ var MusicSchema = new Schema({
         {
             // Store ObjectIds in the array
             type: Schema.Types.ObjectId,
-            // The ObjectIds will refer to the ids in the User model
+            // The ObjectIds will refer to the ids in the Comment model
             ref: "Comment"
         }
     ],
