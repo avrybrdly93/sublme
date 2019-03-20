@@ -2,15 +2,6 @@ import React, { Component } from "react";
 import Button from "../Button/Button";
 import "./style.css";
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
-  input: {
-    display: "none"
-  }
-});
-
 class Login extends Component {
   state = {};
   render() {

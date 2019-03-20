@@ -123,7 +123,7 @@ class Signup extends Component {
                   </div>{" "}
                   and{" "}
                   <div className="popup" onclick="openPrivacy()">
-                    <a href="">Privacy Policy</a>
+                    <a href="/">Privacy Policy</a>
                     <span className="popuptext" id="privacyPopup">
                       <header>X</header>Privacy Policy:
                       <br />

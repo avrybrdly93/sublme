@@ -78,22 +78,21 @@ class Dashboard extends Component {
                 {renderCards}
               </ul>
               <a
-                className="uk-position-top-left uk-position-small uk-hidden-hover"
+                className="uk-position-center-left-out uk-position-small uk-hidden-hover"
                 href="/"
                 data-uk-slidenav-previous
                 data-uk-slider-item="previous">
-                <i className="fas fa-arrow-left" />
+                <i class="material-icons md-48">keyboard_arrow_left</i>
               </a>
               <a
-                className="uk-position-top-right uk-position-small uk-hidden-hover"
+                className="uk-position-center-right-out uk-position-small uk-hidden-hover"
                 href="/"
                 data-uk-slidenav-next
                 data-uk-slider-item="next">
-                <i className="fas fa-arrow-right" />
+                <i class="material-icons md-48">keyboard_arrow_right</i>
               </a>
             </div>
           </div>
-          <div className="col-1" />
         </div>
         <br />
         <div className="row">

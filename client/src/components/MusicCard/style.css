@@ -1,3 +1,15 @@
+.card {
+  display: "flex";
+  height: 250px;
+  width: 300px;
+  border: none !important;
+  margin: 5px !important;
+  border-radius: 0px !important;
+}
+.cover {
+  width: 510px;
+  height: 350px;
+}
 .producer {
   color: white !important;
   margin-left: 130px !important;
@@ -45,17 +57,6 @@ a:hover {
 }
 .play-pause-btn {
   padding: 10px;
-}
-.card {
-  display: "flex";
-  height: 250px;
-  width: 300px;
-  border: none !important;
-  margin: 5px !important;
-}
-.cover {
-  width: 510px;
-  height: 350px;
 }
 
 /* ------- MEDIA QUERIES ------- */

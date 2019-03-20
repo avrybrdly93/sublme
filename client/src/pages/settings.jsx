@@ -4,11 +4,9 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-
 import { withStyles } from "@material-ui/core/styles";
-
 import TextField from "@material-ui/core/TextField";
-import profile from "../../pages/profile";
+// import Profile from "./profile";
 
 const styles = theme => ({
   container: {
@@ -33,7 +31,7 @@ const styles = theme => ({
 });
 // const genders = ["woman", "man"];
 
-class EditProfile extends React.Component {
+class Settings extends React.Component {
   state = {
     name: "Cat in the Hat",
     age: "",
@@ -132,8 +130,8 @@ class EditProfile extends React.Component {
   }
 }
 
-EditProfile.propTypes = {
+Settings.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(EditProfile);
+export default withStyles(styles)(Settings);

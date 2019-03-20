@@ -7,8 +7,8 @@ import NoMatch from "../pages/NoMatch";
 import Login from "./Login";
 import LoggedOutNavbar from "./LoggedOutNavbar/LoggedOutNavbar";
 // import Cookies from "js-cookie";
-import Profile from "./ProfileCard/ProfileCard";
-import EditProfile from "./Profile/EditProfile";
+import Profile from "../pages/profile";
+import Settings from "../pages/settings";
 import Signup from "./Signup";
 
 class App extends Component {
@@ -38,7 +38,7 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/editprofile" component={EditProfile} />
+            <Route exact path="/settings" component={Settings} />
             <Route exact path="/signup" component={Signup} />
             <Route component={NoMatch} />
           </Switch>
