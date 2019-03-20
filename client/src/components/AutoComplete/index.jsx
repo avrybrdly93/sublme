@@ -186,6 +186,7 @@ class Autocomplete extends Component {
           // onKeyPress={this.handleKeyPress}
           value={this.state.userInput}
           name = "userInput"
+          placeholder="Search"
         />
         {suggestionsListComponent}
         </div>
