@@ -58,21 +58,8 @@ a:hover {
 .play-pause-btn {
   padding: 10px;
 }
-<<<<<<< HEAD
 #comment-icon:hover {
   background-color: white;
-=======
-.card {
-  display: "flex";
-  height: 250px;
-  width: 300px;
-  border: none !important;
-  margin: 5px !important;
-}
-.cover {
-  width: 510px;
-  height: 350px;
->>>>>>> javier-branch
 }
 
 /* ------- MEDIA QUERIES ------- */
@@ -529,8 +516,4 @@ a:hover {
     width: 635px;
     display: inline-block;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> javier-branch

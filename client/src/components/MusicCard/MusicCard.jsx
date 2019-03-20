@@ -65,7 +65,7 @@ class MusicCard extends Component {
     dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
     });
-  };
+  }
 
   // render() {
   //   const { classes, ...other } = this.props;
@@ -113,7 +113,7 @@ class MusicCard extends Component {
     //     this.setState({ comments: response.data, newComment: "" });
     //   })
     // );
-
+    console.log(this.state.newComment);
     axios
       .put("/api/music/comments/" + this.props.songid, {
         comments: this.state.newComment

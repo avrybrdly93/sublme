@@ -25,13 +25,12 @@ export default {
   },
   getComments: (songID, callback) => {
     axios.get("/api/music/comments/" + songID).then(callback);
-    return axios.post("/api/users/login",tryUser);
   },
-  findUser: function(userID){
-    return axios.get("/api/users/"+userID);
+  findUser: function(userID) {
+    return axios.get("/api/users/" + userID);
   },
-  createUser: function(newUser){
-    return axios.post("/api/users/signup",newUser);
+  createUser: function(newUser) {
+    return axios.post("/api/users/signup", newUser);
   }
   // sendComment: (songID, newComment, callback) => {
   //   axios

@@ -1,24 +1,23 @@
 require("dotenv").config();
 const db = require("../models");
-const AWS = require('aws-sdk');
+const AWS = require("aws-sdk");
 
 // configure the keys for accessing AWS
 AWS.config.update({
-    region: "us-west-1",
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  region: "us-west-1",
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
 const S3_BUCKET = process.env.S3_BUCKET;
 
 module.exports = {
-  findAll: function (req, res) {
-    db.Music
-        .find(req.query)
-        .sort({ date: -1 })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-},
+  findAll: function(req, res) {
+    db.Music.find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findComments: function(req, res) {
     db.Music.findById(req.params.id)
       .sort({ date: -1 })
@@ -33,107 +32,108 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
+  create: function(req, res) {
     const s3 = new AWS.S3();
-    const musicName = req.session.passport.user.username + Date.now().toString() + "-music";
+    const musicName =
+      req.session.passport.user.username + Date.now().toString() + "-music";
     const musicType = req.body.musicType;
-    const imgName = req.session.passport.user.username + Date.now().toString() + "-cover";
+    const imgName =
+      req.session.passport.user.username + Date.now().toString() + "-cover";
     const imgType = req.body.imgType;
 
     // console.log("MUSIC EXTENSION: " + musicType);
     // console.log("Image EXTENSION: " + imgType);
 
     if (musicType === "mp3" || musicType === "wav") {
-        if (imgType === "png" || imgType === "jpeg" || imgType === "jpg") {
-            const s3ParamsOne = {
-                Bucket: S3_BUCKET,
-                Key: musicName,
-                Expires: 500,
-                ContentType: musicType,
-                ACL: 'public-read'
-            };
+      if (imgType === "png" || imgType === "jpeg" || imgType === "jpg") {
+        const s3ParamsOne = {
+          Bucket: S3_BUCKET,
+          Key: musicName,
+          Expires: 500,
+          ContentType: musicType,
+          ACL: "public-read"
+        };
 
-            const s3ParamsTwo = {
-                Bucket: S3_BUCKET,
-                Key: imgName,
-                Expires: 500,
-                ContentType: imgType,
-                ACL: 'public-read'
-            };
+        const s3ParamsTwo = {
+          Bucket: S3_BUCKET,
+          Key: imgName,
+          Expires: 500,
+          ContentType: imgType,
+          ACL: "public-read"
+        };
 
-            s3.getSignedUrl('putObject', s3ParamsOne, (errOne, dataOne) => {
-                if (errOne) {
-                    console.log("SIGNED URL ERROR MUSIC FILE: "+errOne);
-                    res.json({ success: false, errMsg: "Could Not Upload Music File. Try Again" });
-                }
-
-                s3.getSignedUrl('putObject', s3ParamsTwo, (errTwo, dataTwo) => {
-                    if (errTwo) {
-                        console.log("SIGNED URL ERRO MUSIC PIC: "+errTwo);
-                        res.json({ success: false, errMsg: "Could Not Upload Music Art. Try Again" });
-                    }
-
-                    const returnData = {
-                        signedRequestOne: dataOne,
-                        urlOne: `https://${S3_BUCKET}.s3.amazonaws.com/${musicName}`,
-                        signedRequestTwo: dataTwo,
-                        urlTwo: `https://${S3_BUCKET}.s3.amazonaws.com/${imgName}`
-                    };
-
-                    db.Music
-                        .create({
-                            title: req.body.musicTitle, 
-                            fileLink: returnData.urlOne, 
-                            genre: req.body.genre,
-                            artistID: req.session.passport.user._id, 
-                            cover: returnData.urlTwo, 
-                            artistName: req.session.passport.user.username
-                        })
-                        .then(dbModel => res.json({ success: true, data: { returnData } }))
-                        .catch(err => res.status(422).json(err));
-                });
+        s3.getSignedUrl("putObject", s3ParamsOne, (errOne, dataOne) => {
+          if (errOne) {
+            console.log("SIGNED URL ERROR MUSIC FILE: " + errOne);
+            res.json({
+              success: false,
+              errMsg: "Could Not Upload Music File. Try Again"
             });
-        }
-        else {
-            res.json({ success: false, errMsg: "Image File Type Not Supported!" });
-        }
-    }
-    else {
-        res.json({ success: false, errMsg: "Music File Type Not Supported!" });
-    }
+          }
 
+          s3.getSignedUrl("putObject", s3ParamsTwo, (errTwo, dataTwo) => {
+            if (errTwo) {
+              console.log("SIGNED URL ERRO MUSIC PIC: " + errTwo);
+              res.json({
+                success: false,
+                errMsg: "Could Not Upload Music Art. Try Again"
+              });
+            }
+
+            const returnData = {
+              signedRequestOne: dataOne,
+              urlOne: `https://${S3_BUCKET}.s3.amazonaws.com/${musicName}`,
+              signedRequestTwo: dataTwo,
+              urlTwo: `https://${S3_BUCKET}.s3.amazonaws.com/${imgName}`
+            };
+
+            db.Music.create({
+              title: req.body.musicTitle,
+              fileLink: returnData.urlOne,
+              genre: req.body.genre,
+              artistID: req.session.passport.user._id,
+              cover: returnData.urlTwo,
+              artistName: req.session.passport.user.username
+            })
+              .then(dbModel =>
+                res.json({ success: true, data: { returnData } })
+              )
+              .catch(err => res.status(422).json(err));
+          });
+        });
+      } else {
+        res.json({ success: false, errMsg: "Image File Type Not Supported!" });
+      }
+    } else {
+      res.json({ success: false, errMsg: "Music File Type Not Supported!" });
+    }
   },
-  update: function (req, res) {
-      db.Music
-          .findOneAndUpdate({ _id: req.params.id }, req.body)
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
+  update: function(req, res) {
+    db.Music.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  remove: function (req, res) {
-      db.Music
-          .findById({ _id: req.params.id })
-          .then(dbModel => dbModel.remove())
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
+  remove: function(req, res) {
+    db.Music.findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  findByArtistId: function (req, res) {
-      db.Music
-          .findById(req.params.id)
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
+  findByArtistId: function(req, res) {
+    db.Music.findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  findOwnMusic: function (req, res) {
-      db.Music.find({ owners: { $in: [req.session.passport.user._id] } })
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
+  findOwnMusic: function(req, res) {
+    db.Music.find({ owners: { $in: [req.session.passport.user._id] } })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  findByGenre: function (req, res) {
-      db.Music.find({ genre: req.params.genre })
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
+  findByGenre: function(req, res) {
+    db.Music.find({ genre: req.params.genre })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };
 
-
-    //Dont touch for now!
-    
+//Dont touch for now!

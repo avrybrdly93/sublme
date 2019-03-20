@@ -4,7 +4,6 @@ import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import VideosList from "../components/VideosList/VideosList";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
-import Songs from "../Songs.json";
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
