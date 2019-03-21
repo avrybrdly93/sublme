@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import "./style.scss";
 
 class MusicPlayer extends Component {
-  constructor(props) {
-    super(props);
-    console.log("Hello world :)");
-  }
+  
   state = {
     isPlaying: false,
     currentSong: this.props

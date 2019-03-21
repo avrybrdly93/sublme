@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Input } from "../components/Form"
+import { Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedIn: false,
       success: false,
       urlOne: "",
       musicTitle: "",
@@ -13,6 +16,14 @@ class App extends Component {
       urlTwo: "",
       errUploading: false,
       errMsg: ""
+    }
+  }
+
+  componentDidMount() {
+    if (Cookies.get("username") === undefined) {
+      this.setState({ loggedIn: false });
+    } else {
+      this.setState({ loggedIn: true });
     }
   }
 
@@ -30,6 +41,7 @@ class App extends Component {
 
   // Perform the upload
   handleUpload = (ev) => {
+    ev.preventDefault();
     let fileOne = this.uploadInput.files[0];
     let fileTwo = this.uploadInputImg.files[0];
     // Split the filename to get the name and type
@@ -97,14 +109,26 @@ class App extends Component {
       });
   }
 
+  renderRedirect = () => {
+    if (this.state.loggedIn) {
+      return null;
+    }
+    else{
+      return <Redirect to="/dashboard" />;
+    }
+  };
+
 
   render() {
     const SuccessMessage = () => (
       <div style={{ padding: 50 }}>
         <h3 style={{ color: 'green' }}>SUCCESSFUL UPLOAD</h3>
         <a href={this.state.urlOne}>Access the Music Here</a>
+        <br/>
         <a href={this.state.urlTwo}>Access Cover Art Here</a>
         <br />
+        <a href="/dashboard">Dashboard</a>
+        <br/>
       </div>
     )
 
@@ -117,26 +141,35 @@ class App extends Component {
 
     return (
       <div className="App">
+      
         <center>
           <h1>UPLOAD A FILE</h1>
           {this.state.success ? <SuccessMessage /> : null}
           {this.state.errUploading ? <ErrorMessage /> : null}
-          <input onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" />
-          <input onChange={this.handleChange} ref={(ref) => { this.uploadInputImg = ref }} type="file" />
-          <Input
-            value={this.state.musicTitle}
-            onChange={this.handleTextChange}
-            name="musicTitle"
-            placeholder="Enter Music Title (required)"
-          />
-          <Input
-            value={this.state.genre}
-            onChange={this.handleTextChange}
-            name="genre"
-            placeholder="Enter Genre (required)"
-          />
-          <br />
-          <button onClick={this.handleUpload}>UPLOAD</button>
+
+          {this.state.success ?  (
+            null
+          ): (
+            <form>
+            <input onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" />
+            <input onChange={this.handleChange} ref={(ref) => { this.uploadInputImg = ref }} type="file" />
+            <Input
+              value={this.state.musicTitle}
+              onChange={this.handleTextChange}
+              name="musicTitle"
+              placeholder="Enter Music Title (required)"
+            />
+            <Input
+              value={this.state.genre}
+              onChange={this.handleTextChange}
+              name="genre"
+              placeholder="Enter Genre (required)"
+            />
+            <br />
+            <button onClick={this.handleUpload}>UPLOAD</button>
+          </form>
+          )}
+
         </center>
       </div>
     );

@@ -34,7 +34,7 @@ class Dashboard extends Component {
     let currentSong = this.state.currentSong;
 
     var renderCards = songs.map(song => (
-      <li key={song.id}>
+      <li key={song._id}>
         <MusicCard
           songid={song._id}
           cover={song.cover}
@@ -91,7 +91,7 @@ class Dashboard extends Component {
                 data-uk-slidenav-previous
                 data-uk-slider-item="previous"
               >
-                <i class="material-icons md-48">keyboard_arrow_left</i>
+                <i className="material-icons md-48">keyboard_arrow_left</i>
               </a>
               <a
                 className="uk-position-center-right-out uk-position-small uk-hidden-hover"
@@ -99,7 +99,7 @@ class Dashboard extends Component {
                 data-uk-slidenav-next
                 data-uk-slider-item="next"
               >
-                <i class="material-icons md-48">keyboard_arrow_right</i>
+                <i className="material-icons md-48">keyboard_arrow_right</i>
               </a>
             </div>
           </div>

@@ -13,4 +13,7 @@ router.route("/likedMusic/:id").put(userController.likeSong);
 // => /api/users/:id
 router.route("/:id").get(userController.findUserByID);
 
+// => /api/users/logout
+router.route("/logout").get(userController.logoutUser);
+
 module.exports = router;

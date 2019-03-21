@@ -1,0 +1,55 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  input {
+    margin:0 0 25px;
+    overflow:hidden;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.15);
+    -webkit-border-radius: 0px;
+    border-radius: 15px;
+}
+  
+  .no-suggestions {
+    color: #999;
+    padding: 0.5rem;
+  }
+  
+  .suggestions {
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    overflow: auto;
+    padding-left: 0;
+    width: calc(300px + 1rem);
+    z-index: 99;
+  }
+  
+  .suggestions li {
+    padding: 0.5rem;
+    z-index: 99;
+  }
+  
+   .suggestion-active,
+  .suggestions li:hover {
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    z-index: 99;
+  } 
+  
+  .suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #999;
+    z-index: 99;
+  }
+  .contain-search {
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y:hidden;
+    font: white;
+  }

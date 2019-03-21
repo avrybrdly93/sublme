@@ -85,7 +85,7 @@ class MusicCard extends Component {
   openComments = () => {
     this.setState({ open: true });
     dbAPI.getComments(this.props.songid, response => {
-      response.data.map(() => {});
+      // response.data.map(() => {});
       this.setState({ comments: response.data });
     });
   };
@@ -113,15 +113,17 @@ class MusicCard extends Component {
     //     this.setState({ comments: response.data, newComment: "" });
     //   })
     // );
-    console.log(this.state.newComment);
+    
+    //console.log(this.state.newComment);
     axios
       .put("/api/music/comments/" + this.props.songid, {
         comments: this.state.newComment
       })
-      .then(response => {
-        axios.get("/api/music/comments/" + this.props.songid).then(response => {
-          response.data.map(comment => {});
-          this.setState({ comments: response.data, newComment: "" });
+      .then(responseOne => {
+        axios.get("/api/music/comments/" + this.props.songid).then(responseTwo => {
+          console.log("THIS SHOULD BE COMMENTS: "+responseTwo.data);
+          //response.data.map(comment => {});
+          this.setState({ comments: responseTwo.data, newComment: "" });
         });
       });
   };
@@ -142,12 +144,15 @@ class MusicCard extends Component {
 
   render() {
     const { classes } = this.props;
-    let renderComments = this.state.comments.map((comment, index) => (
+    let renderComments = this.state.comments.map(comment => (
       <Comment
         //userid={this.props.userid[index]}
         songid={this.props.songid}
-        comment={comment}
+        comment={comment.text}
         key={this.props._id}
+        picURL={comment.writerPic}
+        username={comment.writerName}
+        time={comment.dateCreated}
       />
     ));
     let likeHeart = null;
