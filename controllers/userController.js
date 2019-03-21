@@ -13,7 +13,7 @@ AWS.config.update({
 const S3_BUCKET = process.env.S3_BUCKET;
 
 module.exports = {
-  signUpUser: function(req, res, next) {
+  signUpUser: function (req, res, next) {
     const s3 = new AWS.S3();
     const imgOneName = req.body.imageOneName;
     const imgOneType = req.body.imageOneType;
@@ -67,7 +67,7 @@ module.exports = {
               urlTwo: `https://${S3_BUCKET}.s3.amazonaws.com/${imgTwoName}`
             };
 
-            passport.authenticate("local-signup", function(err, usr, info) {
+            passport.authenticate("local-signup", function (err, usr, info) {
               console.log("info", info);
               if (err) {
                 console.log("Passport Error: " + err);
@@ -108,8 +108,8 @@ module.exports = {
       });
     }
   },
-  loginUser: function(req, res, next) {
-    passport.authenticate("local-login", function(err, usr, info) {
+  loginUser: function (req, res, next) {
+    passport.authenticate("local-login", function (err, usr, info) {
       console.log("\n\n\n########userrrr", usr);
       if (err) {
         console.log("passport err", err);
@@ -133,7 +133,7 @@ module.exports = {
       });
     })(req, res, next);
   },
-  likeSong: function(req, res) {
+  likeSong: function (req, res) {
     db.Music.findOneAndUpdate(
       { _id: req.params.id },
       { $push: { likedMusic: req.body.likedMusic } }
@@ -141,9 +141,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findUserByID: function(req, res) {
+  findUserByID: function (req, res) {
     db.User.findById({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  logoutUser: function (req, res) {
+    req.session.destroy(function (err) {
+      req.logout();
+      res.clearCookie('key');
+      res.clearCookie('username');
+      res.clearCookie('user_id');
+    });
   }
 };

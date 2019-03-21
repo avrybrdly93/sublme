@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { Input, FormBtn } from "../components/Form/index.js";
-=======
-import { Input, FormBtn } from "../components/Form";
->>>>>>> javier-branch
 import dbAPI from "../utils/dbAPI";
 import { Redirect } from "react-router-dom";
 import Cookies from "js-cookie";

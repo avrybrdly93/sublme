@@ -7,15 +7,14 @@ class Comment extends Component {
   };
   render() {
     return (
-      <div>
-        {this.props.comment} - {this.state.userid}
+      <div style={{color: 'black'}}>
+        <p>{this.props.comment}</p>
+        <img alt={this.props.username} src={this.props.picURL} width="25px" height="25px"/><small> {this.props.username} at {this.props.time}</small>
+        <br/>
+        <br/>
       </div>
     );
   }
 }
 
-<<<<<<< HEAD
 export default Comment;
-=======
-export default Comment;
->>>>>>> origin/Avery-merge

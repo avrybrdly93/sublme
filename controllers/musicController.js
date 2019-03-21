@@ -21,16 +21,35 @@ module.exports = {
   findComments: function (req, res) {
     db.Music.findById(req.params.id)
       .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel.comments))
+      .then(dbModel => {
+        //console.log("MUSIC FOUND: "+dbModel);
+        db.Comment.find({
+          "_id": { "$in": dbModel.comments }
+        }).then(response =>{
+            //console.log("COMMENTS FOUND: "+response);
+            res.json(response)
+        })
+        .catch(err => res.status(422).json(err));
+      })
       .catch(err => res.status(422).json(err));
   },
   postComment: function (req, res) {
-    db.Music.findOneAndUpdate(
-      { _id: req.params.id },
-      { $push: { comments: req.body.comments } }
-    )
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    db.Comment.create({
+      text: req.body.comments,
+      writerID: req.session.passport.user._id,
+      writerName: req.session.passport.user.username,
+      writerPic: req.session.passport.user.profileImage
+    }).then( responseOne => {
+      //console.log(responseOne);
+      db.Music.findOneAndUpdate(
+        { _id: req.params.id },
+        { $push: { comments: responseOne._id } }
+      )
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    }).catch(error=>{
+      console.log(error);
+    });
   },
   create: function (req, res) {
     const s3 = new AWS.S3();
