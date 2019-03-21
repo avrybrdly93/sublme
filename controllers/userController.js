@@ -21,11 +21,7 @@ module.exports = {
     const imgTwoType = req.body.imageTwoType;
 
     if (imgOneType === "png" || imgOneType === "jpeg" || imgOneType === "jpg") {
-      if (
-        imgTwoType === "png" ||
-        imgTwoType === "jpeg" ||
-        imgTwoType === "jpg"
-      ) {
+      if ( imgTwoType === "png" || imgTwoType === "jpeg" || imgTwoType === "jpg") {
         const s3ParamsOne = {
           Bucket: S3_BUCKET,
           Key: imgOneName,
@@ -152,6 +148,17 @@ module.exports = {
       res.clearCookie('key');
       res.clearCookie('username');
       res.clearCookie('user_id');
+    });
+  },
+  findLoggedInUser: function(req,res){
+    db.User.findById(req.session.passport.user._id)
+    .then(dbModel=>{
+      console.log("USER FOUND: "+dbModel);
+      res.json(dbModel)
+    })
+    .catch(err=>{
+      console.log(err);
+      res.status(422).json(err)
     });
   }
 };

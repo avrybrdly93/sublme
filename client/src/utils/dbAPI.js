@@ -29,6 +29,9 @@ export default {
   findUser: function(userID) {
     return axios.get("/api/users/" + userID);
   },
+  passportFindUser: function(){
+    return axios.get("/api/users/find/self");
+  },
   createUser: function(newUser) {
     return axios.post("/api/users/signup", newUser);
   }
