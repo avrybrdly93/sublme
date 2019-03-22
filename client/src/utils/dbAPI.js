@@ -1,27 +1,48 @@
 //THIS IS WHERE WE DO API CALLS TO OUR OWN DB!
 import axios from "axios";
-
+let hasBeenLiked = false;
 export default {
   //Post to Login Route
   loginUser: function(tryUser) {
     return axios.post("/api/users/login ", tryUser);
   },
-  sendLike: (like, songID, userID) => {
+
+  like: (like, songID, username) => {
     axios
       .put("/api/music/" + songID, {
         likes: like
       })
       .then(response => {});
-    // axios
-    //   .put("/api/users/likedMusic/" + userID, {
-    //     likedMusic: songID
-    //   })
-    //   .then(response => {
-    //     console.log(response.data, this.props.songid);
-    //   });
+    axios
+      .put("/api/users/likedMusic/" + username, {
+        likedMusic: songID
+      })
+      .then(response => {
+        //hasBeenLiked = false;
+        console.log("First time liked!");
+        //console.log(response.data, this.props.songid);
+      });
+  },
+  unlike: (like, songID, username) => {
+    axios
+      .put("/api/music/" + songID, {
+        likes: like
+      })
+      .then(response => {});
+    axios
+      .put("/api/users/likedMusic/remove/" + username, {
+        likedMusic: songID
+      })
+      .then(response => {
+        console.log("removing like");
+        //hasBeenLiked = true;
+      });
   },
   getMusic: (songID, callback) => {
     axios.get("/api/music/" + songID).then(callback);
+  },
+  getLikes: (userID, callback) => {
+    axios.get("api/users/likedMusic/" + userID).then(callback);
   },
   getComments: (songID, callback) => {
     axios.get("/api/music/comments/" + songID).then(callback);
