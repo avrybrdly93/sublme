@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, FormBtn } from "../components/Form.js/index.js";
+import { Input, FormBtn } from "../components/Form/index.js";
 import dbAPI from "../utils/dbAPI";
 import { Redirect } from "react-router-dom";
 import Cookies from "js-cookie";

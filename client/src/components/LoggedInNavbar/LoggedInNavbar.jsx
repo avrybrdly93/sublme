@@ -5,13 +5,13 @@ import Avatar from "@material-ui/core/Avatar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+//import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
+//import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -23,6 +23,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import Drawer from "@material-ui/core/Drawer";
+import AutoComplete from "../AutoComplete";
 
 const styles = theme => ({
   root: {
@@ -148,7 +149,7 @@ class PrimarySearchAppBar extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>
+        {/* <List>
           {["Upload", "Profile"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
@@ -168,7 +169,40 @@ class PrimarySearchAppBar extends React.Component {
               <ListItemText primary={text} />
             </ListItem>
           ))}
-        </List>
+        </List> */}
+        const sideList = (
+        <div className={classes.list}>
+          <List>
+            <ListItem component="a" href="/upload" button key="Upload">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Upload" />
+            </ListItem>
+
+            <ListItem component="a" href="/profile" button key="Profile">
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+          </List>
+          <List>
+            <ListItem component="a" href="/EditProfile" button key="Settings">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
+            <ListItem component="a" href="/logout" button key="Logout">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </List>
+        </div>
+        );
       </div>
     );
 
@@ -178,7 +212,8 @@ class PrimarySearchAppBar extends React.Component {
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}>
+        onClose={this.handleMenuClose}
+      >
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -208,7 +243,8 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
-            <div className={classes.search}>
+            <AutoComplete />
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -219,16 +255,20 @@ class PrimarySearchAppBar extends React.Component {
                   input: classes.inputInput
                 }}
               />
-            </div>
+            </div> */}
+
             <div className={classes.grow1} />
+            <a className="no-underline" href="/">
             <Typography
               className={classes.title}
               variant="h6"
               color="inherit"
               style={{ textAlign: "center" }}
-              noWrap>
+              noWrap
+            >
               Sublme
             </Typography>
+            </a>
             <div className={classes.grow2} />
             <div className={classes.sectionDesktop}>
               {/*
@@ -249,10 +289,11 @@ class PrimarySearchAppBar extends React.Component {
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
                 color="inherit"
-                onClick={this.toggleDrawer("right", true)}>
+                onClick={this.toggleDrawer("right", true)}
+              >
                 <Avatar
-                  alt="Kekashi Sensai"
-                  src="https://vignette.wikia.nocookie.net/naruto/images/2/27/Kakashi_Hatake.png/revision/latest?cb=20170628120149"
+                  alt={this.props.username}
+                  src={this.props.picURL}
                   className={classes.avatar}
                 />
               </IconButton>
@@ -261,7 +302,8 @@ class PrimarySearchAppBar extends React.Component {
               <IconButton
                 aria-haspopup="true"
                 onClick={this.handleMobileMenuOpen}
-                color="inherit">
+                color="inherit"
+              >
                 <MoreIcon />
               </IconButton>
             </div>
@@ -270,12 +312,14 @@ class PrimarySearchAppBar extends React.Component {
         <Drawer
           anchor="right"
           open={this.state.right}
-          onClose={this.toggleDrawer("right", false)}>
+          onClose={this.toggleDrawer("right", false)}
+        >
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer("right", false)}
-            onKeyDown={this.toggleDrawer("right", false)}>
+            onKeyDown={this.toggleDrawer("right", false)}
+          >
             {sideList}
           </div>
         </Drawer>

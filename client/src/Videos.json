@@ -3,24 +3,30 @@
     "id": 0,
     "video": "https://www.youtube.com/embed/CJOZc02VwJM",
     "title": "Down Below",
-    "author": "Roddy Ricch"
+    "artist": "Roddy Ricch"
   },
   {
     "id": 1,
-    "video": "https://www.youtube.com/embed/CJOZc02VwJM",
-    "title": "Down Below",
-    "author": "Roddy Ricch"
+    "video": "https://www.youtube.com/embed/CWh-TmG_h7g",
+    "title": "Red Room",
+    "artist": "Offset"
   },
   {
     "id": 2,
-    "video": "https://www.youtube.com/embed/CJOZc02VwJM",
-    "title": "Down Below",
-    "author": "Roddy Ricch"
+    "video": "https://www.youtube.com/embed/EkwyWSAiUq4",
+    "title": "Goin Dummi",
+    "artist": "Future"
   },
   {
     "id": 3,
-    "video": "https://www.youtube.com/embed/CJOZc02VwJM",
-    "title": "Down Below",
-    "author": "Roddy Ricch"
+    "video": "https://www.youtube.com/embed/xk2m2OvnUtY",
+    "title": "Let Me Breath",
+    "artist": "YBN Almighty Jay"
+  },
+  {
+    "id": 4,
+    "video": "https://www.youtube.com/embed/D0ZfzQSNYvU",
+    "title": "Hood Cycle",
+    "artist": "G Herbo"
   }
 ]

@@ -1,0 +1,14 @@
+.bg {
+  height: 250px !important;
+}
+.bigAvatar {
+  width: 150px !important;
+  height: 150px !important;
+}
+.profile {
+  margin-top: -260px;
+  margin-bottom: 50px;
+}
+.content {
+  margin-top: 0% !important;
+}

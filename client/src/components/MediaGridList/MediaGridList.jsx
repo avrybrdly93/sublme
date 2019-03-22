@@ -3,35 +3,34 @@ import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 import MusicCard from "../MusicCard/MusicCard";
-import Songs from "../../Songs.json";
 import "./style.css";
 import axios from "axios";
 
 class MediaGridList extends Component {
   state = {
-    songs: []
+    songs: Songs,
+    currentlyPlaying: []
   };
 
   componentDidMount() {
     axios.get("/api/music").then(results => {
-      console.log(results);
       this.setState({ songs: results.data });
     });
   }
 
   render() {
     let songs = this.state.songs;
-    console.log(songs);
     var renderCards = songs.map(songs => (
-      <li key={songs.id}>
+      <li key={songs._id}>
         <MusicCard
-          id={songs.id}
+          songid={songs._id}
           cover={songs.cover}
           coverTitle={songs.artist}
           profilePic={songs.profilePic}
           producer={songs.producer}
           artist={songs.artist}
           title={songs.title}
+          // likes={songs.likes}
         />
       </li>
     ));
@@ -45,17 +44,15 @@ class MediaGridList extends Component {
             className="uk-position-center-left uk-position-small uk-hidden-hover"
             href="/"
             data-uk-slidenav-previous
-            data-uk-slider-item="previous"
-          >
-            <i className="fas fa-arrow-left" />
+            data-uk-slider-item="previous">
+            <i class="material-icons">keyboard_arrow_left</i>
           </a>
           <a
             className="uk-position-center-right uk-position-small uk-hidden-hover"
             href="/"
             data-uk-slidenav-next
-            data-uk-slider-item="next"
-          >
-            <i className="fas fa-arrow-right" />
+            data-uk-slider-item="next">
+            <i class="material-icons">keyboard_arrow_right</i>
           </a>
         </div>
       </div>

@@ -1,6 +1,18 @@
+.card {
+  display: "flex";
+  height: 250px;
+  width: 300px;
+  border: none !important;
+  margin: 5px !important;
+  border-radius: 0px !important;
+}
+.cover {
+  width: 510px;
+  height: 350px;
+}
 .producer {
   color: white !important;
-  margin-left: 180px !important;
+  margin-left: 130px !important;
   margin-top: -125px !important;
   margin-bottom: 30px !important;
 }
@@ -17,17 +29,18 @@
   opacity: 0.9;
   text-align: center;
   align-items: center;
-  padding-left: 5px;
-  margin-top: 20px !important;
+  padding: 5px;
+  margin-top: 0px !important;
+  margin-left: -200px !important;
   padding-bottom: 20px;
 }
 .social-icons {
   color: white !important;
-  padding-left: 20px;
-  width: 350px;
+  padding-left: 24px;
+  width: 300px;
 }
 .space-1 {
-  width: 85%;
+  width: 225px;
   display: inline-block;
 }
 a {
@@ -42,6 +55,465 @@ a:hover {
 .forward-btn {
   margin-top: 120px;
 }
-.play-btn {
+.play-pause-btn {
   padding: 10px;
+}
+#comment-icon:hover {
+  background-color: white;
+}
+
+/* ------- MEDIA QUERIES ------- */
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .card {
+    display: "flex";
+    height: 180px;
+    width: 230px;
+    border: none !important;
+    margin: 0px !important;
+  }
+  .cover {
+    width: 230px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 60px !important;
+    margin-top: -120px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -65px !important;
+    margin-bottom: 40px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-left: 5px !important;
+    margin-top: -30px !important;
+    padding-bottom: 0px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 24px;
+    width: 450px;
+    margin-top: -15px;
+  }
+  .space-1 {
+    width: 155px;
+    display: inline-block;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 400px !important;
+    border: none !important;
+  }
+  .cover {
+    width: 400px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: -20px !important;
+    margin-top: -25px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -50px !important;
+    margin-bottom: 30px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 0px !important;
+    margin-left: -275px !important;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 385px !important;
+  }
+  .space-1 {
+    width: 330px !important;
+    display: inline-block;
+  }
+}
+
+/* ----------- iPhone 6/7/8 ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 280px;
+    border: none !important;
+  }
+  .cover {
+    width: 280px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 60px !important;
+    margin-top: -120px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -65px !important;
+    margin-bottom: 40px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 0px !important;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 280px;
+    margin-top: 0px;
+  }
+  .space-1 {
+    width: 210px;
+    display: inline-block;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 500px !important;
+    border: none !important;
+  }
+  .cover {
+    width: 500px !important;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 320px !important;
+    margin-top: -125px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -50px !important;
+    margin-bottom: 30px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 0px !important;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 615px;
+  }
+  .space-1 {
+    width: 565px;
+    display: inline-block;
+  }
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 310px !important;
+    border: none !important;
+  }
+  .cover {
+    width: 379px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 145px !important;
+    margin-top: -125px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -50px !important;
+    margin-bottom: 30px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-left: -60px !important;
+    margin-top: 0px !important;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 349px !important;
+    margin-top: 0px;
+  }
+  .space-1 {
+    width: 245px !important;
+    display: inline-block;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 550px !important;
+    border: none !important;
+  }
+  .cover {
+    width: 550px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 380px !important;
+    margin-top: -125px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -50px !important;
+    margin-bottom: 30px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 0px !important;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 690px;
+  }
+  .space-1 {
+    width: 635px;
+    display: inline-block;
+  }
+}
+
+/* ----------- Google Pixel 2 ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 411px) and (max-device-width: 731px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 310px;
+    border: none !important;
+  }
+  .cover {
+    width: 310px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 60px !important;
+    margin-top: -120px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -65px !important;
+    margin-bottom: 40px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 0px !important;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 295px;
+    margin-top: 0px;
+  }
+  .space-1 {
+    width: 245px;
+    display: inline-block;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 500px !important;
+    border: none !important;
+  }
+  .cover {
+    width: 500px !important;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 320px !important;
+    margin-top: -125px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -50px !important;
+    margin-bottom: 30px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 0px !important;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 615px;
+  }
+  .space-1 {
+    width: 565px;
+    display: inline-block;
+  }
+}
+
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 400px !important;
+    border: none !important;
+  }
+  .cover {
+    width: 400px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 145px !important;
+    margin-top: -125px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -50px !important;
+    margin-bottom: 30px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-left: -60px !important;
+    margin-top: 0px !important;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 349px !important;
+    margin-top: 0px;
+  }
+  .space-1 {
+    width: 245px !important;
+    display: inline-block;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .card {
+    display: "flex";
+    height: 250px;
+    width: 400px !important;
+    border: none !important;
+  }
+  .cover {
+    width: 400px;
+    height: 350px;
+  }
+  .producer {
+    color: white !important;
+    margin-left: 380px !important;
+    margin-top: -125px !important;
+    margin-bottom: 30px !important;
+  }
+  .artist {
+    margin-left: 60px !important;
+    margin-top: -50px !important;
+    margin-bottom: 30px !important;
+  }
+  .controls {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 0px !important;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  .social-icons {
+    color: white !important;
+    padding-left: 20px;
+    width: 690px;
+  }
+  .space-1 {
+    width: 635px;
+    display: inline-block;
+  }
 }

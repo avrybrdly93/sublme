@@ -11,24 +11,24 @@ const ProfileGridList = () => {
         <div
           className="uk-position-relative uk-visible-toggle uk-light"
           tabIndex="-1"
-          data-uk-slider>
+          data-uk-slider="sets: true">
           <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small">
             <ProfileCard />
           </ul>
 
           <a
-            className="uk-position-center-left uk-position-small uk-hidden-hover"
+            className="uk-position-center-left uk-position-small"
             href="/"
             data-uk-slidenav-previous
             data-uk-slider-item="previous">
-            <i className="fas fa-arrow-left" />
+            <i className="material-icons md-48">keyboard_arrow_left</i>
           </a>
           <a
-            className="uk-position-center-right uk-position-small uk-hidden-hover"
+            className="uk-position-center-right uk-position-small"
             href="/"
             data-uk-slidenav-next
             data-uk-slider-item="next">
-            <i className="fas fa-arrow-right" />
+            <i className="material-icons md-48">keyboard_arrow_right</i>
           </a>
         </div>
       </div>
