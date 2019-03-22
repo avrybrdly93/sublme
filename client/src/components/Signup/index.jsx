@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import dbAPI from "../../utils/dbAPI";
 import axios from "axios";
 import "./style.css";
+
 class Signup extends Component {
   state = {
     loggedIn: false,
@@ -276,6 +277,7 @@ class Signup extends Component {
             </div>
           </div>
           <br />
+
           <div className="form-group col-md-12">
             <label htmlFor="inputBio">Enter A Quick Bio Statement</label>
             <input
