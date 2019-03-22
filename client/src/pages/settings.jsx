@@ -1,12 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import CardContent from "@material-ui/core/CardContent";
+//import Button from "@material-ui/core/Button";
+//import ProfileNav from "../components/ProfileNav/ProfileNav";
+//import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
+import "./profile.css";
 // import Profile from "./profile";
+//import settings from "../../pages/settings";
 
 const styles = theme => ({
   container: {
@@ -128,10 +133,33 @@ class Settings extends React.Component {
       </div>
     );
   }
+  //import { BrowserRouter as Router, Route } from "react-router-dom";
 }
+
+// const styles = theme => ({
+//   bigAvatar: {
+//     margin: 10,
+//     width: 200,
+//     height: 200,
+
+//     button: {
+//       margin: theme.spacing.unit
+//     },
+//     root: {
+//       flexGrow: 1
+//     },
+
+//     input: {
+//       display: "center"
+//     }
+//   }
+// });
 
 Settings.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Settings);
+//export default withStyles(styles)(Profile);
+
+// export default Profile;

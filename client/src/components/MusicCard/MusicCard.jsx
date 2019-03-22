@@ -16,6 +16,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Comment from "../Comment";
 import dbAPI from "../../utils/dbAPI";
+import Cookies from "js-cookie";
 
 const styles = theme => ({
   details: {
@@ -51,10 +52,10 @@ class MusicCard extends Component {
     };
   }
 
-  handleClick = () => {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
-  };
+  // handleClick = () => {
+  //   const currentState = this.state.active;
+  //   this.setState({ active: !currentState });
+  // };
 
   // likeSong = () => {
   //   axios.put("/api/music").then(() => {
@@ -62,8 +63,22 @@ class MusicCard extends Component {
 
   //   }
   componentDidMount() {
+    let username = Cookies.get("username");
     dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
+    });
+    dbAPI.getLikes(username, response => {
+      // let likedSongs = response.data[0].likedMusic;
+      let likedSongs = response.data[0].likedMusic;
+      console.log(likedSongs);
+      likedSongs.map((song, index) => {
+        console.log(song);
+        if (this.props.songid === song) {
+          console.log("This song has already been liked");
+          this.setState({ alreadyLiked: true });
+        }
+        console.log(this.state.alreadyLiked);
+      });
     });
   }
 
@@ -84,8 +99,9 @@ class MusicCard extends Component {
   openComments = () => {
     this.setState({ open: true });
     dbAPI.getComments(this.props.songid, response => {
-      response.data.map(() => {});
+      // response.data.map(() => {});
       this.setState({ comments: response.data });
+      console.log(this.state.comments);
     });
   };
 
@@ -113,15 +129,19 @@ class MusicCard extends Component {
     //   })
     // );
 
+    //console.log(this.state.newComment);
     axios
       .put("/api/music/comments/" + this.props.songid, {
         comments: this.state.newComment
       })
-      .then(response => {
-        axios.get("/api/music/comments/" + this.props.songid).then(response => {
-          response.data.map(comment => {});
-          this.setState({ comments: response.data, newComment: "" });
-        });
+      .then(responseOne => {
+        axios
+          .get("/api/music/comments/" + this.props.songid)
+          .then(responseTwo => {
+            console.log("THIS SHOULD BE COMMENTS: " + responseTwo.data);
+            //response.data.map(comment => {});
+            this.setState({ comments: responseTwo.data, newComment: "" });
+          });
       });
   };
 
@@ -129,18 +149,32 @@ class MusicCard extends Component {
     let newLike = this.state.likes + 1;
     let unlike = this.state.likes - 1;
     let { songid } = this.props;
+    let username = Cookies.get("username");
+
+    // axios.get("/api/users/likedMusic/" + username).then(response => {
+    //   let likedSongs = response.data[0].likedMusic;
+    //   for (let i = 0; i < likedSongs.length; i++) {
+    //     for (let j = 0; j < likedSongs.length; j++) {
+    //       if (likedSongs[i] === likedSongs[j]) {
+    //         console.log("Already liked this song!");
+    //         this.setState({ alreadyLiked: true });
+    //       }
+    //     }
+    //   }
+    // });
 
     if (this.state.alreadyLiked) {
       this.setState({ likes: unlike, alreadyLiked: false });
-      dbAPI.sendLike(unlike, songid, null);
+      dbAPI.unlike(unlike, songid, username);
     } else {
       this.setState({ likes: newLike, alreadyLiked: true });
-      dbAPI.sendLike(newLike, songid, null);
+      dbAPI.like(newLike, songid, username);
     }
   };
 
   render() {
     const { classes, ...other } = this.props;
+<<<<<<< HEAD
     let renderComments = this.state.comments.map((comment, index) => (
       <Comment
         //userid={this.props.userid[index]}
@@ -148,6 +182,19 @@ class MusicCard extends Component {
         comment={comment}
         key={this.props._id}
       />
+=======
+    let renderComments = this.state.comments.map(comment => (
+      <li key={comment._id}>
+        <Comment
+          //userid={this.props.userid[index]}
+          songid={this.props.songid}
+          comment={comment.text}
+          picURL={comment.writerPic}
+          username={comment.writerName}
+          time={comment.dateCreated}
+        />
+      </li>
+>>>>>>> Avery-merge
     ));
     let likeHeart = null;
     if (this.state.alreadyLiked) {
@@ -164,7 +211,8 @@ class MusicCard extends Component {
           <CardMedia
             className={classes.cover}
             image={this.props.cover}
-            title={this.props.coverTitle}>
+            title={this.props.coverTitle}
+          >
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <img
@@ -178,7 +226,8 @@ class MusicCard extends Component {
                 <Typography
                   variant="body1"
                   color="textSecondary"
-                  className="track-info artist">
+                  className="track-info artist"
+                >
                   {this.props.artist}
                 </Typography>
                 <Typography variant="h5" className="track-info">
@@ -189,9 +238,9 @@ class MusicCard extends Component {
             <div className="controls" {...other}>
               <i className="fas fa-step-backward fa-2x" />
               <i
-                onClick={() => {
-                  this.handleClick();
-                }}
+                // onClick={() => {
+                //   this.handleClick();
+                // }}
                 className={
                   this.state.active
                     ? "far fa-pause-circle fa-3x play-pause-btn"
@@ -200,7 +249,10 @@ class MusicCard extends Component {
               />
               <i className="fas fa-step-forward fa-2x" />
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> Avery-merge
             <div className="social-icons">
               <span onClick={this.likeSong}>
                 <i className={likeHeart} />
@@ -221,7 +273,8 @@ class MusicCard extends Component {
               <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
-                aria-labelledby="form-dialog-title">
+                aria-labelledby="form-dialog-title"
+              >
                 <DialogTitle id="form-dialog-title">Comments</DialogTitle>
                 <DialogContent>
                   <DialogContentText>

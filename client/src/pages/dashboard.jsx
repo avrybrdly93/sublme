@@ -4,11 +4,11 @@ import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import VideosList from "../components/VideosList/VideosList";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
-import axios from "axios";
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 import "./dashboard.css";
+import axios from "axios";
 
 class Dashboard extends Component {
   state = {
@@ -26,6 +26,7 @@ class Dashboard extends Component {
 
   handleCardClick = (e, song) => {
     e.preventDefault();
+    //console.log("SONG: "+song);
     this.setState({ currentSong: song });
     console.log(song);
   };
@@ -39,10 +40,11 @@ class Dashboard extends Component {
         <MusicCard
           songid={song._id}
           cover={song.cover}
-          covername={song.artist}
-          profile={song.profilePic}
+          // covername={song.artistName}
+          // profile={song.profilePic}
+          filelink={song.fileLink}
           producer={song.producer}
-          artist={song.artist}
+          artist={song.artistName}
           title={song.title}
           onClick={e => this.handleCardClick(e, song)}
         />
@@ -134,13 +136,13 @@ class Dashboard extends Component {
         </div>
         <MusicPlayer
           // profile={doPlaySong.profile}
-          artist={currentSong.artist}
+          artist={currentSong.artistName}
           cover={currentSong.cover}
-          alt={currentSong.artist}
+          alt={currentSong.artistName}
           // songLink={doPlaySong.link}
           title={currentSong.title}
-          src={currentSong.mp3}
-          id={currentSong.id}
+          src={currentSong.fileLink}
+          id={currentSong._id}
         />
       </div>
     );
