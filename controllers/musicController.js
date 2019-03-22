@@ -59,64 +59,71 @@ module.exports = {
     const imgName =
       req.session.passport.user.username + Date.now().toString() + "-cover";
     const imgType = req.body.imgType;
+    const imgSize = req.body.imgSize; 
 
+    console.log("Music Cover Art Size: "+imgSize+" MB");
     // console.log("MUSIC EXTENSION: " + musicType);
     // console.log("Image EXTENSION: " + imgType);
 
     if (musicType === "mp3" || musicType === "wav") {
       if (imgType === "png" || imgType === "jpeg" || imgType === "jpg") {
-        const s3ParamsOne = {
-          Bucket: S3_BUCKET,
-          Key: musicName,
-          Expires: 500,
-          ContentType: musicType,
-          ACL: "public-read"
-        };
-
-        const s3ParamsTwo = {
-          Bucket: S3_BUCKET,
-          Key: imgName,
-          Expires: 500,
-          ContentType: imgType,
-          ACL: "public-read"
-        };
-
-        s3.getSignedUrl("putObject", s3ParamsOne, (errOne, dataOne) => {
-          if (errOne) {
-            console.log("SIGNED URL ERROR MUSIC FILE: " + errOne);
-            res.json({
-              success: false,
-              errMsg: "Could Not Upload Music File. Try Again"
-            });
-          }
-
-          s3.getSignedUrl('putObject', s3ParamsTwo, (errTwo, dataTwo) => {
-            if (errTwo) {
-              console.log("SIGNED URL ERRO MUSIC PIC: " + errTwo);
-              res.json({ success: false, errMsg: "Could Not Upload Music Art. Try Again" });
+        if(imgSize<=1.5){
+          const s3ParamsOne = {
+            Bucket: S3_BUCKET,
+            Key: musicName,
+            Expires: 500,
+            ContentType: musicType,
+            ACL: "public-read"
+          };
+  
+          const s3ParamsTwo = {
+            Bucket: S3_BUCKET,
+            Key: imgName,
+            Expires: 500,
+            ContentType: imgType,
+            ACL: "public-read"
+          };
+  
+          s3.getSignedUrl("putObject", s3ParamsOne, (errOne, dataOne) => {
+            if (errOne) {
+              console.log("SIGNED URL ERROR MUSIC FILE: " + errOne);
+              res.json({
+                success: false,
+                errMsg: "Could Not Upload Music File. Try Again"
+              });
             }
-
-            const returnData = {
-              signedRequestOne: dataOne,
-              urlOne: `https://${S3_BUCKET}.s3.amazonaws.com/${musicName}`,
-              signedRequestTwo: dataTwo,
-              urlTwo: `https://${S3_BUCKET}.s3.amazonaws.com/${imgName}`
-            };
-
-            db.Music
-              .create({
-                title: req.body.musicTitle,
-                titleLower: req.body.musicTitle.toLowerCase(),
-                fileLink: returnData.urlOne,
-                genre: req.body.genre,
-                artistID: req.session.passport.user._id,
-                cover: returnData.urlTwo,
-                artistName: req.session.passport.user.username
-              })
-              .then(dbModel => res.json({ success: true, data: { returnData } }))
-              .catch(err => res.status(422).json(err));
+  
+            s3.getSignedUrl('putObject', s3ParamsTwo, (errTwo, dataTwo) => {
+              if (errTwo) {
+                console.log("SIGNED URL ERRO MUSIC PIC: " + errTwo);
+                res.json({ success: false, errMsg: "Could Not Upload Music Art. Try Again" });
+              }
+  
+              const returnData = {
+                signedRequestOne: dataOne,
+                urlOne: `https://${S3_BUCKET}.s3.amazonaws.com/${musicName}`,
+                signedRequestTwo: dataTwo,
+                urlTwo: `https://${S3_BUCKET}.s3.amazonaws.com/${imgName}`
+              };
+  
+              db.Music
+                .create({
+                  title: req.body.musicTitle,
+                  titleLower: req.body.musicTitle.toLowerCase(),
+                  fileLink: returnData.urlOne,
+                  genre: req.body.genre,
+                  artistID: req.session.passport.user._id,
+                  cover: returnData.urlTwo,
+                  artistName: req.session.passport.user.username
+                })
+                .then(dbModel => res.json({ success: true, data: { returnData } }))
+                .catch(err => res.status(422).json(err));
+            });
           });
-        });
+        }
+        else{
+          res.json({ success: false, errMsg: "Image File Size Too Big (1.5 MB Or Less)!" });
+        }
       }
       else {
         res.json({ success: false, errMsg: "Image File Type Not Supported!" });

@@ -51,12 +51,14 @@ class App extends Component {
     let musicType = fileParts[1];
     let imgName = imgParts[0];
     let imgType = imgParts[1];
-    console.log("Preparing the upload");
+    let imgSize = this.uploadInputImg.files[0].size/1024/1024;
+    //console.log("Preparing the upload");
     axios.post("/api/music/new", {
       musicName: musicName,
       musicType: musicType,
       imgName: imgName,
       imgType: imgType,
+      imgSize: imgSize,
       musicTitle: this.state.musicTitle,
       genre: this.state.genre
     })

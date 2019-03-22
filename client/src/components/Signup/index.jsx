@@ -62,12 +62,17 @@ class Signup extends Component {
       let fileOneName = this.state.username + Date.now().toString() + "-img";
       let fileTwoName = this.state.username + Date.now().toString() + "-bg";
 
+      let fileOneSize = this.uploadInputOne.files[0].size/1024/1024;
+      let fileTwoSize = this.uploadInputTwo.files[0].size/1024/1024;
+
       dbAPI
         .createUser({
           imageOneName: fileOneName,
           imageOneType: fileOneType,
+          imageOneSize: fileOneSize,
           imageTwoName: fileTwoName,
           imageTwoType: fileTwoType,
+          imageTwoSize: fileTwoSize,
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           bioStatement: this.state.bioStatement,

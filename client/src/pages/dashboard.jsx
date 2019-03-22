@@ -26,6 +26,7 @@ class Dashboard extends Component {
 
   handleCardClick = (e, song) => {
     e.preventDefault();
+    //console.log("SONG: "+song);
     this.setState({ currentSong: song });
   };
 
@@ -38,12 +39,13 @@ class Dashboard extends Component {
         <MusicCard
           songid={song._id}
           cover={song.cover}
-          covername={song.artist}
-          profile={song.profilePic}
+          // covername={song.artistName}
+          // profile={song.profilePic}
+          filelink={song.fileLink}
           producer={song.producer}
-          artist={song.artist}
+          artist={song.artistName}
           title={song.title}
-          onClick={e => this.handleCardClick(e, song)}
+          onClick={e => this.handleCardClick(e,song)}
         />
       </li>
     ));
@@ -138,13 +140,13 @@ class Dashboard extends Component {
         </div>
         <MusicPlayer
           // profile={doPlaySong.profile}
-          artist={currentSong.artist}
+          artist={currentSong.artistName}
           cover={currentSong.cover}
-          alt={currentSong.artist}
+          alt={currentSong.artistName}
           // songLink={doPlaySong.link}
           title={currentSong.title}
-          src={currentSong.mp3}
-          id={currentSong.id}
+          src={currentSong.fileLink}
+          id={currentSong._id}
         />
       </div>
     );

@@ -51,10 +51,10 @@ class MusicCard extends Component {
     };
   }
 
-  handleClick = () => {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
-  };
+  // handleClick = () => {
+  //   const currentState = this.state.active;
+  //   this.setState({ active: !currentState });
+  // };
 
   // likeSong = () => {
   //   axios.put("/api/music").then(() => {
@@ -80,7 +80,7 @@ class MusicCard extends Component {
   //             <CardContent className={classes.content}>
   //               <img
   //                 src={this.props.profile}
-  play = song => {};
+  play = song => { };
 
   openComments = () => {
     this.setState({ open: true });
@@ -113,7 +113,7 @@ class MusicCard extends Component {
     //     this.setState({ comments: response.data, newComment: "" });
     //   })
     // );
-    
+
     //console.log(this.state.newComment);
     axios
       .put("/api/music/comments/" + this.props.songid, {
@@ -121,7 +121,7 @@ class MusicCard extends Component {
       })
       .then(responseOne => {
         axios.get("/api/music/comments/" + this.props.songid).then(responseTwo => {
-          console.log("THIS SHOULD BE COMMENTS: "+responseTwo.data);
+          console.log("THIS SHOULD BE COMMENTS: " + responseTwo.data);
           //response.data.map(comment => {});
           this.setState({ comments: responseTwo.data, newComment: "" });
         });
@@ -143,17 +143,18 @@ class MusicCard extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, ...other } = this.props;
     let renderComments = this.state.comments.map(comment => (
-      <Comment
-        //userid={this.props.userid[index]}
-        songid={this.props.songid}
-        comment={comment.text}
-        key={this.props._id}
-        picURL={comment.writerPic}
-        username={comment.writerName}
-        time={comment.dateCreated}
-      />
+      <li key={comment._id}>
+        <Comment
+          //userid={this.props.userid[index]}
+          songid={this.props.songid}
+          comment={comment.text}
+          picURL={comment.writerPic}
+          username={comment.writerName}
+          time={comment.dateCreated}
+        />
+      </li>
     ));
     let likeHeart = null;
     if (this.state.alreadyLiked) {
@@ -191,12 +192,12 @@ class MusicCard extends Component {
                 </Typography>
               </CardContent>
             </div>
-            <div className="controls">
-              <i className="fas fa-step-backward fa-2x" />
+            <div className="controls" {...other} >
+              <i className="fas fa-step-backward fa-2x"  />
               <i
-                onClick={() => {
-                  this.handleClick();
-                }}
+                // onClick={() => {
+                //   this.handleClick();
+                // }}
                 className={
                   this.state.active
                     ? "far fa-pause-circle fa-3x play-pause-btn"
