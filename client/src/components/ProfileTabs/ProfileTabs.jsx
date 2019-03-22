@@ -1,29 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import SwipeableViews from "react-swipeable-views";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import SoundsFilter from "../SoundsFilter/SoundsFilter";
 
-function TabContainer({ children, dir }) {
+function TabContainer(props) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-      {children}
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
     </Typography>
   );
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 };
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper
   }
 });
 
@@ -36,32 +35,25 @@ class ProfileTabs extends React.Component {
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
-    this.setState({ value: index });
-  };
-
   render() {
     const { classes, theme } = this.props;
+    const { value } = this.state;
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
-          <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth">
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
+        <AppBar
+          position="static"
+          style={{
+            background: "linear-gradient(to right,#f27121,#e94057,#8a2387)"
+          }}>
+          <Tabs value={value} onChange={this.handleChange} centered>
+            <Tab label="Bio" />
+            <Tab label="Sounds" />
+            <Tab label="Favorites" />
           </Tabs>
         </AppBar>
-        <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}>
-          <TabContainer dir={theme.direction}>
+        {value === 0 && (
+          <TabContainer style={{ height: "100%" }} dir={theme.direction}>
             <div className="content">
               <Typography
                 gutterBottom
@@ -80,17 +72,21 @@ class ProfileTabs extends React.Component {
                   margin: "0 auto",
                   textAlign: "center",
                   color: "black",
-                  fontWeight: 50,
-                  width: 500
+                  fontWeight: 50
                 }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
                 pretium mattis urna, at porta massa ultrices nec.
               </Typography>
             </div>
           </TabContainer>
-          <TabContainer dir={theme.direction}>Item Two</TabContainer>
-          <TabContainer dir={theme.direction}>Item Three</TabContainer>
-        </SwipeableViews>
+        )}
+        {value === 1 && (
+          <TabContainer>
+            <SoundsFilter />
+          </TabContainer>
+        )}
+        {value === 2 && <TabContainer>Item Three</TabContainer>}
+        {value === 3 && <TabContainer>Item Four</TabContainer>}
       </div>
     );
   }

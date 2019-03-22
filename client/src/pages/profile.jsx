@@ -6,7 +6,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-// import ProfileNav from "../components/ProfileNav/ProfileNav";
 import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
 import ProfileTabs from "../components/ProfileTabs/ProfileTabs";
 import "./profile.css";
@@ -62,38 +61,36 @@ function Profile(props) {
                 color: "white",
                 fontWeight: 500
               }}>
-              <div className="row">
-                <div className="col-5" />
-                <div className="col-1">@kakashi</div>
-                <div className="col-1">
+              <div className="row name">
+                <div className="col-lg-5 col-1" />
+                <div className="col-lg-1 col-5 username">@kakashi</div>
+                <div className="col-lg-1 col-5 settings">
                   <ProfileMenu />
                 </div>
-                <div className="col-5" />
-              </div>
-              <div className="row">
-                <div className="col-5" />
-                <div className="col-2">
-                  <Button
-                    variant="outlined"
-                    className={classes.button}
-                    onClick={props.Settings}
-                    style={{
-                      margin: "0 auto",
-                      fontWeight: 50,
-                      borderColor: "white",
-                      color: "white"
-                    }}
-                    href="/settings">
-                    Follow
-                  </Button>
-                </div>
-                <div className="col-5" />
+                <div className="col-lg-5 col-1" />
               </div>
             </Typography>
+            <div className="button">
+              <Button
+                variant="outlined"
+                className={classes.button}
+                onClick={props.Settings}
+                style={{
+                  fontWeight: 50,
+                  borderColor: "white",
+                  color: "white"
+                }}
+                href="/settings">
+                Follow
+              </Button>
+            </div>
+            <p className="followers">3,049 followers</p>
           </div>
         </CardContent>
       </div>
-      <ProfileTabs />
+      <div className="tabs">
+        <ProfileTabs />
+      </div>
     </React.Fragment>
   );
 }
