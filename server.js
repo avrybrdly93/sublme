@@ -1,10 +1,10 @@
 require("dotenv").config();
-const express=require("express");
-const path=require("path");
-const mongoose=require("mongoose");
-const bodyParser=require("body-parser");
-const routes=require("./routes");
-const app=express();
+const express = require("express");
+const path = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const routes = require("./routes");
+const app = express();
 const passport = require("passport");
 const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
@@ -23,20 +23,21 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.use(session({
-  key: 'key',
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    expires: 600000
-  }
-}));
+app.use(
+  session({
+    key: "key",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000
+    }
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
 
 // Add routes, both API and view
 app.use(routes);

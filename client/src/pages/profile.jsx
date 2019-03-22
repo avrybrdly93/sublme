@@ -11,8 +11,7 @@ import AppBar from "@material-ui/core/AppBar";
 import "../App.css";
 import "../components/Profile/profile.css";
 import Youtube from "../components/Profile/youtube.js";
-import "../components/Navbar/Navbar";
-import Navbar from "../components/Navbar/Navbar";
+
 // import GridList from "@material-ui/core/GridList";
 // import GridListTile from "@material-ui/core/GridListTile";
 // import GridListTileBar from "@material-ui/core/GridListTileBar";
@@ -79,8 +78,6 @@ function Profile(props) {
 
   return (
     <div className="col-12">
-      <Navbar />
-
       <Grid container justify="center" alignItems="center">
         <Avatar
           alt="Picture"

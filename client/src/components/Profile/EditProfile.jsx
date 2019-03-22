@@ -21,12 +21,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit
   },
-  // button: {
-  //   marginLeft: theme.spacing.unit,
-  //   marginRight: theme.spacing.unit,
-  //   display: "center",
-  //   flexWrap: "wrap"
-  // },
+
   dense: {
     marginTop: 16
   },
@@ -211,7 +206,7 @@ class EditProfile extends React.Component {
               disabled={isLoading}
               onClick={!isLoading ? this.handleClick : null}
             >
-              {isLoading ? "Loading…" : "Submit"}
+              {isLoading ? "Loading..." : "Submit"}
             </Button>
           </CardContent>
         </form>
@@ -222,7 +217,7 @@ class EditProfile extends React.Component {
               size="large"
               color="black"
               className={classes.margin}
-              href="/profile"
+              href="/settings"
             >
               Go back
             </Button>

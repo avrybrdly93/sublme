@@ -5,7 +5,19 @@ html {
   background-image: url("/../assets/images/memphis-colorful.png");
 }
 
+div.col-12 {
+  background: -webkit-linear-gradient(
+    to right,
+    #f27121,
+    #e94057,
+    #8a2387
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+}
+
 body {
+  /* height: 140%;
+  border-bottom-color: #8a2387 solid 3px; */
   background: #8a2387; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -20,7 +32,8 @@ body {
     #8a2387
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.container {
+
+div.ui.container {
   background: -webkit-linear-gradient(
     to right,
     #f27121,
@@ -28,18 +41,18 @@ body {
     #8a2387
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #f27121, #e94057, #8a2387);
-  width: 500%;
+  width: 100%;
   float: left;
   /* display: inline-block; */
   margin: 40px;
-  margin-left: 100px;
-  border: 5px solid purple;
-  box-shadow: 0 5px 5px purple;
+  margin-left: 300px;
+  border: 5px solid #da6830;
+  box-shadow: 5px 5px 5px purple;
   padding: 50px;
 }
 .youtube {
   border: 3px solid #8a2387;
-  box-shadow: 5px 5px #8a2387;
+  box-shadow: 5px 5px 5px #8a2387;
   margin-top: 20px;
   width: 565px;
 }
@@ -60,12 +73,28 @@ button {
   float: right;
 }
 
-.search-bar {
-  margin: 20px;
-  text-align: center;
+.buttons {
+  position: absolute;
+  top: 1%;
+  right: 4%;
 }
 
-.search-bar input {
+.uk-search-input {
+  text-align: center;
+  width: 900px;
+  align-items: center;
+  position: absolute;
+  float: right;
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-left: 170px;
+  padding: 5px 5px 5px 25px;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.video-search input {
   width: 75%;
 }
 
@@ -86,4 +115,17 @@ button {
 
 .list-group-item:hover {
   background-color: #eee;
+}
+.video-item {
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer;
+}
+
+.video-item.item img {
+  max-width: 200px;
+  max-height: 250px;
+}
+.search {
+  margin-bottom: 80px;
 }
