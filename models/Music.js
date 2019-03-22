@@ -8,6 +8,10 @@ var MusicSchema = new Schema({
         type: String,
         trim: true,
     },
+    titleLower:{
+        type: String,
+        trim: true
+    },
     artistName: {
         type: String,
         trim: true

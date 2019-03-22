@@ -16,7 +16,23 @@ body {
     text-size-adjust: auto !important;
     -webkit-text-size-adjust: auto !important;
     background-repeat: space repeat-y;
+    /* This is the beginning of Javiers styling */
+    background: fixed linear-gradient( to left, rgb(241, 113, 32), rgb(233, 64, 87), rgb(138, 35, 135));
+    -webkit-animation: fadein 4s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 4s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 4s;
+    /* Internet Explorer */
+    -o-animation: fadein 4s;
+    /* Opera < 12.1 */
+    animation: fadein 4s;
+    display: block;
+    text-size-adjust: auto !important;
+    -webkit-text-size-adjust: auto !important;
 }
+
+/* This is the end of Javier's styling */
 
 @keyframes fadein {
     from {
@@ -327,7 +343,7 @@ body {
 .popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
+    animation: fadeIn 1s;
 }
 
 /* Add animation (fade in the popup) */

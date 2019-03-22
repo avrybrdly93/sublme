@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
 import dbAPI from "../../utils/dbAPI";
 import axios from "axios";
-import "./style.css";
+//import "./style.css";
 
 class Signup extends Component {
   state = {
@@ -33,9 +33,11 @@ class Signup extends Component {
       return <Redirect to="/dashboard" />;
     }
   };
+
   handleChange = ev => {
     this.setState({ success: false, url: "" });
   };
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -47,10 +49,13 @@ class Signup extends Component {
     if (this.state.password === this.state.passwordTwo) {
       let fileOne = this.uploadInputOne.files[0];
       let fileTwo = this.uploadInputTwo.files[0];
+
       let fileOneParts = this.uploadInputOne.files[0].name.split(".");
       let fileTwoParts = this.uploadInputTwo.files[0].name.split(".");
+
       let fileOneType = fileOneParts[1];
       let fileTwoType = fileTwoParts[1];
+
       let fileOneName = this.state.username + Date.now().toString() + "-img";
       let fileTwoName = this.state.username + Date.now().toString() + "-bg";
 

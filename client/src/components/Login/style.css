@@ -179,3 +179,7 @@ form {
     /* The width is 100%, when the viewport is 800px or smaller */
   }
 }
+
+/* form {
+  margin: 0 auto !important;
+} */

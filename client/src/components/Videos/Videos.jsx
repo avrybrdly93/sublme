@@ -9,13 +9,12 @@ function Videos(props) {
       key={props.id}
       src={props.video}
       title={props.title}
-      width="100%"
-      height="100%"
+      width="1280"
+      height="720"
       frameBorder="0"
       allowFullScreen
       data-uk-responsive
-      data-uk-video="autoplay: false; automute: false"
-      data-uk-cover
+      data-uk-video="autoplay: true; automute: true"
     />
   );
 }
