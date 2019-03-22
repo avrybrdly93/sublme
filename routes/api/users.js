@@ -25,4 +25,7 @@ router.route("/").get(userController.findAll);
 // => /api/users/logout
 router.route("/logout").get(userController.logoutUser);
 
+// => /api/users/find/self
+router.route("/find/self").get(userController.findLoggedInUser);
+
 module.exports = router;

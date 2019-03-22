@@ -258,6 +258,7 @@ class PrimarySearchAppBar extends React.Component {
             </div> */}
 
             <div className={classes.grow1} />
+            <a className="no-underline" href="/">
             <Typography
               className={classes.title}
               variant="h6"
@@ -267,6 +268,7 @@ class PrimarySearchAppBar extends React.Component {
             >
               Sublme
             </Typography>
+            </a>
             <div className={classes.grow2} />
             <div className={classes.sectionDesktop}>
               {/*
@@ -290,8 +292,8 @@ class PrimarySearchAppBar extends React.Component {
                 onClick={this.toggleDrawer("right", true)}
               >
                 <Avatar
-                  alt="Kekashi Sensai"
-                  src="https://vignette.wikia.nocookie.net/naruto/images/2/27/Kakashi_Hatake.png/revision/latest?cb=20170628120149"
+                  alt={this.props.username}
+                  src={this.props.picURL}
                   className={classes.avatar}
                 />
               </IconButton>

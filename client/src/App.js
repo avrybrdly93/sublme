@@ -12,17 +12,30 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Upload from "./pages/Upload";
 //import EditProfile from "./components/Profile/EditProfile";
 import "./App.css";
+import dbAPI from "./utils/dbAPI";
 
 class App extends Component {
   state = {
-    loggedIn: false
+    loggedIn: false,
+    picURL: "",
+    username: ""
   };
 
   componentDidMount() {
     if (Cookies.get("username") === undefined) {
       this.setState({ loggedIn: false });
-    } else {
-      this.setState({ loggedIn: true });
+    } 
+    else {
+      dbAPI.passportFindUser().then(response =>{
+        console.log("RESPONSE FOR LOGGED IN: "+response.data);
+        this.setState({ 
+          loggedIn: true,
+          picURL: response.data.profileImage,
+          username: response.data.username
+        });
+      }).catch(err=>{
+        console.log(err);
+      });
     }
   }
 
@@ -30,7 +43,7 @@ class App extends Component {
     return (
       <div>
         <div>
-          {this.state.loggedIn ? <LoggedInNavbar /> : <LoggedOutNavbar />}
+          {this.state.loggedIn ? <LoggedInNavbar picURL={this.state.picURL} username={this.state.username} /> : <LoggedOutNavbar />}
         </div>
         <Router>
           <Switch>
