@@ -13,6 +13,10 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import TextField from "@material-ui/core/TextField";
+import "uikit/dist/css/uikit.min.css";
+import "uikit/dist/js/uikit.min.js";
+import "uikit/dist/js/uikit-icons.min.js";
 
 const styles = theme => ({
   appBar: {
@@ -32,6 +36,21 @@ const styles = theme => ({
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary
+  },
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 300
+  },
+  dense: {
+    marginTop: 19
+  },
+  menu: {
+    width: 200
   }
 });
 
@@ -57,6 +76,10 @@ class Settings extends React.Component {
     this.setState({
       expanded: expanded ? panel : false
     });
+  };
+
+  handleInput = name => event => {
+    this.setState({ [name]: event.target.value });
   };
 
   render() {
@@ -104,10 +127,56 @@ class Settings extends React.Component {
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>
-                Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-                feugiat. Aliquam eget maximus est, id dignissim quam.
-              </Typography>
+              <form className={classes.container} noValidate autoComplete="off">
+                <TextField
+                  id="fName"
+                  label="First name"
+                  className={classes.textField}
+                  value={this.state.fName}
+                  onChange={this.handleInput("fName")}
+                  margin="normal"
+                />
+                <TextField
+                  id="lName"
+                  label="Last name"
+                  className={classes.textField}
+                  value={this.state.lName}
+                  onChange={this.handleInput("lName")}
+                  margin="normal"
+                />
+                <TextField
+                  id="bio"
+                  label="Bio"
+                  className={classes.textField}
+                  value={this.state.bioStatement}
+                  onChange={this.handleInput("bio")}
+                  margin="normal"
+                />
+                <TextField
+                  id="email"
+                  label="Email"
+                  className={classes.textField}
+                  value={this.state.email}
+                  onChange={this.handleInput("email")}
+                  margin="normal"
+                />
+                <TextField
+                  id="password"
+                  label="Password"
+                  className={classes.textField}
+                  value={this.state.password1}
+                  onChange={this.handleInput("password1")}
+                  margin="normal"
+                />
+                <TextField
+                  id="password"
+                  label="Confirm Password"
+                  className={classes.textField}
+                  value={this.state.password2}
+                  onChange={this.handleInput("password2")}
+                  margin="normal"
+                />
+              </form>
             </ExpansionPanelDetails>
           </ExpansionPanel>
           <ExpansionPanel

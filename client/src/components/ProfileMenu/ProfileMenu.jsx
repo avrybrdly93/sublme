@@ -51,7 +51,7 @@ class ProfileMenu extends React.Component {
           }}>
           {options.map(option => (
             <MenuItem
-              containerElement={<Link to="/settings" />}
+              containerelement={<Link to="/settings" />}
               key={option}
               selected={option === this.state.selected}>
               {option}
