@@ -50,11 +50,37 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        {this.renderRedirect()}
-        <form>
-          <div className="col-input">
-            <label htmlFor="inputEmail4">Username</label>
+      <div className="container-fluid">
+        <div className="row">
+          {this.renderRedirect()}
+          <div className="col-3" />
+          <div className="col-6">
+            <form>
+              <div className="form-group col-md-12">
+                <label htmlFor="inputEmail4">Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputEmail4"
+                  placeholder="johnnyappleseed"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChange}
+                />
+              </div>
+              <div className="form-group col-md-12">
+                <label htmlFor="inputPassword4">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="inputPassword4"
+                  placeholder="*****"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+              </div>
+              {/* <label htmlFor="inputEmail4">Username</label>
             <input
               type="text"
               className="form-control"
@@ -73,18 +99,20 @@ class Login extends Component {
               name="password"
               value={this.state.password}
               onChange={this.handleInputChange}
-            />
+            /> */}
+              <br />
+              <br />
+              <button
+                className="button"
+                style={{ textAlign: "center" }}
+                onClick={this.handleFormSubmit}
+              >
+                <span>Submit </span>
+              </button>
+            </form>
           </div>
-          <br />
-          <br />
-          <button
-            className="button"
-            style={{ textAlign: "center" }}
-            onClick={this.handleFormSubmit}
-          >
-            <span>Submit </span>
-          </button>
-        </form>
+          <div className="col-3" />
+        </div>
       </div>
     );
   }
