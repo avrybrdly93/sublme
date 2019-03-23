@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
 import Dashboard from "./pages/dashboard";
-import NoMatch from "./pages/NoMatch";
 import Login from "./components/Login";
 import LoggedOutNavbar from "./components/LoggedOutNavbar/LoggedOutNavbar";
 import Cookies from "js-cookie";
@@ -26,18 +25,20 @@ class App extends Component {
   componentDidMount() {
     if (Cookies.get("username") === undefined) {
       this.setState({ loggedIn: false });
-    } 
-    else {
-      dbAPI.passportFindUser().then(response =>{
-        console.log("RESPONSE FOR LOGGED IN: "+response.data);
-        this.setState({ 
-          loggedIn: true,
-          picURL: response.data.profileImage,
-          username: response.data.username
+    } else {
+      dbAPI
+        .passportFindUser()
+        .then(response => {
+          console.log("RESPONSE FOR LOGGED IN: " + response.data);
+          this.setState({
+            loggedIn: true,
+            picURL: response.data.profileImage,
+            username: response.data.username
+          });
+        })
+        .catch(err => {
+          console.log(err);
         });
-      }).catch(err=>{
-        console.log(err);
-      });
     }
   }
 
@@ -45,7 +46,14 @@ class App extends Component {
     return (
       <div>
         <div>
-          {this.state.loggedIn ? <LoggedInNavbar picURL={this.state.picURL} username={this.state.username} /> : <LoggedOutNavbar />}
+          {this.state.loggedIn ? (
+            <LoggedInNavbar
+              picURL={this.state.picURL}
+              username={this.state.username}
+            />
+          ) : (
+            <LoggedOutNavbar />
+          )}
         </div>
         <Router>
           <Switch>

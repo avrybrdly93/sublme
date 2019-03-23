@@ -12,7 +12,7 @@ body {
     -o-animation: fadein 4s;
     /* Opera < 12.1 */
     animation: fadein 4s;
-    display: block;
+    /* display: block; */
     text-size-adjust: auto !important;
     -webkit-text-size-adjust: auto !important;
     background-repeat: space repeat-y;
@@ -143,12 +143,12 @@ form {
     border-radius: 12px !important;
 }
 
-.row {
+/* .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
-}
+} */
 
 .column {
     display: flex;
