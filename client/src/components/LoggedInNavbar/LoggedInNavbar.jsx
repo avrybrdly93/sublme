@@ -17,7 +17,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
+//import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -146,29 +146,38 @@ class PrimarySearchAppBar extends React.Component {
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const profileRoute="/profile/"+this.props.userID;
 
     const sideList = (
       <div className={classes.list}>
         <List>
-          {["Upload", "Profile"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 3 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem component="a" href="/upload" button key="Upload">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Upload" />
+          </ListItem>
+
+          <ListItem component="a" href={profileRoute} button key="Profile">
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
         </List>
-        <Divider />
         <List>
-          {["Settings", "Logout"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <InboxIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem component="a" href="/settings" button key="Settings">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItem>
+          <ListItem component="a" href="/logout" button key="Logout">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
         </List>
       </div>
     );
@@ -225,13 +234,13 @@ class PrimarySearchAppBar extends React.Component {
 
             <div className={classes.grow1} />
             <a className="no-underline" href="/">
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              style={{ textAlign: "center" }}
-              noWrap>
-              Sublme
+              <Typography
+                className={classes.title}
+                variant="h6"
+                color="inherit"
+                style={{ textAlign: "center" }}
+                noWrap>
+                Sublme
             </Typography>
             </a>
             <div className={classes.grow2} />

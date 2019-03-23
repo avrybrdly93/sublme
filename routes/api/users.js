@@ -13,8 +13,8 @@ router.route("/likedMusic/:id").put(userController.likeSong);
 // => /api/users/:id
 router.route("/:id").get(userController.findUserByID);
 
-// => /api/users/logout
-router.route("/logout").get(userController.logoutUser);
+// => /api/users/user/logout
+router.route("/user/logout").get(userController.logoutUser);
 
 // => /api/users/find/self
 router.route("/find/self").get(userController.findLoggedInUser);

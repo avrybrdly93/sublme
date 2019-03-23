@@ -166,7 +166,7 @@ module.exports = {
   findLoggedInUser: function (req, res) {
     db.User.findById(req.session.passport.user._id)
       .then(dbModel => {
-        console.log("USER FOUND: " + dbModel);
+        //console.log("USER FOUND: " + dbModel);
         res.json(dbModel)
       })
       .catch(err => {

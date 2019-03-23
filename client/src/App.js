@@ -8,8 +8,10 @@ import Cookies from "js-cookie";
 import Profile from "./pages/profile";
 import Settings from "./pages/settings";
 import Signup from "./components/Signup";
+import Results from "./pages/results";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Upload from "./pages/Upload";
+import Logout from "./pages/Logout";
 //import EditProfile from "./components/Profile/EditProfile";
 import "./App.css";
 import dbAPI from "./utils/dbAPI";
@@ -24,16 +26,17 @@ class App extends Component {
   componentDidMount() {
     if (Cookies.get("username") === undefined) {
       this.setState({ loggedIn: false });
-    } 
+    }
     else {
-      dbAPI.passportFindUser().then(response =>{
-        console.log("RESPONSE FOR LOGGED IN: "+response.data);
-        this.setState({ 
+      dbAPI.passportFindUser().then(response => {
+        //console.log("RESPONSE FOR LOGGED IN: " + response.data);
+        this.setState({
           loggedIn: true,
           picURL: response.data.profileImage,
-          username: response.data.username
+          username: response.data.username,
+          userID: response.data._id
         });
-      }).catch(err=>{
+      }).catch(err => {
         console.log(err);
       });
     }
@@ -43,17 +46,20 @@ class App extends Component {
     return (
       <div>
         <div>
-          {this.state.loggedIn ? <LoggedInNavbar picURL={this.state.picURL} username={this.state.username} /> : <LoggedOutNavbar />}
+          {this.state.loggedIn ? <LoggedInNavbar picURL={this.state.picURL} username={this.state.username} userID={this.state.userID} />
+            : <LoggedOutNavbar />}
         </div>
         <Router>
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/logout" component={Logout} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/upload" component={Upload} />
             <Route exact path="/settings" component={Settings} />
+            <Route exact path="/search/results/:term" component={Results}/>
             <Route component={NoMatch} />
           </Switch>
         </Router>

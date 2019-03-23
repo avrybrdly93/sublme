@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
 import "./style.css";
+import { Redirect } from "react-router-dom";
 
 //Using this to pull from last.fm api
 // const { API_KEY } = process.env
@@ -28,7 +29,8 @@ class Autocomplete extends Component {
       // Whether or not the suggestion list is shown
       showSuggestions: false,
       // What the user has entered
-      userInput: ""
+      userInput: "",
+      goToSearch : false,
     };
   }
 
@@ -89,16 +91,18 @@ class Autocomplete extends Component {
 
     // User pressed the enter key
     if (e.keyCode === 13) {
-      this.setState({
-        activeSuggestion: 0,
-        showSuggestions: false,
-        // userInput: filteredSuggestions[activeSuggestion]
-        userInput:
-          filteredSuggestions[activeSuggestion].title +
-          " - " +
-          filteredSuggestions[activeSuggestion].artist
-      });
+      // this.setState({
+      //   activeSuggestion: 0,
+      //   showSuggestions: false,
+      //   // userInput: filteredSuggestions[activeSuggestion]
+      //   userInput:
+      //     filteredSuggestions[activeSuggestion].title +
+      //     " - " +
+      //     filteredSuggestions[activeSuggestion].artist
+      // });
+      this.setState({goToSearch: true});
     }
+
     // User pressed the up arrow
     else if (e.keyCode === 38) {
       if (activeSuggestion === 0) {
@@ -123,7 +127,15 @@ class Autocomplete extends Component {
     }
   };
 
+  renderRedirect(){
+    const searchPath="/search/results/"+this.state.userInput;
+    if(this.state.goToSearch===true){
+      return <Redirect to={searchPath} />;
+    }
+  }
+  
   render() {
+
     const {
       onClick,
       handleKeyPress,
@@ -177,12 +189,13 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
+        {this.renderRedirect()}
         <div className="contain-search">
           <SearchIcon />
           <input
             type="text"
             onChange={this.onChange}
-            // onKeyDown={this.onKeyDown}
+            onKeyDown={this.onKeyDown}
             // onKeyPress={this.handleKeyPress}
             value={this.state.userInput}
             name="userInput"
