@@ -2,9 +2,11 @@ import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Settings from "../Settings/Settings";
+import { Link } from "react-router-dom";
 import "./style.css";
 
-const options = ["Update header", "Settings"];
+const options = [<Settings />];
 
 const ITEM_HEIGHT = 48;
 
@@ -49,9 +51,9 @@ class ProfileMenu extends React.Component {
           }}>
           {options.map(option => (
             <MenuItem
+              containerElement={<Link to="/settings" />}
               key={option}
-              selected={option === this.state.selected}
-              onClick={this.handleClose}>
+              selected={option === this.state.selected}>
               {option}
             </MenuItem>
           ))}

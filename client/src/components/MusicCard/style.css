@@ -12,7 +12,7 @@
 }
 .producer {
   color: white !important;
-  margin-left: 130px !important;
+  margin-left: 60px !important;
   margin-top: -125px !important;
   margin-bottom: 30px !important;
 }
@@ -20,9 +20,9 @@
   color: white !important;
 }
 .artist {
-  margin-left: 60px !important;
-  margin-top: -50px !important;
-  margin-bottom: 30px !important;
+  margin-left: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 .controls {
   color: white;
@@ -46,7 +46,8 @@ a {
   color: white;
 }
 a:hover {
-  color: lightgrey;
+  color: white;
+  text-decoration: none;
 }
 .backward-btn {
   margin-top: -10px;
@@ -56,6 +57,9 @@ a:hover {
 }
 .play-pause-btn {
   padding: 10px;
+}
+.likes {
+  margin-left: 5px;
 }
 #comment-icon:hover {
   background-color: white;

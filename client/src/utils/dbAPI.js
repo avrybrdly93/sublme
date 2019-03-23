@@ -50,7 +50,7 @@ export default {
   findUser: function(userID) {
     return axios.get("/api/users/" + userID);
   },
-  passportFindUser: function(){
+  passportFindUser: function() {
     return axios.get("/api/users/find/self");
   },
   createUser: function(newUser) {

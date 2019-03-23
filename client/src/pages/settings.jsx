@@ -1,17 +1,13 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
+// import Grid from "@material-ui/core/Grid";
+// import Avatar from "@material-ui/core/Avatar";
+// import Typography from "@material-ui/core/Typography";
+// import TextField from "@material-ui/core/TextField";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import CardContent from "@material-ui/core/CardContent";
-//import Button from "@material-ui/core/Button";
-//import ProfileNav from "../components/ProfileNav/ProfileNav";
-//import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
+// import CardContent from "@material-ui/core/CardContent";
+import ProfileSettings from "../components/Settings/Settings";
 import "./profile.css";
-// import Profile from "./profile";
-//import settings from "../../pages/settings";
 
 const styles = theme => ({
   container: {
@@ -55,7 +51,8 @@ class Settings extends React.Component {
 
     return (
       <div className="col-12">
-        <Grid container justify="center" alignItems="center">
+        <ProfileSettings />
+        {/* <Grid container justify="center" alignItems="center">
           <Avatar
             alt="Picture"
             src="https://upload.wikimedia.org/wikipedia/commons/e/e8/CandymyloveYasu.png"
@@ -129,7 +126,7 @@ class Settings extends React.Component {
               variant="outlined"
             />
           </CardContent>
-        </form>
+        </form> */}
       </div>
     );
   }

@@ -5,8 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-//import SearchIcon from "@material-ui/icons/Search";
-//import InputBase from "@material-ui/core/InputBase";
+// import SearchIcon from "@material-ui/icons/Search";
+// import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import AutoComplete from "../AutoComplete";
 //import axios from "axios";
@@ -18,7 +18,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   grow1: {
-    flexGrow: 0.4
+    flexGrow: 0.75
   },
   grow2: {
     flexGrow: 0.6
@@ -92,135 +92,34 @@ const styles = theme => ({
 //             <div className={classes.search}>
 
 function SecondarySearchAppBar(props) {
- const { classes } = props;
- return (
-   <div className={classes.root}>
-     <AppBar position="static" className={classes.appBar}>
-       <Toolbar>
-       <AutoComplete/>
-           {/* <div className={classes.search}>
-             <div className={classes.searchIcon}>
-               <SearchIcon />
-             </div>
-             <InputBase
-               placeholder="Search…"
-               classes={{
-                 root: classes.inputRoot,
-                 input: classes.inputInput,
-               }}
-             />
-           </div> */}
-           <div className={classes.grow1} />
-           <a className="no-underline" href="/">
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" className={classes.appBar}>
+        <Toolbar>
+          <AutoComplete />
+          <div className={classes.grow1} />
+          <a className="sublme" href="/">
             <Typography
               className={classes.title}
               variant="h6"
               color="inherit"
               style={{ textAlign: "center" }}
-              noWrap
-            >
+              noWrap>
               Sublme
             </Typography>
-            </a>
-            <div className={classes.grow2} />
-         <a href="/login"><Button color="inherit">Login</Button></a>
-         <a href="/signup"><Button color="inherit">Signup</Button></a>
-         
-       </Toolbar>
-     </AppBar>
-   </div>
- );
+          </a>
+          <div className={classes.grow2} />
+          <a href="/login">
+            <Button color="inherit">Login</Button>
+          </a>
+          <a href="/signup">
+            <Button color="inherit">Signup</Button>
+          </a>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 }
 
 export default withStyles(styles)(SecondarySearchAppBar);
-
-// function SecondarySearchAppBar(props) {
-//   const { classes, theme } = props;
-//   let music = null;
-//   axios.get("/api/music").then(result => {
-//     console.log(result);
-//     music = result;
-//   });
-//   return (
-//     <div className={classes.root}>
-//       <AppBar position="static" className={classes.appBar}>
-//         <Toolbar>
-//           <AutoComplete suggestions={music} />
-//           {/* <div className={classes.search}>
-//              <div className={classes.searchIcon}>
-//                <SearchIcon />
-//              </div>
-//              <InputBase
-//                placeholder="Search…"
-//                classes={{
-//                  root: classes.inputRoot,
-//                  input: classes.inputInput,
-//                }}
-//              />
-//            </div> */}
-//           <div className={classes.grow1} />
-//           <Typography
-//             className={classes.title}
-//             variant="h6"
-//             color="inherit"
-//             style={{ textAlign: "center" }}
-//             noWrap
-//           >
-//             Sublme
-//           </Typography>
-//           <div className={classes.grow2} />
-//           <Button color="inherit">Login</Button>
-//           <Button color="inherit">Signup</Button>
-//         </Toolbar>
-//       </AppBar>
-//     </div>
-//   );
-// }
-
-// SecondarySearchAppBar.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
-
-// export default withStyles(styles)(SecondarySearchAppBar);
-// function SecondarySearchAppBar(props) {
-//   const { classes } = props;
-//   return (
-//     <div className={classes.root}>
-//       <AppBar position="static" className={classes.appBar}>
-//         <Toolbar>
-//           <div className={classes.search}>
-//             <div className={classes.searchIcon}>
-//               <SearchIcon />
-//             </div>
-//             <InputBase
-//               placeholder="Search…"
-//               classes={{
-//                 root: classes.inputRoot,
-//                 input: classes.inputInput
-//               }}
-//             />
-//           </div>
-//           <div className={classes.grow1} />
-//           <Typography
-//             className={classes.title}
-//             variant="h6"
-//             color="inherit"
-//             style={{ textAlign: "center" }}
-//             noWrap
-//           >
-//             Sublme
-//           </Typography>
-//           <div className={classes.grow2} />
-//           <Button color="inherit">Login</Button>
-//           <Button color="inherit">Signup</Button>
-//         </Toolbar>
-//       </AppBar>
-//     </div>
-//   );
-// }
-
-// SecondarySearchAppBar.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
-
-// export default withStyles(styles)(SecondarySearchAppBar);

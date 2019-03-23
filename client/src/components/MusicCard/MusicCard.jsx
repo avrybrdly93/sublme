@@ -52,10 +52,10 @@ class MusicCard extends Component {
     };
   }
 
-  // handleClick = () => {
-  //   const currentState = this.state.active;
-  //   this.setState({ active: !currentState });
-  // };
+  handleClick = () => {
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
+  };
 
   // likeSong = () => {
   //   axios.put("/api/music").then(() => {
@@ -67,19 +67,18 @@ class MusicCard extends Component {
     dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
     });
-    dbAPI.getLikes(username, response => {
-      // let likedSongs = response.data[0].likedMusic;
-      let likedSongs = response.data[0].likedMusic;
-      console.log(likedSongs);
-      likedSongs.map((song, index) => {
-        console.log(song);
-        if (this.props.songid === song) {
-          console.log("This song has already been liked");
-          this.setState({ alreadyLiked: true });
-        }
-        console.log(this.state.alreadyLiked);
-      });
-    });
+    // dbAPI.getLikes(username, response => {
+    //   let likedSongs = response.data[0].likedMusic;
+    //   console.log(likedSongs);
+    //   likedSongs.map((song, index) => {
+    //     console.log(song);
+    //     if (this.props.songid === song) {
+    //       console.log("This song has already been liked");
+    //       this.setState({ alreadyLiked: true });
+    //     }
+    //     console.log(this.state.alreadyLiked);
+    //   });
+    // });
   }
 
   // render() {
@@ -174,15 +173,6 @@ class MusicCard extends Component {
 
   render() {
     const { classes, ...other } = this.props;
-<<<<<<< HEAD
-    let renderComments = this.state.comments.map((comment, index) => (
-      <Comment
-        //userid={this.props.userid[index]}
-        songid={this.props.songid}
-        comment={comment}
-        key={this.props._id}
-      />
-=======
     let renderComments = this.state.comments.map(comment => (
       <li key={comment._id}>
         <Comment
@@ -194,7 +184,6 @@ class MusicCard extends Component {
           time={comment.dateCreated}
         />
       </li>
->>>>>>> Avery-merge
     ));
     let likeHeart = null;
     if (this.state.alreadyLiked) {
@@ -211,36 +200,34 @@ class MusicCard extends Component {
           <CardMedia
             className={classes.cover}
             image={this.props.cover}
-            title={this.props.coverTitle}
-          >
+            title={this.props.coverTitle}>
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <img
-                  src={this.props.profilePic}
+                  src={this.props.profile}
                   alt={this.props.alt}
                   className={classes.roundedCircle}
                 />
-                <Typography variant="body1" className="producer">
+                <Typography variant="caption" className="producer">
                   Produced by {this.props.producer}
+                </Typography>
+                <Typography variant="h5" className="track-info">
+                  {this.props.title}
                 </Typography>
                 <Typography
                   variant="body1"
                   color="textSecondary"
-                  className="track-info artist"
-                >
+                  className="track-info artist">
                   {this.props.artist}
-                </Typography>
-                <Typography variant="h5" className="track-info">
-                  {this.props.title}
                 </Typography>
               </CardContent>
             </div>
             <div className="controls" {...other}>
               <i className="fas fa-step-backward fa-2x" />
               <i
-                // onClick={() => {
-                //   this.handleClick();
-                // }}
+                onClick={() => {
+                  this.handleClick();
+                }}
                 className={
                   this.state.active
                     ? "far fa-pause-circle fa-3x play-pause-btn"
@@ -249,15 +236,11 @@ class MusicCard extends Component {
               />
               <i className="fas fa-step-forward fa-2x" />
             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> Avery-merge
             <div className="social-icons">
               <span onClick={this.likeSong}>
                 <i className={likeHeart} />
               </span>
-              {this.state.likes}
+              <span className="likes">{this.state.likes}</span>
               <div className="space-1" />
               <span onClick={this.openComments}>
                 <i
@@ -273,8 +256,7 @@ class MusicCard extends Component {
               <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
-                aria-labelledby="form-dialog-title"
-              >
+                aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Comments</DialogTitle>
                 <DialogContent>
                   <DialogContentText>

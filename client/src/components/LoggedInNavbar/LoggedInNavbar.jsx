@@ -17,7 +17,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
+// import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -212,8 +212,7 @@ class PrimarySearchAppBar extends React.Component {
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}
-      >
+        onClose={this.handleMenuClose}>
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -259,15 +258,14 @@ class PrimarySearchAppBar extends React.Component {
 
             <div className={classes.grow1} />
             <a className="no-underline" href="/">
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              style={{ textAlign: "center" }}
-              noWrap
-            >
-              Sublme
-            </Typography>
+              <Typography
+                className={classes.title}
+                variant="h6"
+                color="inherit"
+                style={{ textAlign: "center" }}
+                noWrap>
+                Sublme
+              </Typography>
             </a>
             <div className={classes.grow2} />
             <div className={classes.sectionDesktop}>
@@ -289,8 +287,7 @@ class PrimarySearchAppBar extends React.Component {
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
                 color="inherit"
-                onClick={this.toggleDrawer("right", true)}
-              >
+                onClick={this.toggleDrawer("right", true)}>
                 <Avatar
                   alt={this.props.username}
                   src={this.props.picURL}
@@ -302,8 +299,7 @@ class PrimarySearchAppBar extends React.Component {
               <IconButton
                 aria-haspopup="true"
                 onClick={this.handleMobileMenuOpen}
-                color="inherit"
-              >
+                color="inherit">
                 <MoreIcon />
               </IconButton>
             </div>
@@ -312,14 +308,12 @@ class PrimarySearchAppBar extends React.Component {
         <Drawer
           anchor="right"
           open={this.state.right}
-          onClose={this.toggleDrawer("right", false)}
-        >
+          onClose={this.toggleDrawer("right", false)}>
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer("right", false)}
-            onKeyDown={this.toggleDrawer("right", false)}
-          >
+            onKeyDown={this.toggleDrawer("right", false)}>
             {sideList}
           </div>
         </Drawer>

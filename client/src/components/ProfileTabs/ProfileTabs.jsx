@@ -27,9 +27,12 @@ const styles = theme => ({
 });
 
 class ProfileTabs extends React.Component {
-  state = {
-    value: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0
+    };
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -64,7 +67,7 @@ class ProfileTabs extends React.Component {
                   color: "black",
                   fontWeight: 500
                 }}>
-                City, State
+                {this.props.location}
               </Typography>
               <Typography
                 component="p"
@@ -74,8 +77,7 @@ class ProfileTabs extends React.Component {
                   color: "black",
                   fontWeight: 50
                 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-                pretium mattis urna, at porta massa ultrices nec.
+                {this.props.bio}
               </Typography>
             </div>
           </TabContainer>
