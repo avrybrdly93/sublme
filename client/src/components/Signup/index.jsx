@@ -21,6 +21,7 @@ class Signup extends Component {
     signupErrMsg: "",
     errCreatingUser: false
   };
+
   componentDidMount() {
     if (Cookies.get("username") === undefined) {
       this.setState({ loggedIn: false });
@@ -28,6 +29,7 @@ class Signup extends Component {
       this.setState({ loggedIn: true });
     }
   }
+
   renderRedirect = () => {
     if (this.state.loggedIn) {
       return <Redirect to="/dashboard" />;
@@ -44,6 +46,7 @@ class Signup extends Component {
       [name]: value
     });
   };
+
   handleUpload = ev => {
     ev.preventDefault();
     if (this.state.password === this.state.passwordTwo) {
@@ -59,12 +62,17 @@ class Signup extends Component {
       let fileOneName = this.state.username + Date.now().toString() + "-img";
       let fileTwoName = this.state.username + Date.now().toString() + "-bg";
 
+      let fileOneSize = this.uploadInputOne.files[0].size/1024/1024;
+      let fileTwoSize = this.uploadInputTwo.files[0].size/1024/1024;
+
       dbAPI
         .createUser({
           imageOneName: fileOneName,
           imageOneType: fileOneType,
+          imageOneSize: fileOneSize,
           imageTwoName: fileTwoName,
           imageTwoType: fileTwoType,
+          imageTwoSize: fileTwoSize,
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           bioStatement: this.state.bioStatement,
@@ -89,16 +97,19 @@ class Signup extends Component {
             var urlTwo = returnData.urlTwo;
             console.log("URL File One: " + urlOne);
             console.log("URL File Two: " + urlTwo);
+
             var optionsOne = {
               headers: {
                 "Content-Type": fileOneType
               }
             };
+
             var optionsTwo = {
               headers: {
                 "Content-Type": fileTwoType
               }
             };
+
             axios
               .put(signedRequestOne, fileOne, optionsOne)
               .then(resultOne => {
@@ -127,6 +138,7 @@ class Signup extends Component {
       });
     }
   };
+
   render() {
     const ErrorMessage = () => (
       <div style={{ padding: 50 }}>
@@ -134,6 +146,7 @@ class Signup extends Component {
         <br />
       </div>
     );
+
     return (
       <React.Fragment>
         {this.renderRedirect()}
@@ -149,6 +162,7 @@ class Signup extends Component {
               name="email"
               value={this.state.email}
             />
+
             {/* </div> */}
             {/* <div class="col"> */}
             <label htmlFor="inputPassword4">Username</label>
@@ -161,6 +175,7 @@ class Signup extends Component {
               name="username"
               value={this.state.username}
             />
+
             <label htmlFor="firstNameInput">First Name</label>
             <input
               className="form-control"
@@ -171,6 +186,7 @@ class Signup extends Component {
               name="firstName"
               value={this.state.firstName}
             />
+
             <label htmlFor="lastNameInput">Last Name</label>
             <input
               className="form-control"
@@ -182,6 +198,7 @@ class Signup extends Component {
               value={this.state.lastName}
             />
           </div>
+
           {/* create a dif div so I can have them look the same */}
           <div className="form-row confirm">
             <div className="row">
@@ -199,10 +216,12 @@ class Signup extends Component {
                 </div>
               </div>
             </div>
+
             {/* <div class="form-row"> */}
             <div className="col">
               <div className="shrink2">
                 <label htmlFor="inputEmail4">Confirm Password</label>
+
                 <input
                   className="passwordInput"
                   type="password"
@@ -214,6 +233,7 @@ class Signup extends Component {
               </div>
             </div>
           </div>
+
           <div className="form-row genbir">
             <div className="col">
               <label htmlFor="inputGender">Gender</label>
@@ -230,6 +250,7 @@ class Signup extends Component {
                 <option>Other</option>
               </select>
             </div>
+
             <div className="col">
               <label htmlFor="start">Birthday</label>
               <input
@@ -242,6 +263,7 @@ class Signup extends Component {
               />
             </div>
           </div>
+
           <label htmlFor="profile-img">Profile Picture</label>
           <div className="custom-file">
             <input
@@ -262,6 +284,7 @@ class Signup extends Component {
             </div>
           </div>
           <br />
+
           <label htmlFor="bg-img">Background Picture</label>
           <div className="custom-file">
             <input
@@ -296,6 +319,7 @@ class Signup extends Component {
             />
           </div>
           <br />
+
           <div className="form-group col-md-12">
             <label htmlFor="inputState">Who are you?</label>
             <select
@@ -312,6 +336,7 @@ class Signup extends Component {
             </select>
           </div>
           <br />
+
           {/* style and add link to terms & service  */}
           <div className="container">
             <div className="round">
@@ -363,4 +388,5 @@ class Signup extends Component {
     );
   }
 }
+
 export default Signup;
