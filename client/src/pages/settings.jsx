@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -10,6 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 //import ProfileNav from "../components/ProfileNav/ProfileNav";
 //import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
 import "./profile.css";
+import dbAPI from "../utils/dbAPI";
 // import Profile from "./profile";
 //import settings from "../../pages/settings";
 
@@ -36,17 +37,27 @@ const styles = theme => ({
 });
 // const genders = ["woman", "man"];
 
-class Settings extends React.Component {
+class Settings extends Component {
   state = {
     name: "Cat in the Hat",
     age: "",
     multiline: "Controlled",
-    currency: "EUR"
+    currency: "EUR",
+    user: {}
   };
 
-  handleChange = name => event => {
+  componentDidMount() {
+    dbAPI.passportFindUser().then(response => {
+      console.log(response.data);
+      this.setState({ user: response.data });
+    });
+  }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+
     this.setState({
-      [name]: event.target.value
+      [name]: value
     });
   };
 
@@ -55,87 +66,98 @@ class Settings extends React.Component {
 
     return (
       <div className="col-12">
+        <CardContent container="true" justify="center" alignitems="center">
+          <Typography gutterBottom variant="h5" component="h2">
+            Settings
+            </Typography>
+        </CardContent>
+
         <Grid container justify="center" alignItems="center">
           <Avatar
-            alt="Picture"
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e8/CandymyloveYasu.png"
+            alt="User Profile Picture"
+            src={this.state.user.profileImage}
             className={classes.bigAvatar}
           />
         </Grid>
 
-        <form classUsername={classes.container} noValidate autoComplete="off">
-          <CardContent container justify="center" alignItems="center">
-            <Typography gutterBottom variant="h5" component="h2">
-              Profile
-            </Typography>
-            <Typography gutterBottom variant="h5" component="h2">
-              @HelloWorld2019
-            </Typography>
-            <Typography component="p">
-              Some description that will come after ajax call
-            </Typography>
-            <Typography component="p">Edit your information here</Typography>
+        <CardContent container="true" justify="center" alignitems="center">
+          <Typography gutterBottom variant="h5" component="h2">
+            @{this.state.user.username}
+          </Typography>
+          <Typography component="p">
+            {this.state.user.bioStatement}
+          </Typography>
+          <Typography component="p">Edit your information here</Typography>
+        </CardContent>
 
-            <TextField
-              id="outlined-username"
-              label="Username"
-              className={classes.textField}
-              value={this.state.username}
-              onChange={this.handleChange("username")}
-              margin="normal"
-              variant="outlined"
-            />
+        <form classusername={classes.container} noValidate autoComplete="off">
+          <TextField
+            id="outlined-username"
+            label="Username"
+            className={classes.textField}
+            value={this.state.username}
+            onChange={this.handleChange}
+            name="username"
+            margin="normal"
+            variant="outlined"
+          />
 
-            <TextField
-              id="outlined-email-input"
-              label="Email"
-              className={classes.textField}
-              type="email"
-              name="email"
-              autoComplete="email"
-              margin="normal"
-              variant="outlined"
-            />
+          <TextField
+            id="outlined-email-input"
+            label="Email"
+            className={classes.textField}
+            type="email"
+            name="email"
+            autoComplete="email"
+            margin="normal"
+            variant="outlined"
+          />
 
-            <TextField
-              id="outlined-password-input"
-              label="Password"
-              className={classes.textField}
-              type="password"
-              autoComplete="current-password"
-              margin="normal"
-              variant="outlined"
-            />
+          <TextField
+            id="outlined-password-input"
+            label="Password"
+            className={classes.textField}
+            type="password"
+            autoComplete="current-password"
+            margin="normal"
+            variant="outlined"
+            name="password"
+          />
 
-            <TextField
-              id="outlined-birthday"
-              label="Birthday"
-              className={classes.textField}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-gender"
-              label="Gender"
-              className={classes.textField}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-Profession?"
-              label="Who you are?"
-              className={classes.textField}
-              margin="normal"
-              variant="outlined"
-            />
-          </CardContent>
+          <TextField
+            id="outlined-birthday"
+            label="Birthday"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            name="birthday"
+          />
+
+          <TextField
+            id="outlined-gender"
+            label="Gender"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            name="gender"
+          />
+
+          <TextField
+            id="outlined-Profession?"
+            label="Who you are?"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            name="userType"
+          />
+
         </form>
       </div>
     );
   }
-  //import { BrowserRouter as Router, Route } from "react-router-dom";
 }
 
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 // const styles = theme => ({
 //   bigAvatar: {
 //     margin: 10,
