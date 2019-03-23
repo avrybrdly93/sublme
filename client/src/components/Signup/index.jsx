@@ -163,6 +163,7 @@ class Signup extends Component {
                   placeholder="email@icloud.com"
                   onChange={this.handleInputChange}
                   name="email"
+                  required
                   value={this.state.email}
                 />
               </div>
@@ -176,6 +177,7 @@ class Signup extends Component {
                   placeholder="johnnyappleseed"
                   onChange={this.handleInputChange}
                   name="username"
+                  required
                   value={this.state.username}
                 />
               </div>
@@ -189,6 +191,7 @@ class Signup extends Component {
                   placeholder="Johnny"
                   onChange={this.handleInputChange}
                   name="firstName"
+                  required
                   value={this.state.firstName}
                 />
               </div>
@@ -202,6 +205,7 @@ class Signup extends Component {
                   placeholder="Appleseed"
                   onChange={this.handleInputChange}
                   name="lastName"
+                  required
                   value={this.state.lastName}
                 />
               </div>
@@ -216,6 +220,7 @@ class Signup extends Component {
                     placeholder="*******"
                     onChange={this.handleInputChange}
                     name="password"
+                    required
                     value={this.state.password}
                   />
                 </div>
@@ -226,8 +231,9 @@ class Signup extends Component {
                     type="password"
                     placeholder="*******"
                     onChange={this.handleInputChange}
-                    name="password"
-                    value={this.state.password}
+                    name="passwordTwo"
+                    required
+                    value={this.state.passwordTwo}
                   />
                 </div>
               </div>
@@ -242,6 +248,7 @@ class Signup extends Component {
                     id="inputGender"
                     onChange={this.handleInputChange}
                     name="gender"
+                    required
                     value={this.state.gender}
                   >
                     <option defaultValue>Choose..</option>
@@ -258,6 +265,7 @@ class Signup extends Component {
                     className="form-control"
                     id="start"
                     type="date"
+                    required
                     value={this.state.birthday}
                     onChange={this.handleInputChange}
                   />
@@ -297,6 +305,7 @@ class Signup extends Component {
                   id="inputState"
                   onChange={this.handleInputChange}
                   name="userType"
+                  required
                   value={this.state.userType}
                 >
                   <option defaultValue>Who are you</option>
@@ -310,11 +319,12 @@ class Signup extends Component {
               {/* style and add link to terms & service  */}
               <div className="container">
                 <div className="round">
-                  <input id="checkbox" type="checkbox" />
+                  <input id="checkbox" type="checkbox" required />
                   <label htmlFor="checkbox" /> You agree to our Terms of Service
                   and Privacy Policy
                   <br />
                   <br />
+                  <button>Button </button>
                   <button
                     className="button"
                     style={{ textAlign: "center" }}
