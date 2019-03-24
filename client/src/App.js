@@ -3,6 +3,7 @@ import LoggedInNavbar from "./components/LoggedInNavbar/LoggedInNavbar";
 import Dashboard from "./pages/dashboard";
 import NoMatch from "./pages/NoMatch";
 import Login from "./components/Login";
+import Logout from "./pages/Logout";
 import LoggedOutNavbar from "./components/LoggedOutNavbar/LoggedOutNavbar";
 import Cookies from "js-cookie";
 import Profile from "./pages/profile";

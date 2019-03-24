@@ -16,6 +16,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Comment from "../Comment";
 import dbAPI from "../../utils/dbAPI";
+import Cookies from "js-cookie";
 
 const styles = theme => ({
   details: {
@@ -62,8 +63,22 @@ class MusicCard extends Component {
 
   //   }
   componentDidMount() {
+    let username = Cookies.get("username");
     dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
+    });
+    dbAPI.getLikes(username, response => {
+      // let likedSongs = response.data[0].likedMusic;
+      let likedSongs = response.data[0].likedMusic;
+      console.log(likedSongs);
+      likedSongs.map((song, index) => {
+        console.log(song);
+        if (this.props.songid === song) {
+          console.log("This song has already been liked");
+          this.setState({ alreadyLiked: true });
+        }
+        console.log(this.state.alreadyLiked);
+      });
     });
   }
 
@@ -80,13 +95,14 @@ class MusicCard extends Component {
   //             <CardContent className={classes.content}>
   //               <img
   //                 src={this.props.profile}
-  play = song => { };
+  play = song => {};
 
   openComments = () => {
     this.setState({ open: true });
     dbAPI.getComments(this.props.songid, response => {
       // response.data.map(() => {});
       this.setState({ comments: response.data });
+      console.log(this.state.comments);
     });
   };
 
@@ -120,11 +136,13 @@ class MusicCard extends Component {
         comments: this.state.newComment
       })
       .then(responseOne => {
-        axios.get("/api/music/comments/" + this.props.songid).then(responseTwo => {
-          console.log("THIS SHOULD BE COMMENTS: " + responseTwo.data);
-          //response.data.map(comment => {});
-          this.setState({ comments: responseTwo.data, newComment: "" });
-        });
+        axios
+          .get("/api/music/comments/" + this.props.songid)
+          .then(responseTwo => {
+            console.log("THIS SHOULD BE COMMENTS: " + responseTwo.data);
+            //response.data.map(comment => {});
+            this.setState({ comments: responseTwo.data, newComment: "" });
+          });
       });
   };
 
@@ -132,13 +150,26 @@ class MusicCard extends Component {
     let newLike = this.state.likes + 1;
     let unlike = this.state.likes - 1;
     let { songid } = this.props;
+    let username = Cookies.get("username");
+
+    // axios.get("/api/users/likedMusic/" + username).then(response => {
+    //   let likedSongs = response.data[0].likedMusic;
+    //   for (let i = 0; i < likedSongs.length; i++) {
+    //     for (let j = 0; j < likedSongs.length; j++) {
+    //       if (likedSongs[i] === likedSongs[j]) {
+    //         console.log("Already liked this song!");
+    //         this.setState({ alreadyLiked: true });
+    //       }
+    //     }
+    //   }
+    // });
 
     if (this.state.alreadyLiked) {
       this.setState({ likes: unlike, alreadyLiked: false });
-      dbAPI.sendLike(unlike, songid, null);
+      dbAPI.unlike(unlike, songid, username);
     } else {
       this.setState({ likes: newLike, alreadyLiked: true });
-      dbAPI.sendLike(newLike, songid, null);
+      dbAPI.like(newLike, songid, username);
     }
   };
 
@@ -192,8 +223,8 @@ class MusicCard extends Component {
                 </Typography>
               </CardContent>
             </div>
-            <div className="controls" {...other} >
-              <i className="fas fa-step-backward fa-2x"  />
+            <div className="controls" {...other}>
+              <i className="fas fa-step-backward fa-2x" />
               <i
                 // onClick={() => {
                 //   this.handleClick();
