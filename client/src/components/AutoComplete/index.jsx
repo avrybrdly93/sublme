@@ -2,12 +2,57 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
+import InputBase from "@material-ui/core/InputBase";
+import { fade } from "@material-ui/core/styles/colorManipulator";
+import { withStyles } from "@material-ui/core/styles";
 import "./style.css";
-import { Redirect } from "react-router-dom";
 
 //Using this to pull from last.fm api
 // const { API_KEY } = process.env
 // const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
+
+const styles = theme => ({
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25)
+    },
+    marginRight: theme.spacing.unit * 2,
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing.unit * 3,
+      width: "auto"
+    },
+    zIndex: 999
+  },
+  searchIcon: {
+    width: theme.spacing.unit * 9,
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  inputRoot: {
+    color: "inherit",
+    width: "100%"
+  },
+  inputInput: {
+    paddingTop: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 10,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: 200
+    }
+  }
+});
 
 class Autocomplete extends Component {
   static propTypes = {
@@ -29,8 +74,7 @@ class Autocomplete extends Component {
       // Whether or not the suggestion list is shown
       showSuggestions: false,
       // What the user has entered
-      userInput: "",
-      goToSearch : false,
+      userInput: ""
     };
   }
 
@@ -47,7 +91,8 @@ class Autocomplete extends Component {
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    axios.get("/api/music/search/" + this.state.userInput.toLowerCase())
+    axios
+      .get("/api/music/search/" + this.state.userInput.toLowerCase())
       .then(response => {
         console.log(response.data);
         this.setState({
@@ -57,16 +102,13 @@ class Autocomplete extends Component {
         });
       });
 
-
-
     // const { suggestions } = this.props;
     // const userInput = e.currentTarget.value;
-
 
     // // Filter our suggestions that don't contain the user's input
     // const filteredSuggestions = suggestions.data.filter(
     //   suggestion =>
-    //     suggestion.title.toLowerCase().indexOf(userInput.toLowerCase()) > -1 
+    //     suggestion.title.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     // );
 
     // this.setState({
@@ -91,18 +133,16 @@ class Autocomplete extends Component {
 
     // User pressed the enter key
     if (e.keyCode === 13) {
-      // this.setState({
-      //   activeSuggestion: 0,
-      //   showSuggestions: false,
-      //   // userInput: filteredSuggestions[activeSuggestion]
-      //   userInput:
-      //     filteredSuggestions[activeSuggestion].title +
-      //     " - " +
-      //     filteredSuggestions[activeSuggestion].artist
-      // });
-      this.setState({goToSearch: true});
+      this.setState({
+        activeSuggestion: 0,
+        showSuggestions: false,
+        // userInput: filteredSuggestions[activeSuggestion]
+        userInput:
+          filteredSuggestions[activeSuggestion].title +
+          " - " +
+          filteredSuggestions[activeSuggestion].artist
+      });
     }
-
     // User pressed the up arrow
     else if (e.keyCode === 38) {
       if (activeSuggestion === 0) {
@@ -127,14 +167,8 @@ class Autocomplete extends Component {
     }
   };
 
-  renderRedirect(){
-    const searchPath="/search/results/"+this.state.userInput;
-    if(this.state.goToSearch===true){
-      return <Redirect to={searchPath} />;
-    }
-  }
-  
   render() {
+    const { classes } = this.props;
 
     const {
       onClick,
@@ -152,7 +186,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul class="suggestions">
+          <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -166,13 +200,18 @@ class Autocomplete extends Component {
                   className={className}
                   key={suggestion._id}
                   onClick={onClick}
-                  onKeyPress={handleKeyPress}
-                >
+                  onKeyPress={handleKeyPress}>
                   {/* coverlinks currently pulling up undefined */}
-                  <div><img alt="cover" src={suggestion.cover} width="25" height="25"></img>{suggestion.title} -{" "}
-                    {suggestion.artistName}</div>
+                  <div>
+                    <img
+                      alt="cover"
+                      src={suggestion.cover}
+                      width="25"
+                      height="25"
+                    />
+                    {suggestion.title} - {suggestion.artistName}
+                  </div>
                   {/* {suggestion.cover} */}
-
                 </li>
               );
             })}
@@ -180,8 +219,8 @@ class Autocomplete extends Component {
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
-            <em>No suggestions, you're on your own!</em>
+          <div className="no-suggestions">
+            <p>No suggestions, you're on your own!</p>
           </div>
         );
       }
@@ -189,23 +228,40 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
-        {this.renderRedirect()}
-        <div className="contain-search">
-          <SearchIcon />
+        <div className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
+          <InputBase
+            placeholder="Search…"
+            onChange={this.onChange}
+            value={this.state.userInput}
+            name="userInput"
+            type="text"
+            autoComplete="off"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput
+            }}
+          />
+          {suggestionsListComponent}
+        </div>
+        {/* <div className="contain-search">
           <input
+            className="search"
             type="text"
             onChange={this.onChange}
-            onKeyDown={this.onKeyDown}
+            // onKeyDown={this.onKeyDown}
             // onKeyPress={this.handleKeyPress}
             value={this.state.userInput}
             name="userInput"
             placeholder="Search"
           />
           {suggestionsListComponent}
-        </div>
+        </div> */}
       </Fragment>
     );
   }
 }
 
-export default Autocomplete;
+export default withStyles(styles)(Autocomplete);
