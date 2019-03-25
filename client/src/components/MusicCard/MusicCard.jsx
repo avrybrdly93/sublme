@@ -52,49 +52,20 @@ class MusicCard extends Component {
     };
   }
 
-  // handleClick = () => {
-  //   const currentState = this.state.active;
-  //   this.setState({ active: !currentState });
-  // };
-
-  // likeSong = () => {
-  //   axios.put("/api/music").then(() => {
-  //     console.log("updated");
-
-  //   }
   componentDidMount() {
     let username = Cookies.get("username");
     dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
     });
     dbAPI.getLikes(username, response => {
-      // let likedSongs = response.data[0].likedMusic;
       let likedSongs = response.data[0].likedMusic;
-      //console.log(likedSongs);
       likedSongs.map((song, index) => {
-        //console.log(song);
         if (this.props.songid === song) {
-          // console.log("This song has already been liked");
           this.setState({ alreadyLiked: true });
         }
-        //console.log(this.state.alreadyLiked);
       });
     });
   }
-
-  // render() {
-  //   const { classes, ...other } = this.props;
-  //   return (
-  //     <React.Fragment>
-  //       <Card className="card" {...other} key={this.props.id}>
-  //         <CardMedia
-  //           className="cover"
-  //           image={this.props.cover}
-  //           title={this.props.covername}>
-  //           <div className={classes.details}>
-  //             <CardContent className={classes.content}>
-  //               <img
-  //                 src={this.props.profile}
   play = song => {};
 
   openComments = () => {
@@ -130,7 +101,6 @@ class MusicCard extends Component {
     //   })
     // );
 
-    //console.log(this.state.newComment);
     axios
       .put("/api/music/comments/" + this.props.songid, {
         comments: this.state.newComment
@@ -140,7 +110,6 @@ class MusicCard extends Component {
           .get("/api/music/comments/" + this.props.songid)
           .then(responseTwo => {
             console.log("THIS SHOULD BE COMMENTS: " + responseTwo.data);
-            //response.data.map(comment => {});
             this.setState({ comments: responseTwo.data, newComment: "" });
           });
       });
@@ -151,18 +120,6 @@ class MusicCard extends Component {
     let unlike = this.state.likes - 1;
     let { songid } = this.props;
     let username = Cookies.get("username");
-
-    // axios.get("/api/users/likedMusic/" + username).then(response => {
-    //   let likedSongs = response.data[0].likedMusic;
-    //   for (let i = 0; i < likedSongs.length; i++) {
-    //     for (let j = 0; j < likedSongs.length; j++) {
-    //       if (likedSongs[i] === likedSongs[j]) {
-    //         console.log("Already liked this song!");
-    //         this.setState({ alreadyLiked: true });
-    //       }
-    //     }
-    //   }
-    // });
 
     if (this.state.alreadyLiked) {
       this.setState({ likes: unlike, alreadyLiked: false });
@@ -226,9 +183,6 @@ class MusicCard extends Component {
             <div className="controls" {...other}>
               <i className="fas fa-step-backward fa-2x" />
               <i
-                // onClick={() => {
-                //   this.handleClick();
-                // }}
                 className={
                   this.state.active
                     ? "far fa-pause-circle fa-3x play-pause-btn"
