@@ -1,25 +1,18 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import upcomingUsers from "../../upcomingUsers.json";
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 
 class ProfileCard extends Component {
-  state = {
-    users: upcomingUsers
-  };
   render() {
-    let users = this.state.users;
-    const profiles = users.map(users => (
-      <li key={users.id}>
+    return (
+      <React.Fragment>
         <img
           className="uk-border-circle"
-          width="120"
-          height="120"
-          src={users.image}
-          alt={users.name}
-          style={{ marginLeft: 115, marginBottom: 10 }}
+          src={this.props.image}
+          alt={this.props.name}
+          style={{ marginLeft: 115, marginBottom: 10, width: 120, height: 120 }}
         />
         <Typography
           component="h2"
@@ -29,8 +22,9 @@ class ProfileCard extends Component {
             color: "white",
             fontSize: "100%",
             fontWeight: 100
-          }}>
-          {users.name}
+          }}
+        >
+          {this.props.name}
         </Typography>
         <Typography
           component="h2"
@@ -40,12 +34,12 @@ class ProfileCard extends Component {
             color: "white",
             fontSize: "100%",
             fontWeight: 100
-          }}>
-          {users.location}
+          }}
+        >
+          {this.props.location}
         </Typography>
-      </li>
-    ));
-    return <React.Fragment>{profiles}</React.Fragment>;
+      </React.Fragment>
+    );
   }
 }
 

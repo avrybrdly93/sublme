@@ -22,6 +22,9 @@ router.route("/likedMusic/remove/:username").put(userController.deleteLike);
 // => /api/users/
 router.route("/").get(userController.findAll);
 
+// => /api/users/user/artists/
+router.route("/user/artists").get(userController.findArtists);
+
 // => /api/users/user/logout
 router.route("/user/logout").get(userController.logoutUser);
 

@@ -47,10 +47,13 @@ export default {
   getComments: (songID, callback) => {
     axios.get("/api/music/comments/" + songID).then(callback);
   },
+  getArtists: callback => {
+    axios.get("/api/users/user/artists").then(callback);
+  },
   findUser: function(userID) {
     return axios.get("/api/users/" + userID);
   },
-  passportFindUser: function(){
+  passportFindUser: function() {
     return axios.get("/api/users/find/self");
   },
   createUser: function(newUser) {

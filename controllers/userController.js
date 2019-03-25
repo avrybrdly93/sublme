@@ -160,6 +160,9 @@ module.exports = {
   findAll: function(req, res) {
     db.User.find().then(dbModel => res.json(dbModel));
   },
+  findArtists: function(req, res) {
+    db.User.find({ userType: "Artist" }).then(dbModel => res.json(dbModel));
+  },
   findUserByID: function(req, res) {
     db.User.findById({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))

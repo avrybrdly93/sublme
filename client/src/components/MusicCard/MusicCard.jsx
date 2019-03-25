@@ -70,14 +70,14 @@ class MusicCard extends Component {
     dbAPI.getLikes(username, response => {
       // let likedSongs = response.data[0].likedMusic;
       let likedSongs = response.data[0].likedMusic;
-      console.log(likedSongs);
+      //console.log(likedSongs);
       likedSongs.map((song, index) => {
-        console.log(song);
+        //console.log(song);
         if (this.props.songid === song) {
-          console.log("This song has already been liked");
+          // console.log("This song has already been liked");
           this.setState({ alreadyLiked: true });
         }
-        console.log(this.state.alreadyLiked);
+        //console.log(this.state.alreadyLiked);
       });
     });
   }
