@@ -17,6 +17,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Comment from "../Comment";
 import dbAPI from "../../utils/dbAPI";
 import Cookies from "js-cookie";
+import CommentModal from "../CommentModal";
 
 const styles = theme => ({
   details: {
@@ -70,49 +71,15 @@ class MusicCard extends Component {
 
   openComments = () => {
     this.setState({ open: true });
-    dbAPI.getComments(this.props.songid, response => {
-      // response.data.map(() => {});
-      this.setState({ comments: response.data });
-      console.log(this.state.comments);
-    });
+    // dbAPI.getComments(this.props.songid, response => {
+    //   // response.data.map(() => {});
+    //   this.setState({ comments: response.data });
+    //   console.log(this.state.comments);
+    // });
   };
 
   handleClose = () => {
     this.setState({ open: false });
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  submitComment = event => {
-    event.preventDefault();
-    // dbAPI.sendComment(
-    //   this.props.songid,
-    //   this.state.newComment,
-    //   dbAPI.getComments(this.props.songid, response => {
-    //     response.data.map(comment => {
-    //       console.log(comment);
-    //     });
-    //     this.setState({ comments: response.data, newComment: "" });
-    //   })
-    // );
-
-    axios
-      .put("/api/music/comments/" + this.props.songid, {
-        comments: this.state.newComment
-      })
-      .then(responseOne => {
-        axios
-          .get("/api/music/comments/" + this.props.songid)
-          .then(responseTwo => {
-            console.log("THIS SHOULD BE COMMENTS: " + responseTwo.data);
-            this.setState({ comments: responseTwo.data, newComment: "" });
-          });
-      });
   };
 
   likeSong = () => {
@@ -132,18 +99,7 @@ class MusicCard extends Component {
 
   render() {
     const { classes, ...other } = this.props;
-    let renderComments = this.state.comments.map(comment => (
-      <li key={comment._id}>
-        <Comment
-          //userid={this.props.userid[index]}
-          songid={this.props.songid}
-          comment={comment.text}
-          picURL={comment.writerPic}
-          username={comment.writerName}
-          time={comment.dateCreated}
-        />
-      </li>
-    ));
+
     let likeHeart = null;
     if (this.state.alreadyLiked) {
       likeHeart = "fa fa-heart fa-sm";
@@ -213,31 +169,10 @@ class MusicCard extends Component {
                 onClose={this.handleClose}
                 aria-labelledby="form-dialog-title"
               >
-                <DialogTitle id="form-dialog-title">Comments</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    Please add a comment about this track.
-                  </DialogContentText>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="user-comment"
-                    value={this.state.newComment}
-                    name="newComment"
-                    onChange={this.handleInputChange}
-                    label="Insert Comment"
-                    fullWidth
-                  />
-                  {renderComments}
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={this.handleClose} color="secondary">
-                    Cancel
-                  </Button>
-                  <Button onClick={this.submitComment} color="primary">
-                    Submit
-                  </Button>
-                </DialogActions>
+                <CommentModal
+                  handleClose={this.handleClose}
+                  songid={this.props.songid}
+                />
               </Dialog>
             </div>
           </CardMedia>
