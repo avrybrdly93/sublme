@@ -1,11 +1,40 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
+import dbAPI from "../../utils/dbAPI";
 
 class Comment extends Component {
   state = {
     content: null,
     userid: Cookies.get("username"),
-    likes: 0
+    likes: 0,
+    alreadyLiked: false
+  };
+
+  likeComment = () => {
+    let newLike = this.state.likes + 1;
+    let unlike = this.state.likes - 1;
+    let { commentid } = this.props;
+    let username = Cookies.get("username");
+
+    if (this.state.alreadyLiked) {
+      this.setState({ likes: unlike, alreadyLiked: false });
+      dbAPI.unlike(
+        unlike,
+        commentid,
+        username,
+        "/api/music/comments/likes/",
+        "/api/users/likedComments/"
+      );
+    } else {
+      this.setState({ likes: newLike, alreadyLiked: true });
+      dbAPI.like(
+        newLike,
+        commentid,
+        username,
+        "/api/music/comments/likes/",
+        "/api/users/likedComments/remove/"
+      );
+    }
   };
 
   render() {
@@ -31,7 +60,7 @@ class Comment extends Component {
           </small>
           <div>
             <div className="social-icons">
-              <span onClick={this.likeSong}>
+              <span onClick={this.likeComment}>
                 <i className={likeHeart} style={{ color: "black" }} />
               </span>
               {this.state.likes}

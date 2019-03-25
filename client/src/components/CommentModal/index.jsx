@@ -53,6 +53,7 @@ class CommentModal extends Component {
         <Comment
           //userid={this.props.userid[index]}
           songid={this.props.songid}
+          commentid={comment._id}
           comment={comment.text}
           picURL={comment.writerPic}
           username={comment.writerName}

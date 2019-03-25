@@ -7,36 +7,29 @@ export default {
     return axios.post("/api/users/login ", tryUser);
   },
 
-  like: (like, songID, username) => {
+  like: (like, ID, username, likeRoute, userRoute) => {
     axios
-      .put("/api/music/" + songID, {
+      .put(likeRoute + ID, {
         likes: like
       })
       .then(response => {});
     axios
-      .put("/api/users/likedMusic/" + username, {
-        likedMusic: songID
+      .put(userRoute + username, {
+        likedMusic: ID
       })
-      .then(response => {
-        //hasBeenLiked = false;
-        console.log("First time liked!");
-        //console.log(response.data, this.props.songid);
-      });
+      .then(response => {});
   },
-  unlike: (like, songID, username) => {
+  unlike: (like, ID, username, likeRoute, userRoute) => {
     axios
-      .put("/api/music/" + songID, {
+      .put(likeRoute + ID, {
         likes: like
       })
       .then(response => {});
     axios
-      .put("/api/users/likedMusic/remove/" + username, {
-        likedMusic: songID
+      .put(userRoute + username, {
+        likedMusic: ID
       })
-      .then(response => {
-        console.log("removing like");
-        //hasBeenLiked = true;
-      });
+      .then(response => {});
   },
   getMusic: (songID, callback) => {
     axios.get("/api/music/" + songID).then(callback);

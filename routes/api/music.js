@@ -4,7 +4,7 @@ const musicController = require("../../controllers/musicController");
 // => /api/music/
 router.route("/").post(musicController.create);
 
-// => /api/music/new 
+// => /api/music/new
 router.route("/new").post(musicController.create);
 
 // => /api/music/
@@ -28,7 +28,10 @@ router.route("/:id").put(musicController.update);
 // => /api/music/comments/:id
 router.route("/comments/:id").put(musicController.postComment);
 
-// => /api/music/comments
+// => /api/music/comments/likes/:id
+router.route("/comments/likes/:id").put(musicController.update);
+
+// => /api/music/comments/:id
 router.route("/comments/:id").get(musicController.findComments);
 
 module.exports = router;

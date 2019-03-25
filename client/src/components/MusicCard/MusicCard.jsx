@@ -67,7 +67,6 @@ class MusicCard extends Component {
       });
     });
   }
-  play = song => {};
 
   openComments = () => {
     this.setState({ open: true });
@@ -90,10 +89,22 @@ class MusicCard extends Component {
 
     if (this.state.alreadyLiked) {
       this.setState({ likes: unlike, alreadyLiked: false });
-      dbAPI.unlike(unlike, songid, username);
+      dbAPI.unlike(
+        unlike,
+        songid,
+        username,
+        "/api/music/",
+        "/api/users/likedMusic/"
+      );
     } else {
       this.setState({ likes: newLike, alreadyLiked: true });
-      dbAPI.like(newLike, songid, username);
+      dbAPI.like(
+        newLike,
+        songid,
+        username,
+        "/api/music/",
+        "/api/users/likedMusic/remove/"
+      );
     }
   };
 

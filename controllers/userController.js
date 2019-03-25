@@ -174,9 +174,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   deleteLike: function(req, res) {
-    // db.User.find({ username: req.params.username })
-    //   .then(dbModel => res.json(dbModel[0].likedMusic))
-    //   .catch(err => res.status(422).json(err));
     db.User.findOneAndUpdate(
       { username: req.params.username },
       { $pull: { likedMusic: req.body.likedMusic } }
