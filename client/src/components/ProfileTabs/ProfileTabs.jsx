@@ -68,6 +68,10 @@ class ProfileTabs extends React.Component {
                   fontWeight: 500
                 }}>
                 {this.props.location}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate facere, culpa a, omnis officia vel illo similique
+                necessitatibus corrupti ea, quos ipsum nulla ab doloribus
+                pariatur quidem consectetur accusantium unde.
               </Typography>
               <Typography
                 component="p"
@@ -78,6 +82,17 @@ class ProfileTabs extends React.Component {
                   fontWeight: 50
                 }}>
                 {this.props.bio}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate facere, culpa a, omnis officia vel illo similique
+                necessitatibus corrupti ea, quos ipsum nulla ab doloribus
+                pariatur quidem consectetur accusantium unde. Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Cupiditate facere, culpa
+                a, omnis officia vel illo similique necessitatibus corrupti ea,
+                quos ipsum nulla ab doloribus pariatur quidem consectetur
+                accusantium unde. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Cupiditate facere, culpa a, omnis officia vel
+                illo similique necessitatibus corrupti ea, quos ipsum nulla ab
+                doloribus pariatur quidem consectetur accusantium unde.
               </Typography>
             </div>
           </TabContainer>

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import VideosList from "../components/VideosList/VideosList";
-// import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
-import ReactMediaVisualizer from "react-media-visualizer";
 import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
 import "uikit/dist/css/uikit.min.css";
@@ -70,8 +68,7 @@ class Dashboard extends Component {
                   color: "white",
                   fontSize: "250%",
                   fontWeight: 100
-                }}
-              >
+                }}>
                 More of what you want...
               </Typography>
               <Typography
@@ -84,8 +81,7 @@ class Dashboard extends Component {
                   fontWeight: 100,
                   paddingBottom: 10
                 }}
-                gutterBottom
-              >
+                gutterBottom>
                 Swipe thru the most popular tracks out now!
               </Typography>
             </div>
@@ -101,16 +97,14 @@ class Dashboard extends Component {
                   className="uk-position-center-left-out uk-position-small uk-hidden-hover"
                   href="/"
                   data-uk-slidenav-previous
-                  data-uk-slider-item="previous"
-                >
+                  data-uk-slider-item="previous">
                   <i className="material-icons md-48">keyboard_arrow_left</i>
                 </a>
                 <a
                   className="uk-position-center-right-out uk-position-small uk-hidden-hover"
                   href="/"
                   data-uk-slidenav-next
-                  data-uk-slider-item="next"
-                >
+                  data-uk-slider-item="next">
                   <i className="material-icons md-48">keyboard_arrow_right</i>
                 </a>
               </div>
@@ -129,8 +123,7 @@ class Dashboard extends Component {
                   fontWeight: 100,
                   paddingBottom: 10
                 }}
-                gutterBottom
-              >
+                gutterBottom>
                 Upcoming Artists & Producers
               </Typography>
             </div>
