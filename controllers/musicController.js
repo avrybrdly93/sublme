@@ -187,13 +187,30 @@ module.exports = {
   getReplies: function(req, res) {
     db.Comment.findOne({ _id: req.params.id })
       .then(dbModel => {
-        db.Comment.findOne({ _id: dbModel.replies[0]._id }).then(response => {
+        db.Comment.find({ _id: dbModel.replies }).then(response => {
           res.json(response);
         });
       })
 
       .catch(err => res.status(422).json(err));
   },
+
+  // getReplies: function(req, res) {
+  //   db.Comment.findById(req.params.id)
+  //     .sort({ date: -1 })
+  //     .then(dbModel => {
+  //       //console.log("MUSIC FOUND: "+dbModel);
+  //       db.Comment.find({
+  //         _id: { $in: dbModel.comments }
+  //       })
+  //         .then(response => {
+  //           //console.log("COMMENTS FOUND: "+response);
+  //           res.json(response);
+  //         })
+  //         .catch(err => res.status(422).json(err));
+  //     })
+  //     .catch(err => res.status(422).json(err));
+  // },
   //   postReply: function(req, res) {
   //     db.Comment.findOneAndUpdate(
   //       { _id: req.params.id },
