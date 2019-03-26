@@ -30,13 +30,18 @@ class Comment extends Component {
     axios
       .get("/api/music/comments/replies/" + this.props.commentid)
       .then(response => {
-        let replies = response.data;
-        replies.map(reply => {
-          //console.log(reply.text);
-          this.setState({ replies: reply.text });
-          console.log(this.state.replies);
+        let reply = [];
+        let replyObjs = response.data;
+        //console.log(replies);
+        replyObjs.map((reply, index) => {
+          // console.log(reply.text);
+          // reply.push(reply.text);
+          // this.setState({ replies: reply.text });
+          this.state.replies.push(reply.text);
+          //console.log(this.state.replies);
         });
         //console.log("These are our replies: " + JSON.stringify(response.data));
+        console.log(this.state.replies);
       });
   }
 
@@ -102,10 +107,11 @@ class Comment extends Component {
     } else {
       likeHeart = "far fa-heart fa-sm";
     }
-    let renderReplies = this.state.replies.map(reply => {
-      console.log(reply.text);
-      this.setState({ replies: reply.text });
-    });
+    let renderReplies = this.state.replies.map(reply => (
+      <li key={reply.text}>
+        <div style={{ color: "black" }}>{reply.text}</div>
+      </li>
+    ));
     return (
       <React.Fragment>
         <div style={{ color: "black" }}>
