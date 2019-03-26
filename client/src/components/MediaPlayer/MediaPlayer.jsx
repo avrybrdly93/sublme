@@ -9,7 +9,10 @@ class MediaPlayer extends Component {
       playlist: [],
       playlistIsPlaying: false,
       currentSongIndex: 0,
-      theme: "spotify"
+      theme: "spotify",
+      songs: [],
+      currentSong: {},
+      active: false
     };
   }
 

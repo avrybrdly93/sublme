@@ -80,7 +80,8 @@ class Profile extends Component {
           style={{
             backgroundImage: bgImg,
             backgroundSize: "cover"
-          }}>
+          }}
+        >
           <div className="container" />
         </div>
         <div className="col-12">
@@ -101,7 +102,8 @@ class Profile extends Component {
                   textAlign: "center",
                   color: "white",
                   fontWeight: 500
-                }}>
+                }}
+              >
                 <div className="row name">
                   <div className="col-lg-5 col-1" />
                   <div className="col-lg-1 col-5 username">
@@ -123,7 +125,8 @@ class Profile extends Component {
                     borderColor: "white",
                     color: "white"
                   }}
-                  href="/settings">
+                  href="/settings"
+                >
                   Follow
                 </Button>
               </div>
