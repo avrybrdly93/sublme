@@ -35,11 +35,11 @@
 }
 .social-icons {
   color: white !important;
-  padding-left: 30px !important;
-  width: 330px !important;
+  margin-left: -15px;
+  width: 390px;
 }
 .space-1 {
-  width: 258px !important;
+  width: 320px;
   display: inline-block;
 }
 a {

@@ -243,19 +243,6 @@ class PrimarySearchAppBar extends React.Component {
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
             <AutoComplete />
-            {/* <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
-            </div> */}
-
             <div className={classes.grow1} />
             <a className="no-underline" href="/">
               <Typography

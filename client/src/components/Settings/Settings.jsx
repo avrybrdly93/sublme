@@ -44,7 +44,17 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 300
+    width: 380
+  },
+  email: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: "100%"
+  },
+  bio: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 380
   },
   dense: {
     marginTop: 19
@@ -61,7 +71,15 @@ function Transition(props) {
 class Settings extends React.Component {
   state = {
     open: false,
-    expanded: null
+    expanded: null,
+    email: "",
+    fName: "",
+    lName: "",
+    password1: "",
+    password2: "",
+    bioStatement: "",
+    updateHeader: "",
+    updateAvatar: ""
   };
 
   handleClickOpen = () => {
@@ -120,113 +138,123 @@ class Settings extends React.Component {
             onChange={this.handleChange("panel1")}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>
-                General settings
+                Personal settings
               </Typography>
               <Typography className={classes.secondaryHeading}>
-                Edit personal info
+                Email, name, password.
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <form className={classes.container} noValidate autoComplete="off">
-                <TextField
-                  id="fName"
-                  label="First name"
-                  className={classes.textField}
-                  value={this.state.fName}
-                  onChange={this.handleInput("fName")}
-                  margin="normal"
-                />
-                <TextField
-                  id="lName"
-                  label="Last name"
-                  className={classes.textField}
-                  value={this.state.lName}
-                  onChange={this.handleInput("lName")}
-                  margin="normal"
-                />
-                <TextField
-                  id="bio"
-                  label="Bio"
-                  className={classes.textField}
-                  value={this.state.bioStatement}
-                  onChange={this.handleInput("bio")}
-                  margin="normal"
-                />
-                <TextField
-                  id="email"
-                  label="Email"
-                  className={classes.textField}
-                  value={this.state.email}
-                  onChange={this.handleInput("email")}
-                  margin="normal"
-                />
-                <TextField
-                  id="password"
-                  label="Password"
-                  className={classes.textField}
-                  value={this.state.password1}
-                  onChange={this.handleInput("password1")}
-                  margin="normal"
-                />
-                <TextField
-                  id="password"
-                  label="Confirm Password"
-                  className={classes.textField}
-                  value={this.state.password2}
-                  onChange={this.handleInput("password2")}
-                  margin="normal"
-                />
-              </form>
+              <div className="row">
+                <div className="col-2" />
+                <div className="col-8">
+                  <form
+                    className={classes.container}
+                    noValidate
+                    autoComplete="off">
+                    <TextField
+                      id="email"
+                      label="Email"
+                      className={classes.email}
+                      value={this.state.email}
+                      onChange={this.handleInput("email")}
+                      margin="normal"
+                    />
+                    <TextField
+                      id="fName"
+                      label="First name"
+                      className={classes.textField}
+                      value={this.state.fName}
+                      onChange={this.handleInput("fName")}
+                      margin="normal"
+                    />
+                    <TextField
+                      id="lName"
+                      label="Last name"
+                      className={classes.textField}
+                      value={this.state.lName}
+                      onChange={this.handleInput("lName")}
+                      margin="normal"
+                    />
+                    <TextField
+                      id="password"
+                      label="Password"
+                      className={classes.textField}
+                      value={this.state.password1}
+                      onChange={this.handleInput("password1")}
+                      margin="normal"
+                    />
+                    <TextField
+                      id="password"
+                      label="Confirm Password"
+                      className={classes.textField}
+                      value={this.state.password2}
+                      onChange={this.handleInput("password2")}
+                      margin="normal"
+                    />
+                  </form>
+                </div>
+                <div className="col-2" />
+              </div>
             </ExpansionPanelDetails>
           </ExpansionPanel>
           <ExpansionPanel
             expanded={expanded === "panel2"}
             onChange={this.handleChange("panel2")}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.heading}>Users</Typography>
-              <Typography className={classes.secondaryHeading}>
-                You are currently not an owner
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Donec placerat, lectus sed mattis semper, neque lectus feugiat
-                lectus, varius pulvinar diam eros in elit. Pellentesque
-                convallis laoreet laoreet.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-            expanded={expanded === "panel3"}
-            onChange={this.handleChange("panel3")}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>
-                Advanced settings
+                Profile settings
               </Typography>
               <Typography className={classes.secondaryHeading}>
-                Filtering has been entirely disabled for whole web server
+                Header, avatar, bio.
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>
-                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-                augue.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-            expanded={expanded === "panel4"}
-            onChange={this.handleChange("panel4")}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.heading}>Personal data</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-                augue.
-              </Typography>
+              <div className="row">
+                <div className="col-2" />
+                <div className="col-8">
+                  <div className="row">
+                    <label style={{ color: "black" }}>Upload header</label>
+                    <div class="js-upload" data-uk-form-custom>
+                      <input type="file" single />
+                      <button
+                        class="uk-button uk-button-default"
+                        type="button"
+                        tabindex="-1">
+                        Select
+                      </button>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <label style={{ color: "black" }}>Upload avatar</label>
+                    <div class="js-upload" data-uk-form-custom>
+                      <input type="file" single />
+                      <button
+                        class="uk-button uk-button-default"
+                        type="button"
+                        tabindex="-1">
+                        Select
+                      </button>
+                    </div>
+                  </div>
+                  <form
+                    className={classes.container}
+                    noValidate
+                    autoComplete="off">
+                    <TextField
+                      id="bio"
+                      label="Bio"
+                      multiline
+                      rowsMax="4"
+                      value={this.state.bioStatement}
+                      onChange={this.handleInput("bio")}
+                      className={classes.bio}
+                      margin="normal"
+                    />
+                  </form>
+                </div>
+                <div className="col-2" />
+              </div>
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </Dialog>

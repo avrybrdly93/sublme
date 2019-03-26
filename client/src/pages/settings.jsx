@@ -52,111 +52,13 @@ class Settings extends React.Component {
     return (
       <div className="col-12">
         <ProfileSettings />
-        {/* <Grid container justify="center" alignItems="center">
-          <Avatar
-            alt="Picture"
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e8/CandymyloveYasu.png"
-            className={classes.bigAvatar}
-          />
-        </Grid>
-
-        <form classUsername={classes.container} noValidate autoComplete="off">
-          <CardContent container justify="center" alignItems="center">
-            <Typography gutterBottom variant="h5" component="h2">
-              Profile
-            </Typography>
-            <Typography gutterBottom variant="h5" component="h2">
-              @HelloWorld2019
-            </Typography>
-            <Typography component="p">
-              Some description that will come after ajax call
-            </Typography>
-            <Typography component="p">Edit your information here</Typography>
-
-            <TextField
-              id="outlined-username"
-              label="Username"
-              className={classes.textField}
-              value={this.state.username}
-              onChange={this.handleChange("username")}
-              margin="normal"
-              variant="outlined"
-            />
-
-            <TextField
-              id="outlined-email-input"
-              label="Email"
-              className={classes.textField}
-              type="email"
-              name="email"
-              autoComplete="email"
-              margin="normal"
-              variant="outlined"
-            />
-
-            <TextField
-              id="outlined-password-input"
-              label="Password"
-              className={classes.textField}
-              type="password"
-              autoComplete="current-password"
-              margin="normal"
-              variant="outlined"
-            />
-
-            <TextField
-              id="outlined-birthday"
-              label="Birthday"
-              className={classes.textField}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-gender"
-              label="Gender"
-              className={classes.textField}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-Profession?"
-              label="Who you are?"
-              className={classes.textField}
-              margin="normal"
-              variant="outlined"
-            />
-          </CardContent>
-        </form> */}
       </div>
     );
   }
-  //import { BrowserRouter as Router, Route } from "react-router-dom";
 }
-
-// const styles = theme => ({
-//   bigAvatar: {
-//     margin: 10,
-//     width: 200,
-//     height: 200,
-
-//     button: {
-//       margin: theme.spacing.unit
-//     },
-//     root: {
-//       flexGrow: 1
-//     },
-
-//     input: {
-//       display: "center"
-//     }
-//   }
-// });
 
 Settings.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Settings);
-//export default withStyles(styles)(Profile);
-
-// export default Profile;

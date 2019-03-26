@@ -1,0 +1,42 @@
+[
+  {
+    "_id": 0,
+    "profile": "/assets/images/profiles/kakashi.jpg",
+    "username": "Kakashi",
+    "content": "Always listen to your sensai.",
+    "follow": "http://google.com",
+    "timestamp": "2 days ago"
+  },
+  {
+    "_id": 1,
+    "profile": "/assets/images/profiles/kakashi.jpg",
+    "username": "Kakashi",
+    "content": "Naruto is better than Sasuke!",
+    "follow": "http://google.com",
+    "timestamp": "1 min ago"
+  },
+  {
+    "_id": 2,
+    "profile": "/assets/images/profiles/kakashi.jpg",
+    "username": "Kakashi",
+    "content": "Hello World :)",
+    "follow": "http://google.com",
+    "timestamp": "1 week ago"
+  },
+  {
+    "_id": 3,
+    "profile": "/assets/images/profiles/kakashi.jpg",
+    "username": "Kakashi",
+    "content": "The Leaf Village",
+    "follow": "http://google.com",
+    "timestamp": "2 days ago"
+  },
+  {
+    "_id": 4,
+    "profile": "/assets/images/profiles/kakashi.jpg",
+    "username": "Kakashi",
+    "content": "A good Shinobi always has their fill of ramen before a mission.",
+    "follow": "http://google.com",
+    "timestamp": "5 hours ago"
+  }
+]

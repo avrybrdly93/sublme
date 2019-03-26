@@ -7,7 +7,9 @@
     "cover": "/assets/images/covers/future-the-wizrd-cover.jpeg",
     "profilePic": "/assets/images/profiles/future.jpg",
     "producer": "Tay Keith",
-    "mp3": "https://zavibes.org/wp-content/uploads/2019/04%20Temptation.m4a"
+    "mp3": "https://zavibes.org/wp-content/uploads/2019/04%20Temptation.m4a",
+    "genre": "Rap",
+    "category": "New"
   },
   {
     "id": 1,
@@ -17,7 +19,9 @@
     "cover": "/assets/images/covers/21-savage-i-am-i-was.jpg",
     "profilePic": "/assets/images/profiles/21-savage.jpg",
     "producer": "Tay Keith",
-    "mp3": "http://nocrawl.baseshare.com/uploads/songs/11242017/Lil%20Baby%20-%20Trending%20(Freestyle).mp3"
+    "mp3": "http://nocrawl.baseshare.com/uploads/songs/11242017/Lil%20Baby%20-%20Trending%20(Freestyle).mp3",
+    "genre": "Rap",
+    "category": "Hot"
   },
   {
     "id": 2,
@@ -26,7 +30,10 @@
     "subArtist": "Skepta",
     "cover": "/assets/images/covers/ASAP-Rocky-praise-the-lord.jpg",
     "profilePic": "/assets/images/profiles/asap-rocky.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Loved"
   },
   {
     "id": 3,
@@ -35,7 +42,10 @@
     "subArtist": "",
     "cover": "/assets/images/covers/roddy-ricch-feed-tha-streets-2.jpg",
     "profilePic": "/assets/images/profiles/roddy-ricch.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Loved"
   },
   {
     "id": 4,
@@ -44,7 +54,10 @@
     "subArtist": "",
     "cover": "/assets/images/covers/gunna-drip-or-drown-2.jpg",
     "profilePic": "/assets/images/profiles/gunna.png",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Hot"
   },
   {
     "id": 5,
@@ -53,7 +66,10 @@
     "subArtist": "",
     "cover": "/assets/images/covers/offset-red-room.jpg",
     "profilePic": "/assets/images/profiles/offset.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Hot"
   },
   {
     "id": 6,
@@ -62,7 +78,10 @@
     "subArtist": "",
     "cover": "/assets/images/covers/lil-baby-street-gossip.png",
     "profilePic": "/assets/images/profiles/lil-baby.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Loved"
   },
   {
     "id": 7,
@@ -71,7 +90,10 @@
     "subArtist": "",
     "cover": "/assets/images/covers/juice-wrld-death-race-for-love.jpg",
     "profilePic": "/assets/images/profiles/juice-wrld.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "New"
   },
   {
     "id": 8,
@@ -80,7 +102,10 @@
     "subArtist": "",
     "cover": "/assets/images/covers/nipsey-hussle-victory-lap.jpg",
     "profilePic": "/assets/images/profiles/nipsey-hussle.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Loved"
   },
   {
     "id": 9,
@@ -89,7 +114,10 @@
     "subArtist": "AlmightySuspect",
     "cover": "/assets/images/covers/azchike-my-world.jpg",
     "profilePic": "/assets/images/profiles/azchike.jpg",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Loved"
   },
   {
     "id": 10,
@@ -98,6 +126,20 @@
     "subArtist": "",
     "cover": "/assets/images/covers/NBA-YoungBoy-Realer.jpg",
     "profilePic": "/assets/images/profiles/nba-youngboy.png",
-    "producer": "Tay Keith"
+    "producer": "Tay Keith",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Hot"
+  },
+  {
+    "id": 11,
+    "title": "Window Pain (Outro)",
+    "subArtist": "",
+    "cover": "https://media2.fdncms.com/metrotimes/imager/u/original/12866616/30705662_10156360310319661_3257475992410652672_o.jpg",
+    "profilePic": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQ3Mzg3MjY0ODg2OTA4NTk5/j_cole_photo_by_isaac_brekken_wireimage_getty_503069628.jpg",
+    "producer": "J. Cole",
+    "mp3": "",
+    "genre": "Rap",
+    "category": "Hot"
   }
 ]

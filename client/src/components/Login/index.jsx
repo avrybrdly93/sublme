@@ -69,7 +69,7 @@ class Login extends Component {
               type="password"
               className="form-control"
               id="inputPassword4"
-              placeholder="*****"
+              placeholder="*********"
               name="password"
               value={this.state.password}
               onChange={this.handleInputChange}
@@ -80,9 +80,8 @@ class Login extends Component {
           <button
             className="button"
             style={{ textAlign: "center" }}
-            onClick={this.handleFormSubmit}
-          >
-            <span>Submit </span>
+            onClick={this.handleFormSubmit}>
+            Submit
           </button>
         </form>
       </div>

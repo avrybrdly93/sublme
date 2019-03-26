@@ -1,68 +1,61 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
-import VideosList from "../components/VideosList/VideosList";
-// import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
-import ReactMediaVisualizer from "react-media-visualizer";
-// import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
+import ResultsProfileGridlist from "../components/ResultsProfileGridlist/ResultsProfileGridlist";
+import ReactMediaVisualizer from "react-media-visualizer";
+import axios from "axios";
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
-import "./dashboard.css";
-import axios from "axios";
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      songs: [],
-      currentSong: {},
-      active: false,
-      playlist: [],
-      playlistIsPlaying: false,
-      currentSongIndex: 0,
-      theme: "spotify"
-    };
-    // this.receiveStateUpdates = this.receiveStateUpdates.bind(this);
-  }
+class Results extends Component {
+  state = {
+    searchQuery: "trap",
+    result: {},
+    currentSong: {},
+    active: false,
+    playlist: []
+  };
 
+  // TO DO'S:
+  // Create function that checks database and renders results for songs & artists/producers matching the searchQuery
   componentDidMount() {
     axios.get("/api/music").then(results => {
-      this.setState({ songs: results.data });
+      this.setState({ result: results.data });
     });
   }
 
-  handleCardClick = (e, song) => {
+  handleCardClick = (e, result) => {
     e.preventDefault();
-    this.setState({ currentSong: song });
-    console.log(song);
+    this.setState({ currentSong: result });
+    console.log(result);
   };
 
   render() {
-    let songs = this.state.songs;
-    // let currentSong = this.state.currentSong;
+    let results = this.state.result;
+    let currentSong = this.state.currentSong;
 
-    var renderCards = songs.map(song => (
-      <li key={song._id}>
-        <MusicCard
-          songid={song._id}
-          cover={song.cover}
-          // covername={song.artist}
-          profile={song.profilePic}
-          filelink={song.fileLink}
-          producer={song.producer}
-          artist={song.artist}
-          title={song.title}
-          onClick={e => this.handleCardClick(e, song)}
-        />
-      </li>
-    ));
+    // var renderResults = results.map(result => (
+    //   <li key={result._id}>
+    //     <Sounds
+    //       songid={result._id}
+    //       cover={result.cover}
+    //       // covername={song.artist}
+    //       profile={result.profilePic}
+    //       filelink={result.fileLink}
+    //       producer={result.producer}
+    //       artist={result.artist}
+    //       title={result.title}
+    //       onClick={e => this.handleCardClick(e, result)}
+    //     />
+    //   </li>
+    // ));
     return (
       <React.Fragment>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-12">
+            <div className="col-2" />
+            <div className="col-8">
               <Typography
                 component="h2"
                 style={{
@@ -71,7 +64,7 @@ class Dashboard extends Component {
                   fontSize: "250%",
                   fontWeight: 100
                 }}>
-                More of what you want...
+                Results for {this.state.searchQuery}...
               </Typography>
               <Typography
                 component="h2"
@@ -82,18 +75,30 @@ class Dashboard extends Component {
                   fontSize: "100%",
                   fontWeight: 100,
                   paddingBottom: 10
-                }}
-                gutterBottom>
-                Swipe thru the most popular tracks out now!
+                }}>
+                Swipe thru the results!
               </Typography>
             </div>
+            <div className="col-2" />
           </div>
+          <br />
           <div className="row">
             <div className="col-1" />
             <div className="col-10">
               <div data-uk-slider>
                 <ul className="uk-slider-items uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-grid-small">
-                  {renderCards}
+                  {/* {renderResults} */}
+                  <li>
+                    <MusicCard
+                      songid="0"
+                      cover="https://media2.fdncms.com/metrotimes/imager/u/original/12866616/30705662_10156360310319661_3257475992410652672_o.jpg"
+                      profile="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQ3Mzg3MjY0ODg2OTA4NTk5/j_cole_photo_by_isaac_brekken_wireimage_getty_503069628.jpg"
+                      producer="J. Cole"
+                      artist="J. Cole"
+                      title="Window Pain (Outro)"
+                      fileLink=""
+                    />
+                  </li>
                 </ul>
                 <a
                   className="uk-position-center-left-out uk-position-small uk-hidden-hover"
@@ -111,43 +116,31 @@ class Dashboard extends Component {
                 </a>
               </div>
             </div>
+            <div className="col-1" />
           </div>
           <br />
           <div className="row">
-            <div className="col-12">
+            <div className="col-1" />
+            <div className="col-10">
               <Typography
                 component="h2"
-                variant="display4"
+                variant="headline"
                 style={{
                   textAlign: "center",
                   color: "white",
                   fontSize: "100%",
                   fontWeight: 100,
                   paddingBottom: 10
-                }}
-                gutterBottom>
-                Upcoming Artists & Producers
+                }}>
+                Artists & Producers
               </Typography>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12">
-              <ProfileGridList />
-            </div>
-          </div>
-          <br /> <br />
-          <div className="row">
-            <div className="col-xl-0 col-sm-0" />
-            <div className="col-xl-12 col-sm-12">
-              <VideosList />
-              <br />
-              <br />
+              <ResultsProfileGridlist />
               <br />
             </div>
-            <div className="col-xl-0 col-sm-0" />
+            <div className="col-1" />
           </div>
         </div>
-        <div className="mediaPlayer">
+        <div className="musicPlayer">
           <ReactMediaVisualizer
             playlist={this.state.songs}
             receiveStateUpdates={() => {
@@ -163,9 +156,6 @@ class Dashboard extends Component {
       </React.Fragment>
     );
   }
-  receiveStateUpdates(payload) {
-    this.setState(payload);
-  }
 }
 
-export default Dashboard;
+export default Results;

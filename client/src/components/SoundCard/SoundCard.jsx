@@ -34,7 +34,7 @@ const styles = theme => ({
     height: 50,
     width: 50,
     borderRadius: 100,
-    marginBottom: 80
+    marginBottom: 100
   }
 });
 

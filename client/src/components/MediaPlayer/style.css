@@ -1,0 +1,6 @@
+.mediaPlayer {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 999;
+}
