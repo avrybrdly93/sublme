@@ -171,6 +171,18 @@ module.exports = {
     db.Music.find({ titleLower: expression })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  //Comment Controller
+  getCommentLikes: function(req, res) {
+    db.Comment.find({ _id: req.params.id }).then(dbModel =>
+      res.json(dbModel).catch(err => res.status(422).json(err))
+    );
+  },
+  updateComments: function(req, res) {
+    db.Comment.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };
 

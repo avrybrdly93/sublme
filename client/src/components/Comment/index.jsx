@@ -1,14 +1,33 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
 import dbAPI from "../../utils/dbAPI";
+import axios from "axios";
 
 class Comment extends Component {
   state = {
     content: null,
-    userid: Cookies.get("username"),
+    username: Cookies.get("username"),
     likes: 0,
     alreadyLiked: false
   };
+  componentDidMount() {
+    dbAPI.getCommentLikes(this.props.commentid, response => {
+      //console.log(response.data[0].likes);
+      this.setState({ likes: response.data[0].likes });
+    });
+    dbAPI.getUserCommentLikes(this.state.username, response => {
+      let likedComments = response.data[0].likedComments;
+      //console.log(likedComments);
+      //console.log(this.props.commentid);
+      likedComments.map((comment, index) => {
+        console.log(this.props.commentid);
+        if (this.props.commentid === comment) {
+          console.log("this comment has already been liked");
+          this.setState({ alreadyLiked: true });
+        }
+      });
+    });
+  }
 
   likeComment = () => {
     let newLike = this.state.likes + 1;
@@ -18,21 +37,21 @@ class Comment extends Component {
 
     if (this.state.alreadyLiked) {
       this.setState({ likes: unlike, alreadyLiked: false });
-      dbAPI.unlike(
+      dbAPI.likeComment(
         unlike,
         commentid,
         username,
         "/api/music/comments/likes/",
-        "/api/users/likedComments/"
+        "/api/users/likedComments/remove/"
       );
     } else {
       this.setState({ likes: newLike, alreadyLiked: true });
-      dbAPI.like(
+      dbAPI.likeComment(
         newLike,
         commentid,
         username,
         "/api/music/comments/likes/",
-        "/api/users/likedComments/remove/"
+        "/api/users/likedComments/"
       );
     }
   };
@@ -63,7 +82,8 @@ class Comment extends Component {
               <span onClick={this.likeComment}>
                 <i className={likeHeart} style={{ color: "black" }} />
               </span>
-              {this.state.likes}
+              <span style={{ color: "black" }}>{this.state.likes}</span>
+
               <div className="space-1" />
               <span onClick={this.openComments}>
                 <i

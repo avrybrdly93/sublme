@@ -16,14 +16,21 @@ router.route("/:id").get(userController.findUserByID);
 // => /api/users/likedMusic/:username
 router.route("/likedMusic/:username").get(userController.findUserByUsername);
 
-// => /api/likedMusic/:username
-router.route("/likedMusic/remove/:username").put(userController.deleteLike);
-
 // => /api/users/likedComments/:username
 router.route("/likedComments/:username").get(userController.findUserByUsername);
 
-// => /api/likedComments/:username
-router.route("/likedComments/remove/:username").put(userController.deleteLike);
+// => /api/users/likedMusic/:username
+router
+  .route("/likedMusic/remove/:username")
+  .put(userController.deleteLikedMusic);
+
+// => /api/users/likedComments/:username
+router.route("/likedComments/:username").put(userController.likeComment);
+
+// => /api/users/likedComments/remove/:username
+router
+  .route("/likedComments/remove/:username")
+  .put(userController.deleteLikedComment);
 
 // => /api/users/
 router.route("/").get(userController.findAll);

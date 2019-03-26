@@ -20,7 +20,7 @@ class CommentModal extends Component {
     dbAPI.getComments(this.props.songid, response => {
       // response.data.map(() => {});
       this.setState({ comments: response.data });
-      console.log(this.state.comments);
+      //console.log(this.state.comments);
     });
   }
   submitComment = event => {

@@ -7,30 +7,35 @@ export default {
     return axios.post("/api/users/login ", tryUser);
   },
 
-  like: (like, ID, username, likeRoute, userRoute) => {
+  likeSong: (like, ID, username, likeRoute, userRoute) => {
     axios
       .put(likeRoute + ID, {
         likes: like
       })
-      .then(response => {});
+      .then(response => {
+        console.log(ID);
+      });
     axios
       .put(userRoute + username, {
         likedMusic: ID
       })
       .then(response => {});
   },
-  unlike: (like, ID, username, likeRoute, userRoute) => {
+  likeComment: (like, ID, username, likeRoute, userRoute) => {
     axios
       .put(likeRoute + ID, {
         likes: like
       })
-      .then(response => {});
+      .then(response => {
+        console.log(ID);
+      });
     axios
       .put(userRoute + username, {
-        likedMusic: ID
+        likedComment: ID
       })
       .then(response => {});
   },
+
   getMusic: (songID, callback) => {
     axios.get("/api/music/" + songID).then(callback);
   },
@@ -39,6 +44,12 @@ export default {
   },
   getComments: (songID, callback) => {
     axios.get("/api/music/comments/" + songID).then(callback);
+  },
+  getCommentLikes: (commentID, callback) => {
+    axios.get("api/music/comments/likes/" + commentID).then(callback);
+  },
+  getUserCommentLikes: (username, callback) => {
+    axios.get("api/users/likedComments/" + username).then(callback);
   },
   getArtists: callback => {
     axios.get("/api/users/user/artists").then(callback);
@@ -52,15 +63,4 @@ export default {
   createUser: function(newUser) {
     return axios.post("/api/users/signup", newUser);
   }
-  // sendComment: (songID, newComment, callback) => {
-  //   axios
-  //     .put("/api/music/comments/" + songID, {
-  //       comments: newComment
-  //     })
-  //     .then(callback);
-  // }
 };
-
-// axios.get("/api/music/comments/" + this.props.songid).then(response => {
-//   response.data.map(comment => {});
-//   this.setState({ comments: response.data, newComment: "" });

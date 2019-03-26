@@ -29,7 +29,10 @@ router.route("/:id").put(musicController.update);
 router.route("/comments/:id").put(musicController.postComment);
 
 // => /api/music/comments/likes/:id
-router.route("/comments/likes/:id").put(musicController.update);
+router.route("/comments/likes/:id").put(musicController.updateComments);
+
+// => /api/music/comments/likes/:id
+router.route("/comments/likes/:id").get(musicController.getCommentLikes);
 
 // => /api/music/comments/:id
 router.route("/comments/:id").get(musicController.findComments);

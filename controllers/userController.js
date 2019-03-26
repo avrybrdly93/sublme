@@ -157,6 +157,14 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  likeComment: function(req, res) {
+    db.User.findOneAndUpdate(
+      { username: req.params.username },
+      { $push: { likedComments: req.body.likedComment } }
+    )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findAll: function(req, res) {
     db.User.find().then(dbModel => res.json(dbModel));
   },
@@ -173,10 +181,23 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  deleteLike: function(req, res) {
+  update: function(req, res) {
+    db.Music.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  deleteLikedMusic: function(req, res) {
     db.User.findOneAndUpdate(
       { username: req.params.username },
       { $pull: { likedMusic: req.body.likedMusic } }
+    ).then(response => {
+      console.log(response);
+    });
+  },
+  deleteLikedComment: function(req, res) {
+    db.User.findOneAndUpdate(
+      { username: req.params.username },
+      { $pull: { likedComments: req.body.likedComment } }
     ).then(response => {
       console.log(response);
     });

@@ -89,21 +89,21 @@ class MusicCard extends Component {
 
     if (this.state.alreadyLiked) {
       this.setState({ likes: unlike, alreadyLiked: false });
-      dbAPI.unlike(
+      dbAPI.likeSong(
         unlike,
         songid,
         username,
         "/api/music/",
-        "/api/users/likedMusic/"
+        "/api/users/likedMusic/remove/"
       );
     } else {
       this.setState({ likes: newLike, alreadyLiked: true });
-      dbAPI.like(
+      dbAPI.likeSong(
         newLike,
         songid,
         username,
         "/api/music/",
-        "/api/users/likedMusic/remove/"
+        "/api/users/likedMusic/"
       );
     }
   };
