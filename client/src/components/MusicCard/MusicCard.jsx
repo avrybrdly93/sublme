@@ -229,7 +229,6 @@ class MusicCard extends Component {
                 <i className={likeHeart} />
               </span>
               <span className="likes">{this.state.likes}</span>
-              <div className="space-1" />
               <span onClick={this.openComments}>
                 <i
                   onMouseEnter={() => this.setState({ buttonHovered: true })}
