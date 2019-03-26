@@ -6,15 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 // import Slider from "../Slider/Slider";
 import "./style.css";
-import axios from "axios";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Comment from "../Comment";
 import dbAPI from "../../utils/dbAPI";
 import Cookies from "js-cookie";
 import CommentModal from "../CommentModal";
@@ -54,7 +46,7 @@ class MusicCard extends Component {
   }
 
   componentDidMount() {
-    // let username = Cookies.get("username");
+    let username = Cookies.get("username");
     dbAPI.getMusic(this.props.songid, response => {
       this.setState({ likes: response.data.likes });
     });
