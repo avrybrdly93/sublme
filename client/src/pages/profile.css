@@ -1,14 +1,46 @@
 .bg {
-  height: 250px !important;
+  height: 320px !important;
 }
 .bigAvatar {
   width: 150px !important;
   height: 150px !important;
 }
 .profile {
-  margin-top: -260px;
+  margin-top: -335px;
   margin-bottom: 50px;
 }
 .content {
   margin-top: 0% !important;
+}
+.name {
+  margin: 10px;
+  margin-top: -5px;
+}
+.username {
+  margin-top: 8px;
+  text-align: left;
+}
+.settigns {
+  margin-left: -15px;
+  text-align: right;
+}
+.button {
+  margin-top: -10px;
+  display: block;
+  text-align: center;
+}
+.button a {
+  margin: 0 auto;
+  display: inline-block;
+}
+.followers {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 50;
+  letter-spacing: 1px;
+}
+
+.tabs {
+  margin-top: -90px;
 }

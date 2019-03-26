@@ -1,0 +1,9 @@
+.button {
+  margin-top: -10px;
+  display: block;
+  text-align: center;
+}
+.button a {
+  margin: 0 auto;
+  display: inline-block;
+}

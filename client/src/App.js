@@ -9,9 +9,11 @@ import Cookies from "js-cookie";
 import Profile from "./pages/profile";
 import Settings from "./pages/settings";
 import Signup from "./components/Signup";
+import Upload from "./pages/upload";
+import Results from "./pages/results";
+import Explore from "./pages/explore";
+import MediaPlayer from "./components/MediaPlayer/MediaPlayer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Upload from "./pages/Upload";
-//import EditProfile from "./components/Profile/EditProfile";
 import "./App.css";
 import dbAPI from "./utils/dbAPI";
 
@@ -20,6 +22,9 @@ class App extends Component {
     loggedIn: false,
     picURL: "",
     username: ""
+    // playlist: [],
+    // playlistIsPlaying: false,
+    // theme: "spotify"
   };
 
   componentDidMount() {
@@ -62,14 +67,20 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile/:id" component={Profile} />
+            <Route exact path="/profile" component={Profile} />
             <Route exact path="/upload" component={Upload} />
             <Route exact path="/settings" component={Settings} />
+            <Route exact path="/results" component={Results} />
+            <Route exact path="/explore" component={Explore} />
             <Route component={NoMatch} />
           </Switch>
         </Router>
+        <MediaPlayer />
       </div>
     );
+  }
+  receiveStateUpdates(payload) {
+    this.setState(payload);
   }
 }
 

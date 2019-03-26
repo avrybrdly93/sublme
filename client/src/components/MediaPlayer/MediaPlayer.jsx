@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import ReactMediaVisualizer from "react-media-visualizer";
-
-const style = {
-  sticky: {
-    position: "sticky",
-    top: 0
-  }
-};
+import "./style.css";
 
 class MediaPlayer extends Component {
   constructor(props) {
@@ -15,23 +9,32 @@ class MediaPlayer extends Component {
       playlist: [],
       playlistIsPlaying: false,
       currentSongIndex: 0,
-      theme: "spotify"
+      theme: "spotify",
+      songs: [],
+      currentSong: {},
+      active: false
     };
   }
+
   render() {
     return (
-      <div className={style.sticky}>
-        <div className="content" />
+      <div className="mediaPlayer">
         <ReactMediaVisualizer
-          playlist={this.state.playlist}
-          receiveStateUpdates={this.receiveStateUpdates}
-          playlistIsPlaying={this.state.playlistIsPlaying}
+          playlist={this.state.songs}
+          receiveStateUpdates={() => {
+            this.receiveStateUpdates();
+          }}
           theme={this.state.theme}
+          playlistIsPlaying={this.state.playlistIsPlaying}
           currentSongIndex={this.state.currentSongIndex}
-          style={{ opacity: 0.5 }}
+          showVisualizerToggle={false}
+          showPlaylistToggle={false}
         />
       </div>
     );
+  }
+  receiveStateUpdates(payload) {
+    this.setState(payload);
   }
 }
 

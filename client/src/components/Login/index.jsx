@@ -95,7 +95,7 @@ class Login extends Component {
               type="password"
               className="form-control"
               id="inputPassword4"
-              placeholder="*****"
+              placeholder="*********"
               name="password"
               value={this.state.password}
               onChange={this.handleInputChange}
@@ -113,6 +113,15 @@ class Login extends Component {
           </div>
           <div className="col-3" />
         </div>
+        <br />
+        <br />
+        <button
+          className="button"
+          style={{ textAlign: "center" }}
+          onClick={this.handleFormSubmit}
+        >
+          Submit
+        </button>
       </div>
     );
   }

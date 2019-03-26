@@ -148,13 +148,13 @@ class Signup extends Component {
     );
 
     return (
-      <div className="container-fluid form">
+      <div className="container-fluid">
+        {this.renderRedirect()}
         <div className="row">
-          <div className="col-3" />
-          {this.renderRedirect()}
-          <div className="col-6">
+          <div className="col-2" />
+          <div className="col-10">
             <form>
-              <div className="row">
+              <div className="col-input">
                 <label htmlFor="inputEmail4">Email</label>
                 <input
                   className="form-control"
@@ -215,6 +215,7 @@ class Signup extends Component {
                 <div className="form-group col-md-6">
                   <label htmlFor="inputEmail4">Password</label>
                   <input
+                    name="birthday"
                     className="form-control"
                     type="password"
                     placeholder="*******"
@@ -353,9 +354,37 @@ class Signup extends Component {
               {/* style and add link to terms & service  */}
               <div className="container">
                 <div className="round">
-                  <input id="checkbox" type="checkbox" required />
-                  <label htmlFor="checkbox" /> You agree to our Terms of Service
-                  and Privacy Policy
+                  <input id="checkbox" type="checkbox" />
+                  <label htmlFor="checkbox" /> You agree to our
+                  <div className="popup" onClick="openTerms()">
+                    Terms of Service
+                    <span className="popuptext" id="termsPopup">
+                      <header>X</header>TERMS OF SERVICE:
+                      <br />
+                      <br /> Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua. Pellentesque nec nam aliquam sem et.
+                      Phasellus aliquam cursus tincidunt. Mauris auctor, dui in
+                      feugiat pulvinar, velit purus porttitor turpis, ut lacinia
+                      tellus turpis porttitor augue. Cras vitae elementum dui,
+                      et ultricies eros.
+                    </span>
+                  </div>
+                  and
+                  <div className="popup" onClick="openPrivacy()">
+                    <a href="/">Privacy Policy</a>
+                    <span className="popuptext" id="privacyPopup">
+                      <header>X</header>Privacy Policy:
+                      <br />
+                      <br /> Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua. Pellentesque nec nam aliquam sem et.
+                      Phasellus aliquam cursus tincidunt. Mauris auctor, dui in
+                      feugiat pulvinar, velit purus porttitor turpis, ut lacinia
+                      tellus turpis porttitor augue. Cras vitae elementum dui,
+                      et ultricies eros.
+                    </span>
+                  </div>
                   <br />
                   <br />
                   <button
