@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import Cookies from "js-cookie";
 import dbAPI from "../../utils/dbAPI";
 import axios from "axios";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 class Comment extends Component {
   state = {
     content: null,
     username: Cookies.get("username"),
     likes: 0,
-    alreadyLiked: false
+    alreadyLiked: false,
+    replyIsHidden: true,
+    replies: [],
+    reply: ""
   };
   componentDidMount() {
     dbAPI.getCommentLikes(this.props.commentid, response => {
@@ -28,6 +33,13 @@ class Comment extends Component {
       });
     });
   }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
   likeComment = () => {
     let newLike = this.state.likes + 1;
@@ -55,7 +67,25 @@ class Comment extends Component {
       );
     }
   };
+  submitReply = event => {
+    event.preventDefault();
+    axios
+      .put("/api/music/comments/replies/" + this.props.commentid, {
+        replies: this.state.reply
+      })
+      .then(responseOne => {
+        axios
+          .get("/api/music/comments/replies/" + this.props.commentid)
+          .then(responseTwo => {
+            console.log("THIS SHOULD BE REPLIES: " + responseTwo.data);
+            this.setState({ replies: responseTwo.data, reply: "" });
+          });
+      });
+  };
 
+  renderReply = () => {
+    this.setState({ replyIsHidden: !this.state.replyIsHidden });
+  };
   render() {
     let likeHeart = null;
     if (this.state.alreadyLiked) {
@@ -85,7 +115,7 @@ class Comment extends Component {
               <span style={{ color: "black" }}>{this.state.likes}</span>
 
               <div className="space-1" />
-              <span onClick={this.openComments}>
+              <span onClick={this.renderReply}>
                 <i
                   onMouseEnter={() => this.setState({ buttonHovered: true })}
                   onMouseLeave={() => this.setState({ buttonHovered: false })}
@@ -100,6 +130,23 @@ class Comment extends Component {
             </div>
           </div>
         </div>
+        {!this.state.replyIsHidden && (
+          <React.Fragment>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="user-comment"
+              value={this.state.reply}
+              name="reply"
+              onChange={this.handleInputChange}
+              label="Reply to Comment"
+              fullWidth
+            />
+            <Button onClick={this.submitReply} color="primary">
+              Submit Reply
+            </Button>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }

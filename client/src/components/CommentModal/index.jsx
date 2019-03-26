@@ -25,7 +25,6 @@ class CommentModal extends Component {
   }
   submitComment = event => {
     event.preventDefault();
-
     axios
       .put("/api/music/comments/" + this.props.songid, {
         comments: this.state.newComment

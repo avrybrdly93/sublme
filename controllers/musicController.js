@@ -183,6 +183,46 @@ module.exports = {
     db.Comment.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  getReplies: function(req, res) {
+    db.Comment.findOne({ _id: req.params.id })
+      .then(dbModel => {
+        db.Comment.findOne({ _id: dbModel.replies[0]._id }).then(response => {
+          res.json(response);
+        });
+      })
+
+      .catch(err => res.status(422).json(err));
+  },
+  //   postReply: function(req, res) {
+  //     db.Comment.findOneAndUpdate(
+  //       { _id: req.params.id },
+  //       { $push: { comments: ._id } }
+  //     )
+  //       .then(dbModel => res.json(dbModel))
+  //       .catch(err => res.status(422).json(err));
+  //   }
+  // };
+
+  postReply: function(req, res) {
+    db.Comment.create({
+      text: req.body.replies,
+      writerID: req.session.passport.user._id,
+      writerName: req.session.passport.user.username,
+      writerPic: req.session.passport.user.profileImage
+    })
+      .then(responseOne => {
+        //console.log(responseOne);
+        db.Comment.findOneAndUpdate(
+          { _id: req.params.id },
+          { $push: { replies: responseOne._id } }
+        )
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 
