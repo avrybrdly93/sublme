@@ -39,7 +39,7 @@ const styles = theme => ({
     height: 30
   },
   grow1: {
-    flexGrow: 0.4
+    flexGrow: 0.68
   },
   grow2: {
     flexGrow: 0.6
@@ -149,60 +149,36 @@ class PrimarySearchAppBar extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        {/* <List>
-          {["Upload", "Profile"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 3 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["Settings", "Logout"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <InboxIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
-        const sideList = (
         <div className={classes.list}>
           <List>
             <ListItem component="a" href="/upload" button key="Upload">
               <ListItemIcon>
-                <InboxIcon />
+                <i className="material-icons" style={{ color: "black" }}>
+                  cloud_upload
+                </i>
               </ListItemIcon>
               <ListItemText primary="Upload" />
             </ListItem>
-
             <ListItem component="a" href="/profile" button key="Profile">
               <ListItemIcon>
-                <MailIcon />
+                <i class="material-icons" style={{ color: "black" }}>
+                  perm_identity
+                </i>
               </ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItem>
           </List>
           <List>
-            <ListItem component="a" href="/EditProfile" button key="Settings">
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItem>
             <ListItem component="a" href="/logout" button key="Logout">
               <ListItemIcon>
-                <InboxIcon />
+                <i class="material-icons" style={{ color: "black" }}>
+                  exit_to_app
+                </i>
               </ListItemIcon>
               <ListItemText primary="Logout" />
             </ListItem>
           </List>
         </div>
-        );
       </div>
     );
 
