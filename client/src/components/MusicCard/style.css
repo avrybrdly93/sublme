@@ -39,7 +39,7 @@
   width: 330px !important;
 }
 .comment {
-  width: 258px !important;
+  text-align: right !important;
   display: inline-block;
 }
 a {

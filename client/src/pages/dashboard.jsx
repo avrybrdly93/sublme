@@ -28,18 +28,12 @@ class Dashboard extends Component {
   componentDidMount() {
     axios.get("/api/music").then(results => {
       this.setState({ songs: results.data });
+      console.log(this.state.songs);
     });
   }
 
-  handleCardClick = (e, song) => {
-    e.preventDefault();
-    this.setState({ currentSong: song });
-    console.log(song);
-  };
-
   render() {
     let songs = this.state.songs;
-    // let currentSong = this.state.currentSong;
 
     var renderCards = songs.map(song => (
       <li key={song._id}>
@@ -52,7 +46,7 @@ class Dashboard extends Component {
           producer={song.producer}
           artist={song.artist}
           title={song.title}
-          onClick={e => this.handleCardClick(e, song)}
+          onClick={this.props.handleClick}
         />
       </li>
     ));

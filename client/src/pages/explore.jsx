@@ -19,43 +19,82 @@ class Explore extends Component {
     let bullhorns = this.state.bullhorns;
     let songs = this.state.songs;
 
+    let items = [<Video />, <Bullhorn />, <MusicCard />];
+
     // TO DO's:
     // .map for ExploreVideos, Bullhorns, MusicCards...
-    const renderVideos = videos.map(video => (
-      <li key={video.id}>
-        <Video video={video.video} title={video.title} />
-      </li>
-    ));
+    // const renderVideos = videos.map(video => (
+    //   <li key={video.id}>
+    //     <Video video={video.video} title={video.title} />
+    //   </li>
+    // ));
 
-    const renderBullhorns = bullhorns.map(bullhorn => (
-      <li key={bullhorn._id}>
-        <Bullhorn
-          profile={bullhorn.profile}
-          username={bullhorn.username}
-          content={bullhorn.content}
-          follow={bullhorn.follow}
-          timestamp={bullhorn.timestamp}
-        />
-      </li>
-    ));
+    // const renderBullhorns = bullhorns.map(bullhorn => (
+    //   <li key={bullhorn._id}>
+    //     <Bullhorn
+    //       profile={bullhorn.profile}
+    //       username={bullhorn.username}
+    //       content={bullhorn.content}
+    //       follow={bullhorn.follow}
+    //       timestamp={bullhorn.timestamp}
+    //     />
+    //   </li>
+    // ));
 
-    const renderSongs = songs.map(song => (
-      <li key={song._id}>
-        <MusicCard
-          songid={song._id}
-          cover={song.cover}
-          // covername={song.artist}
-          profile={song.profilePic}
-          filelink={song.fileLink}
-          producer={song.producer}
-          artist={song.artist}
-          title={song.title}
-          onClick={e => this.handleCardClick(e, song)}
-        />
-      </li>
-    ));
+    // const renderSongs = songs.map(song => (
+    //   <li key={song._id}>
+    //     <MusicCard
+    //       songid={song._id}
+    //       cover={song.cover}
+    //       // covername={song.artist}
+    //       profile={song.profilePic}
+    //       filelink={song.fileLink}
+    //       producer={song.producer}
+    //       artist={song.artist}
+    //       title={song.title}
+    //       onClick={e => this.handleCardClick(e, song)}
+    //     />
+    //   </li>
+    // ));
+    
     // make exploreItems array that holds each mapped object... ex. var exploreItems = [renderVideos, renderBullhorns, renderSounds]
-    let exploreItems = [renderVideos, renderBullhorns, renderSongs];
+    let exploreItems = [
+      items.map(
+        (song, bullhorn, video) => (
+          (
+            <li key={song._id}>
+              <MusicCard
+                songid={song._id}
+                cover={song.cover}
+                // covername={song.artist}
+                profile={song.profilePic}
+                filelink={song.fileLink}
+                producer={song.producer}
+                artist={song.artist}
+                title={song.title}
+                onClick={e => this.handleCardClick(e, song)}
+              />
+            </li>
+          ),
+          (
+            <li key={bullhorn._id}>
+              <Bullhorn
+                profile={bullhorn.profile}
+                username={bullhorn.username}
+                content={bullhorn.content}
+                follow={bullhorn.follow}
+                timestamp={bullhorn.timestamp}
+              />
+            </li>
+          ),
+          (
+            <li key={video.id}>
+              <Video video={video.video} title={video.title} />
+            </li>
+          )
+        )
+      )
+    ];
     // filter exploreItems to perform a Math.random to render objects inside array to random places...
     var renderExplore = exploreItems.filter(
       explore => explore[Math.floor(Math.random() * 18)]

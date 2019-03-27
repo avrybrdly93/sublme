@@ -11,7 +11,7 @@ class MediaPlayer extends Component {
       currentSongIndex: 0,
       theme: "spotify",
       songs: [],
-      currentSong: {},
+      currentSong: props.currentSong,
       active: false
     };
   }

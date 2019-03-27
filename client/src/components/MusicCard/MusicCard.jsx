@@ -114,13 +114,11 @@ class MusicCard extends Component {
         <Card
           className={classes.card}
           key={this.props.id}
-          songid={this.props.songid}
-        >
+          songid={this.props.songid}>
           <CardMedia
             className={classes.cover}
             image={this.props.cover}
-            title={this.props.coverTitle}
-          >
+            title={this.props.coverTitle}>
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <img
@@ -139,8 +137,7 @@ class MusicCard extends Component {
                 <Typography
                   variant="body1"
                   color="textSecondary"
-                  className="track-info artist"
-                >
+                  className="track-info artist">
                   {this.props.artist}
                 </Typography>
               </CardContent>
@@ -161,7 +158,8 @@ class MusicCard extends Component {
                 <i className={likeHeart} />
               </span>
               <span className="likes">{this.state.likes}</span>
-              <span onClick={this.openComments}>
+              <span
+               onClick={this.openComments} className="comment">
                 <i
                   onMouseEnter={() => this.setState({ buttonHovered: true })}
                   onMouseLeave={() => this.setState({ buttonHovered: false })}
@@ -175,8 +173,7 @@ class MusicCard extends Component {
               <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
-                aria-labelledby="form-dialog-title"
-              >
+                aria-labelledby="form-dialog-title">
                 <CommentModal
                   handleClose={this.handleClose}
                   songid={this.props.songid}

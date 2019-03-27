@@ -247,6 +247,13 @@ class Upload extends Component {
                   {this.nextButton()}
                 </form>
                 <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
               </React.Fragment>
             )}
           </div>
