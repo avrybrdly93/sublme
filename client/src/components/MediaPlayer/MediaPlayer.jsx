@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactMediaVisualizer from "react-media-visualizer";
+import axios from "axios";
 import "./style.css";
 
 class MediaPlayer extends Component {
@@ -16,18 +17,26 @@ class MediaPlayer extends Component {
     };
   }
 
+  componentDidMount() {
+    axios.get("/api/music").then(results => {
+      this.setState({ songs: results.data });
+      console.log(this.state.songs);
+    });
+  }
+
   render() {
     return (
       <div className="mediaPlayer">
         <ReactMediaVisualizer
-          playlist={this.state.songs}
+          playlist={this.props.songs}
           receiveStateUpdates={() => {
             this.receiveStateUpdates();
           }}
-          theme={this.state.theme}
-          playlistIsPlaying={this.state.playlistIsPlaying}
-          currentSongIndex={this.state.currentSongIndex}
-          showVisualizerToggle={false}
+          theme={this.props.theme}
+          playlistIsPlaying={this.props.playlistIsPlaying}
+          currentSongIndex={this.props.currentSongIndex}
+          currentSong={this.props.currentSong}
+          howVisualizerToggle={false}
           showPlaylistToggle={false}
         />
       </div>

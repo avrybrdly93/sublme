@@ -24,7 +24,7 @@ const styles = theme => ({
     flexGrow: 0.6
   },
   appBar: {
-    background: "transparent",
+    backgroundColor: "transparent",
     boxShadow: "none"
   },
   menuButton: {

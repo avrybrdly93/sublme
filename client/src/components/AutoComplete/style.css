@@ -20,20 +20,22 @@ input {
 }
 
 .suggestions {
+  position: absolute;
   border: 1px solid #999;
   border-top-width: 0;
   list-style: none;
   margin-top: 0;
   max-height: 143px;
-  overflow: auto;
+  overflow: hidden;
   padding-left: 0;
   width: calc(300px + 1rem);
-  z-index: 99;
+  z-index: 999;
 }
 
 .suggestions li {
   padding: 0.5rem;
   z-index: 9999;
+  overflow: scroll;
 }
 
 .suggestion-active,
@@ -43,6 +45,7 @@ input {
   cursor: pointer;
   font-weight: 700;
   z-index: 9999;
+  /* overflow: scroll; */
 }
 
 .suggestions li:not(:last-of-type) {

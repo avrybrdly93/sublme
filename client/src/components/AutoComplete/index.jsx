@@ -13,7 +13,6 @@ import "./style.css";
 
 const styles = theme => ({
   search: {
-    position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
@@ -247,19 +246,6 @@ class Autocomplete extends Component {
           />
           {suggestionsListComponent}
         </div>
-        {/* <div className="contain-search">
-          <input
-            className="search"
-            type="text"
-            onChange={this.onChange}
-            // onKeyDown={this.onKeyDown}
-            // onKeyPress={this.handleKeyPress}
-            value={this.state.userInput}
-            name="userInput"
-            placeholder="Search"
-          />
-          {suggestionsListComponent}
-        </div> */}
       </Fragment>
     );
   }

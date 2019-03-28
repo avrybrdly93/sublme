@@ -42,7 +42,7 @@ class Results extends Component {
     //       cover={result.cover}
     //       // covername={song.artist}
     //       profile={result.profilePic}
-    //       filelink={result.fileLink}
+    //       musicSrc={result.musicSrc}
     //       producer={result.producer}
     //       artist={result.artist}
     //       title={result.title}
@@ -96,7 +96,7 @@ class Results extends Component {
                       producer="J. Cole"
                       artist="J. Cole"
                       title="Window Pain (Outro)"
-                      fileLink=""
+                      musicSrc=""
                     />
                   </li>
                 </ul>

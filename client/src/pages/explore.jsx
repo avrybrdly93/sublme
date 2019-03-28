@@ -48,7 +48,7 @@ class Explore extends Component {
     //       cover={song.cover}
     //       // covername={song.artist}
     //       profile={song.profilePic}
-    //       filelink={song.fileLink}
+    //       musicSrc={song.musicSrc}
     //       producer={song.producer}
     //       artist={song.artist}
     //       title={song.title}
@@ -56,7 +56,7 @@ class Explore extends Component {
     //     />
     //   </li>
     // ));
-    
+
     // make exploreItems array that holds each mapped object... ex. var exploreItems = [renderVideos, renderBullhorns, renderSounds]
     let exploreItems = [
       items.map(
@@ -68,7 +68,7 @@ class Explore extends Component {
                 cover={song.cover}
                 // covername={song.artist}
                 profile={song.profilePic}
-                filelink={song.fileLink}
+                musicSrc={song.musicSrc}
                 producer={song.producer}
                 artist={song.artist}
                 title={song.title}

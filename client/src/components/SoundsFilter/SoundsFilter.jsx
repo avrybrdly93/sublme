@@ -20,7 +20,7 @@ class SoundsFilter extends Component {
           profile={sound.profilePic}
           artist={sound.artist}
           title={sound.title}
-          mp3={sound.fileLink}
+          mp3={sound.musicSrc}
         />
       </li>
     ));

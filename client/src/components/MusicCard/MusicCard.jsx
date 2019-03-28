@@ -143,23 +143,20 @@ class MusicCard extends Component {
               </CardContent>
             </div>
             <div className="controls" {...other}>
-              <i className="fas fa-step-backward fa-2x" />
               <i
                 className={
                   this.state.active
-                    ? "far fa-pause-circle fa-3x play-pause-btn"
-                    : "far fa-play-circle fa-3x play-pause-btn"
+                    ? "far fa-pause-circle fa-4x play-pause-btn"
+                    : "far fa-play-circle fa-4x play-pause-btn"
                 }
               />
-              <i className="fas fa-step-forward fa-2x" />
             </div>
             <div className="social-icons">
               <span onClick={this.likeSong}>
                 <i className={likeHeart} />
               </span>
               <span className="likes">{this.state.likes}</span>
-              <span
-               onClick={this.openComments} className="comment">
+              <span onClick={this.openComments} className="comment">
                 <i
                   onMouseEnter={() => this.setState({ buttonHovered: true })}
                   onMouseLeave={() => this.setState({ buttonHovered: false })}

@@ -115,7 +115,7 @@ module.exports = {
               db.Music.create({
                 title: req.body.musicTitle,
                 titleLower: req.body.musicTitle.toLowerCase(),
-                fileLink: returnData.urlOne,
+                musicSrc: returnData.urlOne,
                 genre: req.body.genre,
                 artistID: req.session.passport.user._id,
                 cover: returnData.urlTwo,

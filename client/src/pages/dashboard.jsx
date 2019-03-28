@@ -8,13 +8,14 @@ import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 import "./dashboard.css";
-import axios from "axios";
+import Songs from "../Songs.json";
+// import axios from "axios";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      songs: [],
+      songs: Songs,
       currentSong: {},
       active: false,
       playlist: [],
@@ -25,15 +26,28 @@ class Dashboard extends Component {
     // this.receiveStateUpdates = this.receiveStateUpdates.bind(this);
   }
 
+  // componentDidMount() {
+  //   axios.get("/api/music").then(results => {
+  //     this.setState({ songs: results.data });
+  //     console.log(this.state.songs);
+  //   });
+  // }
+
   componentDidMount() {
-    axios.get("/api/music").then(results => {
-      this.setState({ songs: results.data });
-      console.log(this.state.songs);
-    });
+    console.log(this.state.songs);
   }
 
+  handleCardClick = (e, song) => {
+    e.preventDefault();
+    this.setState({ currentSong: song.mp3 });
+    if (this.state.playlistIsPlaying === false) {
+      this.setState({ playlistIsPlaying: true });
+    }
+    console.log(song.mp3);
+  };
+
   render() {
-    let songs = this.state.songs;
+    var songs = this.state.songs;
 
     var renderCards = songs.map(song => (
       <li key={song._id}>
@@ -42,11 +56,13 @@ class Dashboard extends Component {
           cover={song.cover}
           // covername={song.artist}
           profile={song.profilePic}
-          filelink={song.fileLink}
+          musicSrc={song.musicSrc}
           producer={song.producer}
-          artist={song.artist}
-          title={song.title}
-          onClick={this.props.handleClick}
+          artist={song.singer}
+          title={song.name}
+          onClick={e => {
+            this.handleCardClick(e, song);
+          }}
         />
       </li>
     ));
@@ -139,6 +155,29 @@ class Dashboard extends Component {
             <div className="col-xl-0 col-sm-0" />
           </div>
         </div>
+        <MediaPlayer
+          playlist={this.state.songs}
+          receiveStateUpdates={() => {
+            this.receiveStateUpdates();
+          }}
+          theme={this.state.theme}
+          playlistIsPlaying={this.props.playlistIsPlaying}
+          currentSongIndex={this.state.currentSongIndex}
+          currentSong={this.state.currentSong}
+        />
+        {/* <div className="mediaPlayer">
+          <ReactMediaVisualizer
+            playlist={this.state.songs}
+            receiveStateUpdates={() => {
+              this.receiveStateUpdates();
+            }}
+            theme={this.state.theme}
+            playlistIsPlaying={this.state.playlistIsPlaying}
+            currentSongIndex={this.state.currentSongIndex}
+            showVisualizerToggle={false}
+            showPlaylistToggle={false}
+          />
+        </div> */}
       </React.Fragment>
     );
   }

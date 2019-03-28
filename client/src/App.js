@@ -12,11 +12,23 @@ import Signup from "./components/Signup";
 import Upload from "./pages/upload";
 import Results from "./pages/results";
 import Explore from "./pages/explore";
-import MediaPlayer from "./components/MediaPlayer/MediaPlayer";
+import ReactPlayer from "./components/ReactPlayer/ReactPlayer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import dbAPI from "./utils/dbAPI";
-import axios from "axios";
+
+const routes = [
+  {
+    path: "/",
+    component: Dashboard,
+    handleCardClick: () => this.handleCardClick()
+  },
+  {
+    path: "/dashboard",
+    component: Dashboard,
+    handleCardClick: () => this.handleCardClick()
+  }
+];
 
 class App extends Component {
   state = {
@@ -48,16 +60,12 @@ class App extends Component {
           console.log(err);
         });
     }
-    axios.get("/api/music").then(results => {
-      this.setState({ songs: results.data });
-      console.log(this.state.songs);
-    });
   }
 
-  handleCardClick = (e, song) => {
+  handleCardClick = e => {
     e.preventDefault();
-    this.setState({ currentSong: song });
-    console.log(song);
+    // this.setState({ currentSong: song });
+    console.log(e);
   };
 
   render() {
@@ -88,12 +96,9 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </Router>
-        <MediaPlayer />
+        <ReactPlayer />
       </div>
     );
-  }
-  receiveStateUpdates(payload) {
-    this.setState(payload);
   }
 }
 
