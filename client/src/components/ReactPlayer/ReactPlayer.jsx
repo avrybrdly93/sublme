@@ -59,21 +59,21 @@ const options = {
   },
 
   //audio controller open text  [ type `String | ReactNode` default 'open']
-  openText: "打开",
+  openText: "Open",
 
   //audio controller close text  [ type `String | ReactNode` default 'close']
-  closeText: "关闭",
+  closeText: "Close",
 
   //audio theme switch checkedText  [ type `String | ReactNode` default '-']
-  checkedText: "开",
+  checkedText: "-",
 
   //audio theme switch unCheckedText [ type `String | ReactNode` default '-']
-  unCheckedText: "关",
+  unCheckedText: "-",
 
   // audio list panel show text of the playlist has no songs [ type `String` | ReactNode  default 'no music']
-  notContentText: "Playlist empty",
+  notContentText: "Playlist is empty",
 
-  panelTitle: "播放列表",
+  panelTitle: "Playlist",
 
   defaultPlayMode: "order",
 

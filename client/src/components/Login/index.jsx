@@ -80,34 +80,11 @@ class Login extends Component {
                   onChange={this.handleInputChange}
                 />
               </div>
-              {/* <label htmlFor="inputEmail4">Username</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputEmail4"
-              placeholder="johnnyappleseed"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInputChange}
-            />
-            <label htmlFor="inputPassword4">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword4"
-              placeholder="*********"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            /> */}
-              <br />
-              <br />
               <button
-                className="button"
-                style={{ textAlign: "center" }}
-                onClick={this.handleFormSubmit}
-              >
-                <span>Submit </span>
+                className="btn btn-primary"
+                style={{ marginLeft: 15 }}
+                onClick={this.handleFormSubmit}>
+                Submit
               </button>
             </form>
           </div>
@@ -115,13 +92,6 @@ class Login extends Component {
         </div>
         <br />
         <br />
-        <button
-          className="button"
-          style={{ textAlign: "center" }}
-          onClick={this.handleFormSubmit}
-        >
-          Submit
-        </button>
       </div>
     );
   }

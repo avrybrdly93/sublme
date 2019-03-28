@@ -152,7 +152,7 @@ class Signup extends Component {
         {this.renderRedirect()}
         <div className="row">
           <div className="col-2" />
-          <div className="col-10">
+          <div className="col-8">
             <form>
               <div className="col-input">
                 <label htmlFor="inputEmail4">Email</label>
@@ -250,8 +250,7 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                     name="gender"
                     required
-                    value={this.state.gender}
-                  >
+                    value={this.state.gender}>
                     <option defaultValue>Choose..</option>
                     <option>Female</option>
                     <option>Male</option>
@@ -287,8 +286,7 @@ class Signup extends Component {
                 />
                 <label
                   className="custom-file-label"
-                  htmlFor="validatedCustomFile"
-                >
+                  htmlFor="validatedCustomFile">
                   Choose file...
                 </label>
                 <div className="invalid-feedback">
@@ -310,8 +308,7 @@ class Signup extends Component {
                 />
                 <label
                   className="custom-file-label"
-                  htmlFor="validatedCustomFile"
-                >
+                  htmlFor="validatedCustomFile">
                   Choose file...
                 </label>
                 <div className="invalid-feedback">
@@ -341,8 +338,7 @@ class Signup extends Component {
                   onChange={this.handleInputChange}
                   name="userType"
                   required
-                  value={this.state.userType}
-                >
+                  value={this.state.userType}>
                   <option defaultValue>Who are you</option>
                   <option>Fan</option>
                   <option>Artist</option>
@@ -390,15 +386,14 @@ class Signup extends Component {
                   <button
                     className="button"
                     style={{ textAlign: "center" }}
-                    onClick={this.handleUpload}
-                  >
+                    onClick={this.handleUpload}>
                     <span>Submit </span>
                   </button>
                 </div>
               </div>
             </form>
           </div>
-          <div className="col-3" />
+          <div className="col-2" />
           {this.state.errCreatingUser ? <ErrorMessage /> : null}
         </div>
       </div>

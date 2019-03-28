@@ -2,14 +2,18 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import VideosList from "../components/VideosList/VideosList";
-import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
+// import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
+import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
+// import ReactPlayer from "../components/ReactPlayer/ReactPlayer";
+import Songs from "../Songs.json";
+
+// import axios from "axios";
+
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js";
 import "./dashboard.css";
-import Songs from "../Songs.json";
-// import axios from "axios";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -39,15 +43,13 @@ class Dashboard extends Component {
 
   handleCardClick = (e, song) => {
     e.preventDefault();
-    this.setState({ currentSong: song.mp3 });
-    if (this.state.playlistIsPlaying === false) {
-      this.setState({ playlistIsPlaying: true });
-    }
-    console.log(song.mp3);
+    this.setState({ currentSong: song });
+    console.log(this.state.currentSong);
   };
 
   render() {
     var songs = this.state.songs;
+    let currentSong = this.state.currentSong;
 
     var renderCards = songs.map(song => (
       <li key={song._id}>
@@ -56,10 +58,9 @@ class Dashboard extends Component {
           cover={song.cover}
           // covername={song.artist}
           profile={song.profilePic}
-          musicSrc={song.musicSrc}
           producer={song.producer}
-          artist={song.singer}
-          title={song.name}
+          artist={song.artist}
+          title={song.title}
           onClick={e => {
             this.handleCardClick(e, song);
           }}
@@ -149,13 +150,11 @@ class Dashboard extends Component {
             <div className="col-xl-12 col-sm-12">
               <VideosList />
               <br />
-              <br />
-              <br />
             </div>
             <div className="col-xl-0 col-sm-0" />
           </div>
         </div>
-        <MediaPlayer
+        {/* <MediaPlayer
           playlist={this.state.songs}
           receiveStateUpdates={() => {
             this.receiveStateUpdates();
@@ -164,26 +163,20 @@ class Dashboard extends Component {
           playlistIsPlaying={this.props.playlistIsPlaying}
           currentSongIndex={this.state.currentSongIndex}
           currentSong={this.state.currentSong}
+        /> */}
+        <MusicPlayer
+          id={currentSong.id}
+          src={currentSong.mp3}
+          cover={currentSong.cover}
+          artist={currentSong.artist}
+          title={currentSong.title}
         />
-        {/* <div className="mediaPlayer">
-          <ReactMediaVisualizer
-            playlist={this.state.songs}
-            receiveStateUpdates={() => {
-              this.receiveStateUpdates();
-            }}
-            theme={this.state.theme}
-            playlistIsPlaying={this.state.playlistIsPlaying}
-            currentSongIndex={this.state.currentSongIndex}
-            showVisualizerToggle={false}
-            showPlaylistToggle={false}
-          />
-        </div> */}
       </React.Fragment>
     );
   }
-  receiveStateUpdates(payload) {
-    this.setState(payload);
-  }
+  // receiveStateUpdates(payload) {
+  //   this.setState(payload);
+  // }
 }
 
 export default Dashboard;

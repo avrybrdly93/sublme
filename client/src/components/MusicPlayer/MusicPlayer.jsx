@@ -31,7 +31,7 @@ class MusicPlayer extends Component {
                 name="media"
                 key={this.props.id}
                 controlsList="nodownload">
-                <source src={this.props.src? this.props.src : ""} type="audio/mpeg" />
+                <source src={this.props.src ? this.props.src : ""} type="audio/mpeg" />
               </video>
             </div>
           </div>

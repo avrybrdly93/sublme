@@ -34,13 +34,15 @@
   padding-bottom: 20px;
 }
 .social-icons {
+  text-align: center;
   color: white !important;
   padding-left: 30px !important;
-  width: 330px !important;
+  width: 100% !important;
 }
 .comment {
   text-align: right !important;
   display: inline-block;
+  margin-left: 85%;
 }
 a {
   color: white;
