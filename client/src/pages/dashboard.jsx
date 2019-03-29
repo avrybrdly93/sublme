@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import ProfileGridList from "../components/ProfileGridList/ProfileGridList";
 import VideosList from "../components/VideosList/VideosList";
-// import MediaPlayer from "../components/MediaPlayer/MediaPlayer";
 import MusicCard from "../components/MusicCard/MusicCard";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 // import ReactPlayer from "../components/ReactPlayer/ReactPlayer";
-import Songs from "../Songs.json";
+// import Songs from "../Songs.json";
 
-// import axios from "axios";
+import axios from "axios";
 
 import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
@@ -19,26 +18,17 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      songs: Songs,
+      songs: [],
       currentSong: {},
-      active: false,
-      playlist: [],
-      playlistIsPlaying: false,
-      currentSongIndex: 0,
-      theme: "spotify"
+      active: false
     };
-    // this.receiveStateUpdates = this.receiveStateUpdates.bind(this);
   }
 
-  // componentDidMount() {
-  //   axios.get("/api/music").then(results => {
-  //     this.setState({ songs: results.data });
-  //     console.log(this.state.songs);
-  //   });
-  // }
-
   componentDidMount() {
-    console.log(this.state.songs);
+    axios.get("/api/music").then(results => {
+      this.setState({ songs: results.data });
+      console.log(this.state.songs);
+    });
   }
 
   handleCardClick = (e, song) => {
