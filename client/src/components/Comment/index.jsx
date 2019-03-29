@@ -32,15 +32,9 @@ class Comment extends Component {
       .then(response => {
         let reply = [];
         let replyObjs = response.data;
-        //console.log(replies);
         replyObjs.map((reply, index) => {
-          // console.log(reply.text);
-          // reply.push(reply.text);
-          // this.setState({ replies: reply.text });
           this.state.replies.push(reply.text);
-          //console.log(this.state.replies);
         });
-        //console.log("These are our replies: " + JSON.stringify(response.data));
         console.log(this.state.replies);
       });
   }

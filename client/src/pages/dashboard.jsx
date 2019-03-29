@@ -148,22 +148,25 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-xl-0 col-sm-0" />
             <div className="col-xl-12 col-sm-12">
+              <Typography
+                component="h2"
+                variant="display2"
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  fontSize: "100%",
+                  fontWeight: 100,
+                  paddingBottom: 10
+                }}
+                gutterBottom>
+                Team Section
+              </Typography>
               <VideosList />
               <br />
             </div>
             <div className="col-xl-0 col-sm-0" />
           </div>
         </div>
-        {/* <MediaPlayer
-          playlist={this.state.songs}
-          receiveStateUpdates={() => {
-            this.receiveStateUpdates();
-          }}
-          theme={this.state.theme}
-          playlistIsPlaying={this.props.playlistIsPlaying}
-          currentSongIndex={this.state.currentSongIndex}
-          currentSong={this.state.currentSong}
-        /> */}
         <MusicPlayer
           id={currentSong.id}
           src={currentSong.mp3}
